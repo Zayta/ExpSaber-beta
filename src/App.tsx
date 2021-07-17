@@ -10,7 +10,7 @@ import Navbar from './navbar/Navbar';
 // import About from '../../about/About';
 function App() {
   
-  const links = ["MySaber","About"]
+  const links = ["Home","About"]
   return <div className = 'container'>
         <BrowserRouter>
 

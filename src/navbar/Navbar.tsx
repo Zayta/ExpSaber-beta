@@ -15,7 +15,7 @@ export default class Navbar extends Component<RoutingLinks,ActiveLink> {
     createLinks(links:string[]){
         return <div id = "navbar" className="nav-main">{links.map(link =>{
             const formattedLink = "/"+link;
-            return <div key = {link}>
+            return <div className = 'link' key = {link}>
                 <Link to={formattedLink} >
                 {link}
                 </Link>

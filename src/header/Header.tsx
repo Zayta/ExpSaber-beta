@@ -2,14 +2,14 @@
 import React, {Component} from 'react';
 import Navbar from '../navbar/Navbar';
 import './header.scss';
-export default class Header extends Component {
+export default class Header extends Component<HeaderProps> {
     
     
     render() {
 
         return(
             <div className = 'header-container'>
-                <div className = 'header-wrapper'>
+                <div className = {this.props.hideHeader?'hidden':'header-wrapper'}>
                     
                     <h1>
                         MySaber
@@ -19,5 +19,7 @@ export default class Header extends Component {
         )
         
     }
-  }
- 
+}
+interface HeaderProps {
+    hideHeader?:boolean
+} 
