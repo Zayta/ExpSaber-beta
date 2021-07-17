@@ -1,38 +1,137 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+:root {
+  --bckgrnd: #222;
+  --txt-color1: #66fcf1;
+  --txt-color2: #fff;
+  --txt-color3:#fcd8a6;
+  --txt-color4:#f2e9dc;
+  --txt-color5:grey;
 
-.App-header {
-  background-color: #282c34;
+  --content-color: #222;
+  --nav-main-color: #1f2833;
+  --main-btn-color: #45a29e;
+  --main-btn-hover: #cce0e8;
+  --scrollbar-color: #b2b2b2;
+  --scrollbar-hover: #cce0e8;
+
+}
+.container{
+  background-color:var(--bckgrnd);
   min-height: 100vh;
-  display: flex;
+  display:flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: flex-start;
+  color:var(--txt-color1);
+  padding:5px;
+  box-sizing: border-box;
+}
+.container *{
+  box-sizing: border-box;
+}
+.content{
+  min-height: 70vh;
+  margin:0 5px 5px 5px;
+  padding:5px;
+}
+.header{
+  display:flex;
+  width:100%;
+  justify-content:space-between
+}
+.shadow{
+  box-shadow: -1px 1px 10px var(--border-color);
+}
+div.container{
+  font:20px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif
+}
+button{
+  display: flex;
+  background-color: var(--main-btn-color); /* Blue background */
+  border-radius: 3px;
   color: white;
+  padding: 3px 5px;
+  margin: 3px;
+  cursor: pointer; 
+  outline: none;
+  transition: 0.3s;
+  border:none;
+  border-radius: 5px;
+  text-decoration: none;
+  }
+  /* Change background color of buttons on hover */
+  button:hover {
+      background-color: var(--main-btn-hover);
+      color:black;
+  }
+
+/*General Text*/
+h1,h2,h3{
+  text-transform: capitalize;
+}
+h1,h2{
+  color:var(--txt-color1)
+}
+h3,h4,h5,h6{
+  color:var(--txt-color3)
+}
+div,p{
+  color:var(--txt-color2)
+}
+ul{
+  padding-inline-start:1.5vw;
+}
+img{
+  border-radius: 5px;
+}
+input,textarea,select{
+  border-radius:5px;
+  padding:5px;
+  outline:none;
+  border:none;
+  font-family: inherit;
+}
+input:focus,textarea:focus,select:focus{
+  
+  border:1px solid var(--main-btn-color);
+  box-shadow: 0 0 5px var(--txt-color1);
+}
+select::after {
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
 }
 
-.App-link {
-  color: #61dafb;
+/*Chrome Scrollbar*/
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-color); 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-hover); 
+}
+input::selection,textarea::selection{
+  color:white;
+  background-color: var(--main-btn-color);
+}
+a{
+  color:var(--main-btn-color)
+}
+::selection {
+  color: black;
+  background: var(--txt-color3);
 }

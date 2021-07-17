@@ -1,0 +1,24 @@
+.header-container{
+    margin-top:10px;
+    box-sizing: border-box;
+}
+.header-wrapper h1{
+    // font-family: customfont;
+    margin:0;
+}
+.header-wrapper h1::selection{
+    color:black;
+    background-color: var(--txt-color1);
+}
+.header-container .header-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+// @font-face {
+//     font-family: customfont;
+//     src: url('../fonts/Aller_Std_Rg.ttf') format('truetype');
+// }

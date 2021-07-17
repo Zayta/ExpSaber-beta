@@ -1,0 +1,13 @@
+.about-container{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+.about-item-wrapper{
+    text-align: center;
+}
+.about-item-wrapper a{
+    margin-left: 5px;
+    color:var(--txt-color1)
+}
