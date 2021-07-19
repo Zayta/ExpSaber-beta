@@ -5,7 +5,7 @@ import Footer from './footer/Footer'
 
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import About from './about/About';
-// import Main from '../../beat-saber/Main.jsx';
+import Home from './home/Home';
 import Navbar from './navbar/Navbar';
 // import About from '../../about/About';
 function App() {
@@ -22,8 +22,7 @@ function App() {
           <div className = 'content'>  
             <Switch>
             <Route path="/MySaber" >
-              {/* <Main  /> */}
-              <div>Hii main</div>
+              <Home  />
             </Route>
             
             <Route path="/About" >
