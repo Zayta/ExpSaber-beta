@@ -1,10 +1,16 @@
-import React, { Component} from 'react'
+import React, { useContext} from 'react'
+import { PlayerContext } from '../data/context/PlayerContext'
 import './main.scss'
-export default class About extends Component {
-    
-    render() {
-        return <div className='home-container'>
-            HOME
-        </div>
-    }
-}
+const Main = () => {
+    const player = useContext(PlayerContext);
+    return (
+      <div>
+          HOME
+        {
+            player?.playerData.playerInfo.playerName
+        }
+      </div>
+    )
+  }
+  
+export default Main
