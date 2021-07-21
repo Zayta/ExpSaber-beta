@@ -7,9 +7,11 @@ export interface Player{
   scoresData:ScoresData,
 }
 export interface PlayerContextData {
-    player:Player
+    
+  playerData:PlayerData|undefined,
+  scoresData:ScoresData|undefined,
     isLoading: boolean,
-    fetchPlayer: () => void
+    fetchPlayer: () => void,
+    fetchScores: ()=>void
 }
-   
 export const PlayerContext = createContext<PlayerContextData|undefined>(undefined);
