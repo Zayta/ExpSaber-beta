@@ -1,8 +1,8 @@
 import React,{ChangeEventHandler, Component, FormEventHandler} from 'react';
 import './search.scss';
 
-import SearchID from './players/SearchID';
-import SearchName from './players/SearchName';
+import SearchID from './search-players/SearchID';
+import SearchName from './search-players/SearchName';
 export default class Search extends Component <SearchProps,SearchState>{
 
     constructor(props:SearchProps) {
@@ -42,12 +42,11 @@ export default class Search extends Component <SearchProps,SearchState>{
     renderSearch(){
         switch(+this.state.searchBy){
             case SearchBy.ID:
-                return <SearchID retrievePlayerData = {this.props.retrievePlayerData} handleInputChange = {this.props.handleInputChange} scoreSaberID = {this.props.scoreSaberID}
-                handleError={this.props.handleError} />
+                return <SearchID setScoreSaberID={this.props.setScoreSaberID} />
             break;
             case SearchBy.NAME:
-                return <SearchName retrievePlayerData = {this.props.retrievePlayerData} handleInputChange = {this.props.handleInputChange} scoreSaberID = {this.props.scoreSaberID}
-                handleError={this.props.handleError} />
+                // return <SearchName retrievePlayerData = {this.props.retrievePlayerData} handleInputChange = {this.props.handleInputChange} scoreSaberID = {this.props.scoreSaberID}
+                // handleError={this.props.handleError} />
                 break;
             default:
                 console.log(this.state.searchBy)
@@ -62,10 +61,7 @@ export default class Search extends Component <SearchProps,SearchState>{
 }
 
 export interface SearchProps{
-    retrievePlayerData:Function,
-    handleInputChange:ChangeEventHandler<HTMLInputElement>,
-    handleError:Function,
-    scoreSaberID:string
+    setScoreSaberID:(ssid:string)=>void
 }
 export interface SearchState{
     searchBy:SearchBy

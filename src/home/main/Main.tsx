@@ -28,7 +28,7 @@ const Main = () => {
     <div>
       Name:
       {
-        playerData?.playerInfo.playerName
+        playerData?.playerInfo?.playerName
       }
       Scores:{
         scoresData?.scores?.toString()

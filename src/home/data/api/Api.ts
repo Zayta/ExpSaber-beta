@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { PlayerContextData,Player } from "../context/PlayerContext";
 import { PlayerData } from "../models/PlayerData";
 import ScoresData from "../models/ScoreData";
@@ -7,7 +7,7 @@ export default function usePlayerContextValue(scoresaber_id:string): PlayerConte
     const [playerData, setPlayerData] = useState<PlayerData>();
     const [scoresData, setScoresData] = useState<ScoresData>();
     const [isLoading, setIsLoading] = useState(false);
-
+    
     //fetch player data
     const fetchPlayer = useCallback(() => {
       setIsLoading(true);
@@ -15,7 +15,7 @@ export default function usePlayerContextValue(scoresaber_id:string): PlayerConte
         .then(response => response.json())
         .then((fetchedPlayer) => {
           setPlayerData(fetchedPlayer);
-        })
+        }).catch(err=>console.log(err))
         .finally(() => {
           setIsLoading(false);
         })
@@ -29,6 +29,8 @@ export default function usePlayerContextValue(scoresaber_id:string): PlayerConte
         .then(response => response.json())
         .then((fetchedScores) => {
           setScoresData(fetchedScores);
+        }).catch(err=>{
+          console.log(err);
         })
         .finally(() => {
           setIsLoading(false);
@@ -37,11 +39,15 @@ export default function usePlayerContextValue(scoresaber_id:string): PlayerConte
 
 
 
-    return {
+    return useMemo(() => ({
         playerData,
         scoresData,
         isLoading,
         fetchPlayer,
         fetchScores
-      }
+      }),[  playerData,
+        scoresData,
+        isLoading,
+        fetchPlayer,
+        fetchScores])
 }

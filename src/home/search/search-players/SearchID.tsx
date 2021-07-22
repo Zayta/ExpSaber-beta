@@ -10,8 +10,8 @@ export default class SearchID extends Component <SearchProps>{
     }
     handlePlayerFormSubmit = async(event:any) =>{
         event.preventDefault();
-        
-        this.props.retrievePlayerData(this.props.scoreSaberID,event.target.sortOrder.value)
+        console.log(event.target.value);
+        this.props.setScoreSaberID('76561198381299346');
     }
 
     render(){
@@ -20,7 +20,7 @@ export default class SearchID extends Component <SearchProps>{
             
             <form onSubmit={this.handlePlayerFormSubmit}>
                 <label>ScoreSaber ID:</label> 
-                <input type="text" name="scoreSaberID" placeholder='e.g. 76561198810679866' value = {this.props.scoreSaberID}onChange={this.props.handleInputChange}/>
+                <input type="text" name="scoreSaberID" placeholder='e.g. 76561198810679866' />
                 <button type="submit">Submit</button>
             </form>
  

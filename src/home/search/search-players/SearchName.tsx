@@ -53,7 +53,7 @@ export default class SearchName extends Component <SearchProps, SearchNameState>
         catch (err){
 
             if(this.state.isMounted){
-                this.props.handleError(err);
+                // this.props.handleError(err);
                 this.setState({error:err});   
             await this.setState({isLoading:false})
             }
@@ -104,7 +104,7 @@ export default class SearchName extends Component <SearchProps, SearchNameState>
         this.setState({
             isSubmitted:true
         })
-        this.props.retrievePlayerData(event.target.id);
+        // this.props.retrievePlayerData(event.target.id);
     }
     
     renderSearchResults = () =>{
