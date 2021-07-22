@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useContext } from "react";
 import { PlayerData } from "../models/PlayerData";
 import ScoresData from "../models/ScoreData";
 
@@ -15,3 +15,13 @@ export interface PlayerContextData {
     fetchScores: ()=>void
 }
 export const PlayerContext = createContext<PlayerContextData|undefined>(undefined);
+
+//makes sure useContext(PostsContext) is defined
+export function usePlayerContext() {
+  const playerContext = useContext(PlayerContext);
+  if (!playerContext) {
+    throw new Error('usePlayerContext must be used within the PlayerContext.Provider');
+  }
+  return playerContext;
+}
+
