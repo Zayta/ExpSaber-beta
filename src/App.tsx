@@ -13,7 +13,7 @@ function App() {
   const links = ["Home","About"]
   return <div className = 'container'>
         <BrowserRouter>
-
+        <div>
         <div className = 'header'>
           <Header/>
             <Navbar links = {links}/>
@@ -33,7 +33,7 @@ function App() {
                 </Route>
               </Switch>
             </div>
-
+            </div>
           <Footer/>
         </BrowserRouter>
   </div>

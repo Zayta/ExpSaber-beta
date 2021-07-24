@@ -50,8 +50,6 @@ export default class Search extends Component <SearchProps,SearchState>{
                 break;
             default:
                 console.log(this.state.searchBy)
-                console.log(SearchBy.ID)
-                console.log(SearchBy.NAME)
             return <div>
                 No Criteria Selected.
             </div>
@@ -66,7 +64,7 @@ export interface SearchProps{
 export interface SearchState{
     searchBy:SearchBy
 }
-export enum SearchBy{
+enum SearchBy{
     NAME=0,
     ID=1
 }

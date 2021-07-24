@@ -7,12 +7,13 @@ import Search from './search/Search';
 
 //uses context data, makes sure values are not undefined or null
 const Home = ()=> {
-  const [searched,setSearched] = useState(true)
+  const [searched,setSearched] = useState(false);
   const [ssid, setSsid] = useState('76561198810679866');
-  
+
   const search = function(ss_id:string){
     setSsid(ss_id);
     setSearched(true);
+    console.log('set ssid to '+ss_id)
   }
     let playerContextValue = usePlayerContextValue(ssid);
     return  <div>
@@ -20,7 +21,7 @@ const Home = ()=> {
       {
         searched?
         <PlayerContext.Provider value={playerContextValue} >
-          <Main />
+          <Main ssid={ssid}/>
         </PlayerContext.Provider>:<div></div>
       }
     </div>

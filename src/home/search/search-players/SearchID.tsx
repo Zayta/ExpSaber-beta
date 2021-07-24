@@ -2,25 +2,28 @@ import React,{Component} from 'react';
 import '../search.scss';
 
 import {SearchProps} from '../Search'
-export default class SearchID extends Component <SearchProps>{
 
-    constructor(props:SearchProps) {
-        super(props);
-        
+export default class SearchID extends Component <SearchProps,SearchIDState>{
+    constructor(props:SearchProps){
+        super(props)
+        this.state = {
+            ss_id: "",
+        };
     }
     handlePlayerFormSubmit = async(event:any) =>{
         event.preventDefault();
-        console.log(event.target.value);
-        this.props.setScoreSaberID('76561198381299346');
+        this.props.setScoreSaberID(this.state.ss_id);
     }
-
+    onChange = (e: React.FormEvent<HTMLInputElement>): void => {
+        this.setState({ ss_id: e.currentTarget.value });
+      };
     render(){
         return <div>
         <div className = 'search-wrapper'>
             
             <form onSubmit={this.handlePlayerFormSubmit}>
                 <label>ScoreSaber ID:</label> 
-                <input type="text" name="scoreSaberID" placeholder='e.g. 76561198810679866' />
+                <input type="text" name="scoreSaberID" placeholder='e.g. 76561198810679866'value={this.state.ss_id} onChange={this.onChange} />
                 <button type="submit">Submit</button>
             </form>
  
@@ -29,4 +32,6 @@ export default class SearchID extends Component <SearchProps>{
         </div>
     }
 }
-
+interface SearchIDState{
+    ss_id:string
+}

@@ -1,6 +1,5 @@
 
 import React, {Component} from 'react';
-import Navbar from '../navbar/Navbar';
 import './header.scss';
 export default class Header extends Component<HeaderProps> {
     

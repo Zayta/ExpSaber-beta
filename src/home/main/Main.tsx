@@ -1,40 +1,20 @@
-import { useContext, useEffect} from 'react'
-import { PlayerContext, usePlayerContext } from '../data/context/PlayerContext'
-import './main.scss'
+import { useState} from 'react'
+import { PlayerContext, PlayerContextData} from '../data/context/PlayerContext'
+import usePlayerContextValue from '../data/api/Api';
+import PlayerDetails from './player-details/PlayerDetails';
 
-//loads player details
-function usePlayerLoading() {
-  const {fetchPlayer} = usePlayerContext();
- 
-  useEffect(() => {
-    fetchPlayer()
-  }, [fetchPlayer])
-}
-//loads player scores
-function useScoresLoading() {
-  const {fetchScores} = usePlayerContext();
- 
-  useEffect(() => {
-    fetchScores()
-  }, [fetchScores])
-}
-
-const Main = () => {
+//uses context data, makes sure values are not undefined or null
+const Main = (props:MainProps)=> {
   
-  const { playerData, scoresData } = usePlayerContext();
-  usePlayerLoading();
-  useScoresLoading();
-  return (
-    <div>
-      Name:
-      {
-        playerData?.playerInfo?.playerName
-      }
-      Scores:{
-        scoresData?.scores?.toString()
-      }
+    let playerContextValue = usePlayerContextValue(props.ssid);
+    return  <div>
+        <PlayerContext.Provider value={playerContextValue} >
+          <PlayerDetails />
+        </PlayerContext.Provider>
+      
     </div>
-  )
-  }
-  
-export default Main
+}
+interface MainProps{
+  ssid:string
+}
+export default Main;
