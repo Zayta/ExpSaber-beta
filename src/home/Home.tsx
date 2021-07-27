@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import React, { useState,useEffect} from 'react'
 import './home.scss'
 import Main from './main/Main'
 import { PlayerContext, PlayerContextData} from './data/context/PlayerContext'
@@ -7,38 +7,22 @@ import Search from './search/Search';
 
 
 
-export default class Home extends React.Component{
-  state: HomeState = {
-    ssid: '',
-    searched:false
-  };
+const Home = ()=> {
+  const [searched,setSearched] = useState<boolean>(false);
+  const {ssid, setSsid} = usePlayerContextValue();
 
-
-  search = (ss_id:string)=>{
-    this.setState({
-      ssid:ss_id,
-      searched:true
-    });
-    console.log('set ssid to '+ss_id)
-    console.log('set ssid to '+this.state.ssid)
+  const search = function(ss_id:string){
+    setSsid(ss_id);
+    setSearched(true);
   }
-  
-  render(){
     
-    let playerContextValue = usePlayerContextValue(this.state.ssid);
     return  <div>
-      <Search setScoreSaberID={this.search}/>
+      <Search setScoreSaberID={search}/>
       {
-        this.state.searched?
-        <PlayerContext.Provider value={playerContextValue} >
-          <Main ssid={this.state.ssid}/>
-        </PlayerContext.Provider>:<div></div>
+        searched?
+          <Main ssid={ssid?ssid:''}/>:<div></div>
       }
     </div>
-  }
-}
-interface HomeState{
-  ssid:string,
-  searched:boolean
 }
 
+export default Home;

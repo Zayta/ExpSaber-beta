@@ -7,7 +7,8 @@ export interface Player{
   scoresData:ScoresData,
 }
 export interface PlayerContextData {
-    
+  ssid:string|undefined,
+  setSsid:(ss_id:string)=>void,
   playerData:PlayerData|undefined,
   scoresData:ScoresData|undefined,
     isLoading: boolean,

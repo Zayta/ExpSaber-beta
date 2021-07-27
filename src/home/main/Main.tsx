@@ -6,7 +6,9 @@ import PlayerDetails from './player-details/PlayerDetails';
 //uses context data, makes sure values are not undefined or null
 const Main = (props:MainProps)=> {
   
-    let playerContextValue = usePlayerContextValue(props.ssid);
+    let playerContextValue = usePlayerContextValue();
+    
+  
     return  <div>
         <PlayerContext.Provider value={playerContextValue} >
           <PlayerDetails />
