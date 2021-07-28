@@ -7,32 +7,40 @@ import ScoresData from "../models/ScoreData";
 enum FetchStatus{
   OK,LOADING,ERROR,NONE
 }
-interface FetchScoresObj{
-  scoresData:ScoresData,
+interface ApiDataObj{
+  playerData:PlayerData|undefined,
+  scoresData:ScoresData|undefined,
   fetchStatus:FetchStatus
 }
 
-function ScoresHook(scoresaber_id:string):ScoresData{
-    const [fetchScoresObj,setFetchScoresObj] = useState<FetchScoresObj>(
-      {scoresData:{scores:[]},fetchStatus:FetchStatus.NONE});
+export function DataHook(scoresaber_id:string):ApiDataObj{
+    const [ApiDataObj,setApiDataObj] = useState<ApiDataObj>(
+      {playerData:undefined,scoresData:undefined,fetchStatus:FetchStatus.NONE});
     useEffect(() => {
       const fetchScores = async () => {
         try {
-          setFetchScoresObj({scoresData:fetchScoresObj.scoresData, fetchStatus:FetchStatus.LOADING});
-          const response = await axios.get('https://new.scoresaber.com/api/player/'+scoresaber_id+'/scoresData/recent/1');
-          setFetchScoresObj({scoresData:fetchScoresObj.scoresData, fetchStatus:FetchStatus.OK});
+          setApiDataObj({playerData:ApiDataObj.playerData,scoresData:ApiDataObj.scoresData, fetchStatus:FetchStatus.LOADING});
+          const scores:ScoresData = await axios.get('https://new.scoresaber.com/api/player/'+scoresaber_id+'/scoresData/recent/1');
+          const player:PlayerData = await axios.get('https://new.scoresaber.com/api/player/'+scoresaber_id+'/full')
+          console.log('scores:')
+          console.log(scores)
+          console.log('player:')
+          console.log(player)
+          setApiDataObj({playerData:player,scoresData:scores, fetchStatus:FetchStatus.OK});
                 
         }catch (exception) {
           console.log(exception);
-          setFetchScoresObj({scoresData:fetchScoresObj.scoresData, fetchStatus:FetchStatus.ERROR});
+          setApiDataObj({playerData:ApiDataObj.playerData,scoresData:ApiDataObj.scoresData, fetchStatus:FetchStatus.ERROR});
+          
         }
        };
        fetchScores();
     }, []);
     
-        return fetchScoresObj.scoresData
+        return ApiDataObj
 
 }
+
 
 
 // export default function usePlayerContextValue(scoresaber_id:string): PlayerContextData {

@@ -3,7 +3,6 @@ export interface PlayerData{
     playerInfo:PlayerInfo
     scoreStats:ScoreStats
 }
-
 interface PlayerInfo{
     playerId: string,
     playerName: string,
