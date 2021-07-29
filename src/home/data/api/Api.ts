@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useState, useCallback, useMemo, useEffect } from "react";
-import { PlayerContextData,Player } from "../context/PlayerContext";
 import { PlayerData } from "../models/PlayerData";
 import ScoresData from "../models/ScoreData";
 
@@ -13,31 +12,29 @@ interface ApiDataObj{
   fetchStatus:FetchStatus
 }
 
-export function DataHook(scoresaber_id:string):ApiDataObj{
-    const [ApiDataObj,setApiDataObj] = useState<ApiDataObj>(
+//scoresaber data react hook fetches relevant info from scoresaber API
+export function SSDataHook(scoresaber_id:string):ApiDataObj{
+    const [ssApiDataObj,setApiDataObj] = useState<ApiDataObj>(
       {playerData:undefined,scoresData:undefined,fetchStatus:FetchStatus.NONE});
     useEffect(() => {
       const fetchScores = async () => {
         try {
-          setApiDataObj({playerData:ApiDataObj.playerData,scoresData:ApiDataObj.scoresData, fetchStatus:FetchStatus.LOADING});
-          const scores:ScoresData = await axios.get('https://new.scoresaber.com/api/player/'+scoresaber_id+'/scoresData/recent/1');
-          const player:PlayerData = await axios.get('https://new.scoresaber.com/api/player/'+scoresaber_id+'/full')
-          console.log('scores:')
-          console.log(scores)
-          console.log('player:')
-          console.log(player)
-          setApiDataObj({playerData:player,scoresData:scores, fetchStatus:FetchStatus.OK});
+          setApiDataObj({playerData:ssApiDataObj.playerData,scoresData:ssApiDataObj.scoresData, fetchStatus:FetchStatus.LOADING});
+          const scoresResponse = await axios.get('https://new.scoresaber.com/api/player/'+scoresaber_id+'/scores/recent/1');
+          const playerResponse = await axios.get('https://new.scoresaber.com/api/player/'+scoresaber_id+'/full')
+          
+          setApiDataObj({playerData:playerResponse.data,scoresData:scoresResponse.data, fetchStatus:FetchStatus.OK});
                 
         }catch (exception) {
           console.log(exception);
-          setApiDataObj({playerData:ApiDataObj.playerData,scoresData:ApiDataObj.scoresData, fetchStatus:FetchStatus.ERROR});
+          setApiDataObj({playerData:ssApiDataObj.playerData,scoresData:ssApiDataObj.scoresData, fetchStatus:FetchStatus.ERROR});
           
         }
        };
        fetchScores();
-    }, []);
+    }, [scoresaber_id]);
     
-        return ApiDataObj
+        return ssApiDataObj
 
 }
 
