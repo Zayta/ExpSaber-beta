@@ -7,6 +7,7 @@ const Main =  () => {
   let ssData = SSDataHook(params.ssid);
   return (
       <div>
+        {params.ssid}
         {ssData.playerData?.playerInfo.playerName}
       </div>
   )
@@ -16,6 +17,5 @@ type MainParams = {
   ssid: string; //scoresaber id 
 };
 
-type MainProps = RouteComponentProps<MainParams>;
 
 export default withRouter(Main);

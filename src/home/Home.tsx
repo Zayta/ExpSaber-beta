@@ -17,7 +17,7 @@ const Home = ()=> {
   }
     
     return  <div>
-      <Search setScoreSaberID={setSSID}/>
+      <Search/>
       {/* {
         searched?
           <Main ssid={ssid?ssid:''}/>:<div></div>

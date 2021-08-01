@@ -3,15 +3,12 @@ import './search.scss';
 
 import SearchID from './search-players/SearchID';
 import SearchName from './search-players/SearchName';
-export default class Search extends Component <SearchProps,SearchState>{
+export default class Search extends Component{
 
-    constructor(props:SearchProps) {
-        super(props);
-        this.state={
-            searchBy:SearchBy.NAME
-        }
-    }
     
+    state = {
+        searchBy:SearchBy.NAME
+    }
     updateSearchCriteria=(event:any)=> {
         
         const target = event.target;
@@ -42,7 +39,7 @@ export default class Search extends Component <SearchProps,SearchState>{
     renderSearch(){
         switch(+this.state.searchBy){
             case SearchBy.ID:
-                return <SearchID setScoreSaberID={this.props.setScoreSaberID} />
+                return <SearchID />
             break;
             case SearchBy.NAME:
                 // return <SearchName retrievePlayerData = {this.props.retrievePlayerData} handleInputChange = {this.props.handleInputChange} scoreSaberID = {this.props.scoreSaberID}
@@ -58,11 +55,8 @@ export default class Search extends Component <SearchProps,SearchState>{
     }
 }
 
-export interface SearchProps{
-    setScoreSaberID:(ssid:string)=>void
-}
 export interface SearchState{
-    searchBy:SearchBy
+    searchBy?:SearchBy
 }
 enum SearchBy{
     NAME=0,

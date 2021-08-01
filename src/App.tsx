@@ -14,7 +14,6 @@ function App() {
   
   const links = ["Home","About"]
   return <div className = 'container'>
-        <Header/>
         <AppRouter/>
         <Footer/>
   </div>
