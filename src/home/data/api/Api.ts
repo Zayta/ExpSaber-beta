@@ -9,32 +9,31 @@ enum FetchStatus{
 interface ApiDataObj{
   playerData:PlayerData|undefined,
   scoresData:ScoresData|undefined,
-  fetchStatus:FetchStatus
+  
 }
-
 //scoresaber data react hook fetches relevant info from scoresaber API
 export function SSDataHook(scoresaber_id:string):ApiDataObj{
-    const [ssApiDataObj,setApiDataObj] = useState<ApiDataObj>(
-      {playerData:undefined,scoresData:undefined,fetchStatus:FetchStatus.NONE});
+    const [ssData,setSSData] = useState<ApiDataObj>(
+      {playerData:undefined,scoresData:undefined});
+    const [loading, setLoading]: [boolean, (loading: boolean) => void] = useState<boolean>(true);
+    const [error, setError]: [string, (error: string) => void] = useState("");
+
     useEffect(() => {
       const fetchScores = async () => {
         try {
-          setApiDataObj({playerData:ssApiDataObj.playerData,scoresData:ssApiDataObj.scoresData, fetchStatus:FetchStatus.LOADING});
+          setSSData({playerData:ssData.playerData,scoresData:ssData.scoresData});
           const scoresResponse = await axios.get('https://new.scoresaber.com/api/player/'+scoresaber_id+'/scores/recent/1');
           const playerResponse = await axios.get('https://new.scoresaber.com/api/player/'+scoresaber_id+'/full')
           
-          setApiDataObj({playerData:playerResponse.data,scoresData:scoresResponse.data, fetchStatus:FetchStatus.OK});
-                
-        }catch (exception) {
-          console.log(exception);
-          setApiDataObj({playerData:ssApiDataObj.playerData,scoresData:ssApiDataObj.scoresData, fetchStatus:FetchStatus.ERROR});
-          
+          setSSData({playerData:playerResponse.data,scoresData:scoresResponse.data});
+        }catch (err) {
+          console.log('Error:', err);
         }
        };
        fetchScores();
     }, [scoresaber_id]);
     
-        return ssApiDataObj
+        return ssData
 
 }
 

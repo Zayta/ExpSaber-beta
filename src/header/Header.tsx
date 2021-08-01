@@ -11,7 +11,7 @@ export default class Header extends Component<HeaderProps> {
                 <div className = {this.props.hideHeader?'hidden':'header-wrapper'}>
                     
                     <h1>
-                        MySaber
+                        ExpSaber
                     </h1>
                 </div>
             </div>

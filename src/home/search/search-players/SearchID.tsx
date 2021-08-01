@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import '../search.scss';
 
 import {SearchProps} from '../Search'
+import { Link } from 'react-router-dom';
 
 export default class SearchID extends Component <SearchProps,SearchIDState>{
     constructor(props:SearchProps){
@@ -24,7 +25,7 @@ export default class SearchID extends Component <SearchProps,SearchIDState>{
             <form onSubmit={this.handlePlayerFormSubmit}>
                 <label>ScoreSaber ID:</label> 
                 <input type="text" name="scoreSaberID" placeholder='e.g. 76561198810679866'value={this.state.ss_id} onChange={this.onChange} />
-                <button type="submit">Submit</button>
+                <Link to={"ExpSaber/"+this.state.ss_id}>Submit</Link>
             </form>
  
         </div>
