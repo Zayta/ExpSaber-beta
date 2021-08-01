@@ -18,7 +18,7 @@ export default class SearchID extends Component{
             <form >
                 <label>ScoreSaber ID:</label> 
                 <input type="text" name="scoreSaberID" placeholder='e.g. 76561198810679866'value={this.state.ss_id} onChange={this.onChange} />
-                <Link className = 'button' to={"ExpSaber/"+this.state.ss_id}>Submit</Link>
+                <Link className = 'button' to={"/ExpSaber/ssid/"+this.state.ss_id}>Submit</Link>
             </form>
  
         </div>

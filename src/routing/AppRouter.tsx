@@ -14,26 +14,25 @@ const AppRouter = () =>{
     
     <div className='header'>
           <Header/>
-          <Navbar links = {links}/>
+        <Navbar links = {links}/>
     </div>
       <div className = 'content'>  
         <Switch>
-        <Route path="/ExpSaber/:ssid" >
+        <Route path="/ExpSaber/ssid/:ssid" >
           
           <Main  />
         </Route>
         
         <Route exact path="/ExpSaber" >
           
-        <Redirect to="/" />
-          
+          <Home  />
         </Route>
         
         <Route path="/About" >
             <About/>
         </Route>
-        <Route exact path="/" >
-        <Home  />
+        <Route path="/" >
+            <Redirect to="/ExpSaber" />
             </Route>
           </Switch>
         </div>
