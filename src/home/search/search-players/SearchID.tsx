@@ -16,6 +16,7 @@ export default class SearchID extends Component{
     handleFormSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault();
         console.log(e);
+        window.location.href="/ExpSaber/ssid/"+this.state.ss_id
       }
     render(){
         return <div className = 'search-wrapper' onSubmit={this.handleFormSubmit}>
