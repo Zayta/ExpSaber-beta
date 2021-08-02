@@ -12,8 +12,7 @@ export default class SearchID extends Component{
         this.setState({ ss_id: e.currentTarget.value });
       };
     render(){
-        return <div>
-        <div className = 'search-wrapper'>
+        return <div className = 'search-wrapper'>
             
             <form >
                 <label>ScoreSaber ID:</label> 
@@ -23,7 +22,6 @@ export default class SearchID extends Component{
  
         </div>
       
-        </div>
     }
 }
 interface SearchIDState{

@@ -6,22 +6,10 @@ import Search from './search/Search';
 
 
 
-const Home = ()=> {
-  const [searched,setSearched] = useState<boolean>(false);
-  const [ssid, setSsid] = useState<string>();
-  
-  const setSSID = function(ss_id:string){
-    setSsid(ss_id);
-    setSearched(true);
-    
-  }
-    
+const Home = ()=> { 
     return  <div>
       <Search/>
-      {/* {
-        searched?
-          <Main ssid={ssid?ssid:''}/>:<div></div>
-      } */}
+     
     </div>
 }
 

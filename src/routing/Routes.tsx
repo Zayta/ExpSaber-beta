@@ -3,28 +3,19 @@ import About from "../about/About"
 import Header from "../header/Header"
 import Home from "../home/Home"
 import Main from "../home/main/Main"
-import Navbar from "./navbar/Navbar"
 
-const AppRouter = () =>{
+export const routes = ["Home","About"];
+
+const RouteContent = () =>{
     
-    const links = ["Home","About"]
-    return <div>
-    
-    <BrowserRouter>
-    
-    <div className='header'>
-          <Header/>
-        <Navbar links = {links}/>
-    </div>
-      <div className = 'content'>  
+    const links = []
+    return <div className = 'content'>  
         <Switch>
         <Route path="/ExpSaber/ssid/:ssid" >
-          
           <Main  />
         </Route>
         
         <Route exact path="/ExpSaber" >
-          
           <Home  />
         </Route>
         
@@ -37,7 +28,5 @@ const AppRouter = () =>{
           </Switch>
         </div>
         
-    </BrowserRouter>
-    </div>
 }
-export default AppRouter;
+export default RouteContent;
