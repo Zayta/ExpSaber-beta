@@ -12,6 +12,7 @@
 .header-wrapper h1::selection{
     color:black;
     background-color: var(--txt-color1);
+    width: 100%;
 }
 .header-container .header-wrapper{
     display: flex;
@@ -20,7 +21,8 @@
 }
 .header-search{
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+    margin-top:0.67em;
     
 }
 *+.header-search{
