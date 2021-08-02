@@ -19,6 +19,10 @@
     align-items: center;
     justify-content: center;
 }
+.title-and-search{
+    display:flex;
+    flex-flow:row wrap
+}
 .header-search{
     display: flex;
     align-items: center;

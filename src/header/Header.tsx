@@ -12,14 +12,14 @@ export default class Header extends Component {
 
         return(
             <div className = 'header-container'>
-                <div style = {{'display':'flex','flexFlow':'row wrap'}}>
+                <div className = {this.showSearch?'title-and-search':'hidden'}>
                 <div className = 'header-wrapper'>
                 <h1>
                     ExpSaber
                 </h1>
                 
                 </div>
-                <div className = {this.showSearch?'header-search':'hidden'}>
+                <div className = {'header-search'}>
                 <SearchName/>
                 </div>
                 </div>
