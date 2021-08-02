@@ -19,9 +19,9 @@ export default class SearchID extends Component{
         window.location.href="/ExpSaber/ssid/"+this.state.ss_id
       }
     render(){
-        return <div className = 'search-wrapper' onSubmit={this.handleFormSubmit}>
+        return <div className = 'search-wrapper'>
             
-            <form >
+            <form onSubmit={this.handleFormSubmit}>
                 <label>ScoreSaber ID:</label> 
                 <input type="text" name="scoreSaberID" placeholder='e.g. 76561198810679866'value={this.state.ss_id} onChange={this.onChange} />
                 <Link className = 'search-ico' to={"/ExpSaber/ssid/"+this.state.ss_id}><Search/></Link>

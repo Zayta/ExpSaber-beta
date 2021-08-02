@@ -1,5 +1,6 @@
 import { RouteComponentProps, useParams, withRouter } from 'react-router-dom';
-import { SSDataHook } from '../data/api/Api';
+import { SSDataHook } from '../data/api/ScoreSaberApi';
+import SearchName from '../search/search-players/SearchName';
 //uses context data, makes sure values are not undefined or null
 const Main =  () => {
   const params = useParams<MainParams>();

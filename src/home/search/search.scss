@@ -34,9 +34,10 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
+    max-height: 100%;
 }
 .search-wrapper form label+input{
-    margin: 5px;
+    margin-left: 5px;
 }
 .search-wrapper form input + button{
     margin-left: 2px;
@@ -58,7 +59,7 @@ select{
 .name-result{
     cursor: pointer;
 }
-a.search-ico{
+a.search-ico,button.search-ico{
     display: flex;
     align-items: center;
 }

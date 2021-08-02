@@ -21,6 +21,11 @@
 .header-search{
     display: flex;
     align-items: flex-end;
+    
+}
+*+.header-search{
+    padding-left:2vw;
+    
 }
 
 
