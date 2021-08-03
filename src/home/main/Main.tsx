@@ -1,6 +1,7 @@
 import { RouteComponentProps, useParams, withRouter } from 'react-router-dom';
 import { SSDataHook } from '../data/api/ScoreSaberApi';
 import SearchName from '../search/search-players/SearchName';
+import PlayerDetails from './player-details/PlayerDetails';
 //uses context data, makes sure values are not undefined or null
 const Main =  () => {
   const params = useParams<MainParams>();
@@ -9,7 +10,15 @@ const Main =  () => {
   return (
       <div>
         {params.ssid}
-        {ssData.playerData?.playerInfo.playerName}
+        {
+          ssData.playerData?
+          <div>
+            <PlayerDetails playerInfo={ssData.playerData.playerInfo}/>
+          </div>:
+          <div>
+            Player Info Unavailable.
+          </div>
+        }
       </div>
   )
 }

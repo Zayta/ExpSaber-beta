@@ -3,7 +3,7 @@ export interface PlayerData{
     playerInfo:PlayerInfo
     scoreStats:ScoreStats
 }
-interface PlayerInfo{
+export interface PlayerInfo{
     playerId: string,
     playerName: string,
     avatar: string,
@@ -12,7 +12,7 @@ interface PlayerInfo{
     pp: number,
     country: string
 }
-interface ScoreStats{
+export interface ScoreStats{
     totalScore: number,
     totalRankedScore: number,
     averageRankedAccuracy: number,
