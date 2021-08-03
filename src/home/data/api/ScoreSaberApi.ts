@@ -3,9 +3,7 @@ import { useState, useCallback, useMemo, useEffect } from "react";
 import { PlayerData } from "../models/PlayerData";
 import ScoresData from "../models/ScoreData";
 
-enum FetchStatus{
-  OK,LOADING,ERROR,NONE
-}
+
 interface ApiDataObj{
   playerData:PlayerData|undefined,
   scoresData:ScoresData|undefined,
@@ -23,8 +21,8 @@ export function SSDataHook(scoresaber_id:string):ApiDataObj{
         try {
           setSSData({playerData:ssData.playerData,scoresData:ssData.scoresData});
           setLoading(true);
+          const playerResponse = await axios.get('https://new.scoresaber.com/api/player/'+scoresaber_id+'/full');
           const scoresResponse = await axios.get('https://new.scoresaber.com/api/player/'+scoresaber_id+'/scores/recent/1');
-          const playerResponse = await axios.get('https://new.scoresaber.com/api/player/'+scoresaber_id+'/full')
           
           setSSData({playerData:playerResponse.data,scoresData:scoresResponse.data});
           setLoading(false);
