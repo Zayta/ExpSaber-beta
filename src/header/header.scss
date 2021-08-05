@@ -16,12 +16,13 @@
 }
 .header-container .header-wrapper{
     display: flex;
+    flex-flow: row wrap;
     align-items: center;
     justify-content: center;
 }
 .title-and-search{
     display:flex;
-    flex-flow:row wrap
+    flex-flow:row wrap;
 }
 .header-search{
     display: flex;

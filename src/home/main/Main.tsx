@@ -1,5 +1,6 @@
 import { RouteComponentProps, useParams, withRouter } from 'react-router-dom';
 import { SSDataHook } from '../data/api/ScoreSaberApi';
+import Search from '../search/Search';
 import SearchName from '../search/search-players/SearchName';
 import PlayerDetails from './player-details/PlayerDetails';
 //uses context data, makes sure values are not undefined or null
@@ -16,7 +17,6 @@ const Main =  () => {
             <PlayerDetails playerInfo={ssData.playerData.playerInfo}/>
           </div>:
           <div>
-            Player Info Unavailable.
           </div>
         }
       </div>

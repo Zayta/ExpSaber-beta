@@ -9,7 +9,7 @@ import Search from './search/Search';
 const Home = ()=> { 
     return  <div>
       <Search/>
-     
+     <Main/>
     </div>
 }
 

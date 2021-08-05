@@ -42,8 +42,7 @@ export default class Search extends Component{
                 return <SearchID />
             break;
             case SearchBy.NAME:
-                // return <SearchName retrievePlayerData = {this.props.retrievePlayerData} handleInputChange = {this.props.handleInputChange} scoreSaberID = {this.props.scoreSaberID}
-                // handleError={this.props.handleError} />
+                return <SearchName/>
                 break;
             default:
                 console.log(this.state.searchBy)
