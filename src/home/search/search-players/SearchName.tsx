@@ -16,7 +16,8 @@ export default class SearchName extends Component{
     handleFormSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault();
         console.log(e);
-      }
+
+    }
     render(){
         return <div className = 'search-wrapper'>
             
@@ -31,4 +32,9 @@ export default class SearchName extends Component{
 }
 interface SearchNameState{
     ss_name:string
+}
+
+const playersByNameList = () => {
+
+    return <div></div>
 }

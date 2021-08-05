@@ -4,14 +4,14 @@ import { PlayerData } from "../models/PlayerData";
 import ScoresData from "../models/ScoreData";
 
 
-interface ApiDataObj{
+interface PlayerApiDataObj{
   playerData:PlayerData|undefined,
   scoresData:ScoresData|undefined,
   
 }
 //scoresaber data react hook fetches relevant player info from scoresaber API
-export function SSDataHook(scoresaber_id:string):ApiDataObj{
-    const [ssData,setSSData] = useState<ApiDataObj>(
+export function SSDataHook(scoresaber_id:string):PlayerApiDataObj{
+    const [ssData,setSSData] = useState<PlayerApiDataObj>(
       {playerData:undefined,scoresData:undefined});
     const [loading, setLoading]: [boolean, (loading: boolean) => void] = useState<boolean>(true);
     const [error, setError]: [string, (error: string) => void] = useState("");
@@ -38,7 +38,32 @@ export function SSDataHook(scoresaber_id:string):ApiDataObj{
 
 }
 
-export function findPlayersByName(name:string){
+interface PlayersList{
+  playersList:PlayerData[]
+}
+
+export function findPlayersByNameHook(name:string){
+  const [listData,setListData] = useState<PlayersList>({playersList:[]});
+  const [loading, setLoading]: [boolean, (loading: boolean) => void] = useState<boolean>(true);
+  const [error, setError]: [string, (error: string) => void] = useState("");
+
+  useEffect(() => {
+    const fetchScores = async () => {
+      try {
+        setLoading(true);
+        const playersListResponse = await axios.get('https://new.scoresaber.com/api/players/by-name/'+name);
+        
+        setListData({playersList:playersListResponse.data});
+        setLoading(false);
+      }catch (err) {
+        setError(err);
+        console.log('Error:', err);
+      }
+     };
+     fetchScores();
+  }, [name]);
   
+  return name
+
 }
 
