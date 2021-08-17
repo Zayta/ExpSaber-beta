@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useCallback, useMemo, useEffect } from "react";
-import { PlayerData } from "../models/PlayerData";
+import { PlayerData, PlayerInfo } from "../models/PlayerData";
 import ScoresData from "../models/ScoreData";
 
 
@@ -39,11 +39,13 @@ export function SSDataHook(scoresaber_id:string):PlayerApiDataObj{
 }
 
 interface PlayersList{
-  playersList:PlayerData[]
+  playersList:{
+    players:PlayerInfo[]
+  }
 }
 
-export function findPlayersByNameHook(name:string){
-  const [listData,setListData] = useState<PlayersList>({playersList:[]});
+export function PlayersByNameHook(name:string):PlayersList{
+  const [listData,setListData] = useState<PlayersList>({playersList:{players:[]}});
   const [loading, setLoading]: [boolean, (loading: boolean) => void] = useState<boolean>(true);
   const [error, setError]: [string, (error: string) => void] = useState("");
 
@@ -63,7 +65,7 @@ export function findPlayersByNameHook(name:string){
      fetchScores();
   }, [name]);
   
-  return name
+  return listData
 
 }
 

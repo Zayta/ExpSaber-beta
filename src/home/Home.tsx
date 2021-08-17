@@ -7,9 +7,12 @@ import Search from './search/Search';
 
 
 const Home = ()=> { 
+  const [searched,setSearched] = useState();
     return  <div>
       <Search/>
-     <Main/>
+      {
+        searched?<Main/>:<div></div>
+      }
     </div>
 }
 

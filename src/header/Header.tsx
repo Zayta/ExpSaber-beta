@@ -13,18 +13,18 @@ const Header = () =>{
     let showSearch = true;
 
     return  <div className = 'header-container'>
-            <div className = {showSearch?'title-and-search':'hidden'}>
+            {/* <div className = {showSearch?'title-and-search':'hidden'}> */}
             <div className = 'header-wrapper'>
             <h1>
                 ExpSaber
             </h1>
             
             </div>
-            </div>
+            {/* </div> */}
             
-            <div className = {'header-search'}>
+            {/* <div className = {'header-search'}>
             <SearchName/>
-            </div>
+            </div> */}
             
             <div style = {{'display':'flex', 'alignItems':'center', 'flexFlow':'row wrap','justifyContent':'flex-end'}}>
             <Navbar links = {routes}/>
