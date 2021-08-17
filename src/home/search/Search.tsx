@@ -1,17 +1,14 @@
 import React,{ChangeEventHandler, Component, FormEventHandler} from 'react';
 import './search.scss';
 
-import SearchID from './players/SearchID';
-import SearchName from './players/SearchName';
-export default class Search extends Component <SearchProps,SearchState>{
+import SearchID from './search-players/SearchID';
+import SearchName from './search-players/SearchName';
+export default class Search extends Component{
 
-    constructor(props:SearchProps) {
-        super(props);
-        this.state={
-            searchBy:SearchBy.NAME
-        }
-    }
     
+    state = {
+        searchBy:SearchBy.NAME
+    }
     updateSearchCriteria=(event:any)=> {
         
         const target = event.target;
@@ -42,17 +39,13 @@ export default class Search extends Component <SearchProps,SearchState>{
     renderSearch(){
         switch(+this.state.searchBy){
             case SearchBy.ID:
-                return <SearchID retrievePlayerData = {this.props.retrievePlayerData} handleInputChange = {this.props.handleInputChange} scoreSaberID = {this.props.scoreSaberID}
-                handleError={this.props.handleError} />
+                return <SearchID />
             break;
             case SearchBy.NAME:
-                return <SearchName retrievePlayerData = {this.props.retrievePlayerData} handleInputChange = {this.props.handleInputChange} scoreSaberID = {this.props.scoreSaberID}
-                handleError={this.props.handleError} />
+                return <SearchName/>
                 break;
             default:
                 console.log(this.state.searchBy)
-                console.log(SearchBy.ID)
-                console.log(SearchBy.NAME)
             return <div>
                 No Criteria Selected.
             </div>
@@ -61,16 +54,10 @@ export default class Search extends Component <SearchProps,SearchState>{
     }
 }
 
-export interface SearchProps{
-    retrievePlayerData:Function,
-    handleInputChange:ChangeEventHandler<HTMLInputElement>,
-    handleError:Function,
-    scoreSaberID:string
-}
 export interface SearchState{
-    searchBy:SearchBy
+    searchBy?:SearchBy
 }
-export enum SearchBy{
+enum SearchBy{
     NAME=0,
     ID=1
 }

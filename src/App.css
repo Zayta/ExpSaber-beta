@@ -49,7 +49,7 @@ div.container{
 .hidden{
   display:none;
 }
-button{
+button, a.button{
   display: flex;
   background-color: var(--main-btn-color); /* Blue background */
   border-radius: 3px;

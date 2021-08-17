@@ -11,8 +11,10 @@
     "@types/react": "^17.0.14",
     "@types/react-dom": "^17.0.9",
     "@types/sass": "^1.16.1",
+    "axios": "^0.21.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-feather": "^2.0.9",
     "react-hook-form": "^7.11.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
@@ -45,6 +47,7 @@
     ]
   },
   "devDependencies": {
+    "@types/query-string": "^6.3.0",
     "@types/react-router-dom": "^5.1.8"
   }
 }

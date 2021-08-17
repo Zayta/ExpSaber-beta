@@ -1,17 +1,19 @@
-import React, { useState} from 'react'
+import React, { useState,useEffect} from 'react'
+import { useLocation } from 'react-router-dom';
 import './home.scss'
 import Main from './main/Main'
-import { PlayerContext, PlayerContextData} from './data/context/PlayerContext'
-import usePlayerContextValue from './data/api/Api';
+import Search from './search/Search';
 
 
-const Home = ()=> {
-  const [ssid, setSsid] = useState('76561198381299346');
-  
-    const playerContextValue = usePlayerContextValue(ssid);
-    return  <PlayerContext.Provider value={playerContextValue} >
-    <Main />
-  </PlayerContext.Provider>
+
+const Home = ()=> { 
+  const [searched,setSearched] = useState();
+    return  <div>
+      <Search/>
+      {
+        searched?<Main/>:<div></div>
+      }
+    </div>
 }
 
 export default Home;
