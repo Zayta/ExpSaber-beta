@@ -10,6 +10,7 @@ const Main =  () => {
   let ssData = SSDataHook(params.ssid);
   return (
       <div>
+        <Search/>
         {params.ssid}
         {
           ssData.playerData?

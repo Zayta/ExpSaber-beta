@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useCallback, useMemo, useEffect } from "react";
 import { PlayerData, PlayerInfo } from "../models/PlayerData";
 import ScoresData from "../models/ScoreData";
-
+import { trackPromise } from 'react-promise-tracker';
 
 interface PlayerApiDataObj{
   playerData:PlayerData|undefined,
@@ -53,7 +53,7 @@ export function PlayersByNameHook(name:string):PlayersList{
     const fetchScores = async () => {
       try {
         setLoading(true);
-        const playersListResponse = await axios.get('https://new.scoresaber.com/api/players/by-name/'+name);
+        const playersListResponse = await trackPromise(axios.get('https://new.scoresaber.com/api/players/by-name/'+name));
         
         setListData({playersList:playersListResponse.data});
         setLoading(false);
