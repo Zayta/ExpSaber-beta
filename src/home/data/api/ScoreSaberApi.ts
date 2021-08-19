@@ -9,6 +9,11 @@ interface PlayerApiDataObj{
   scoresData:ScoresData|undefined,
   
 }
+export const ssWebProfilePrefix = 'https://scoresaber.com/u/';
+const ssPlayerApiEndptPrefix = 'https://new.scoresaber.com/api/player/';
+const ssApiSearchPlayerEndpt = 'https://new.scoresaber.com/api/players/by-name/';
+export const avatarPrefix = 'https://new.scoresaber.com';
+
 //scoresaber data react hook fetches relevant player info from scoresaber API
 export function SSDataHook(scoresaber_id:string):PlayerApiDataObj{
     const [ssData,setSSData] = useState<PlayerApiDataObj>(
@@ -21,8 +26,8 @@ export function SSDataHook(scoresaber_id:string):PlayerApiDataObj{
         try {
           setSSData({playerData:ssData.playerData,scoresData:ssData.scoresData});
           setLoading(true);
-          const playerResponse = await axios.get('https://new.scoresaber.com/api/player/'+scoresaber_id+'/full');
-          const scoresResponse = await axios.get('https://new.scoresaber.com/api/player/'+scoresaber_id+'/scores/recent/1');
+          const playerResponse = await axios.get(ssPlayerApiEndptPrefix+scoresaber_id+'/full');
+          const scoresResponse = await axios.get(ssPlayerApiEndptPrefix+scoresaber_id+'/scores/recent/1');
           
           setSSData({playerData:playerResponse.data,scoresData:scoresResponse.data});
           setLoading(false);
@@ -53,7 +58,7 @@ export function PlayersByNameHook(name:string):PlayersList{
     const fetchScores = async () => {
       try {
         setLoading(true);
-        const playersListResponse = await trackPromise(axios.get('https://new.scoresaber.com/api/players/by-name/'+name));
+        const playersListResponse = await trackPromise(axios.get(ssApiSearchPlayerEndpt+name));
         
         setListData({playersList:playersListResponse.data});
         setLoading(false);
