@@ -85,6 +85,11 @@ div,p{
 ul{
   padding-inline-start:1.5vw;
 }
+
+a{
+  color:var(--main-btn-color);
+  text-decoration: none;
+}
 img{
   border-radius: 5px;
 }
@@ -131,9 +136,6 @@ select::after {
 input::selection,textarea::selection{
   color:white;
   background-color: var(--main-btn-color);
-}
-a{
-  color:var(--main-btn-color)
 }
 ::selection {
   color: black;
