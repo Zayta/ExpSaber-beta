@@ -11,16 +11,16 @@ transform:scale(0.9);
 .arrow-down{
     width: 0; 
     height: 0; 
-    border-left: 1.6vw solid transparent;
-    border-right: 1.6vw solid transparent;
-    margin-top:0.0vw;
+    border-left: 1.0vw dashed transparent;
+    border-right: 1.0vw dashed transparent;
+    
     border-top: 1vw dashed white;
 
 }
 `;
 
 const Bloq = (props:{color:string}) =>{
-    return <BloqStyle style = {{backgroundColor: props.color, boxShadow:'-2px 2px 2px ' + props.color}}>
+    return <BloqStyle style = {{backgroundColor: props.color}}>
         <div className = "arrow-down" >
             </div>
     </BloqStyle>
