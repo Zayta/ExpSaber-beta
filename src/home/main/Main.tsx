@@ -1,9 +1,33 @@
 import { RouteComponentProps, useParams, withRouter } from 'react-router-dom';
+import styled from 'styled-components';
 import { SSDataHook } from '../data/api/ScoreSaberApi';
 import Search from '../search/Search';
-import SearchName from '../search/search-players/SearchName';
 import PlayerDetails from './player-details/PlayerDetails';
-//uses context data, makes sure values are not undefined or null
+
+const MainContainer = styled.div`
+  margin:5px;
+  box-sizing: border-box;
+  display:flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  overflow-wrap:anywhere;
+  margin:1vw;
+  @media only screen and (max-width: 800px){
+    flex-flow:column nowrap;
+  }
+`;
+const TabsContainer = styled.div`width: fit-content;
+height:fit-content;
+min-height: 60vh;
+background-color: var(--content-color);
+border-radius: 10px;
+margin: 5px;
+box-sizing: border-box;
+align-self:center;
+
+min-width: 50vw;
+border:1px solid var(--txt-color3)
+`;
 const Main =  () => {
   const params = useParams<MainParams>();
   
@@ -11,6 +35,7 @@ const Main =  () => {
   return (
       <div>
         <Search/>
+        <MainContainer>
         {
           ssData.playerData?
           <div>
@@ -19,6 +44,11 @@ const Main =  () => {
           <div>
           </div>
         }
+        <TabsContainer>
+          
+        </TabsContainer>
+
+        </MainContainer>
       </div>
   )
 }

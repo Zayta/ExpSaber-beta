@@ -3,7 +3,7 @@ import Loader from 'react-loader-spinner';
 const LoadingIndicator = () => {
     const { promiseInProgress } = usePromiseTracker();
     if(promiseInProgress){
-        return <div><Loader type = "ThreeDots" color="#ffffff"/></div>
+        return <div style = {{'alignSelf':'center'}}><Loader type = "ThreeDots" color="#ffffff"/></div>
     }
     else{
         return <div></div>

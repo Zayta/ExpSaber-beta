@@ -29,7 +29,11 @@
     border: none;
 }
 
-
+.search-wrapper{
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+}
 .search-wrapper form{
     display: flex;
     flex-flow: row wrap;
