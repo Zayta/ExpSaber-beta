@@ -23,6 +23,7 @@ const PlayerDetailsContainer = styled.div`
     }
     img{
       width: 185px;
+     
     }
     *{
       align-self:center;
@@ -33,10 +34,16 @@ const PlayerDetailsContainer = styled.div`
       display: flex;
       justify-content: center;
     }
+    .restrain-text-length{
+      width:30vw;
+      text-align:center;
+    }
 `;
 const PlayerDetails = (props:PlayerDetailProps) => {
   return <PlayerDetailsContainer>
+      <div className = 'restrain-text-length'>
       <h1>{props.playerInfo.playerName}</h1>
+      </div>
             <img src = {avatarPrefix+props.playerInfo.avatar} alt = 'Avatar'/>
       <div className = 'gen-item'>
         {props.playerInfo.country}

@@ -8,18 +8,25 @@ const MainContainer = styled.div`
   margin:5px;
   box-sizing: border-box;
   display:flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-flow: row wrap;
   overflow-wrap:anywhere;
+  margin:1vw;
+  @media only screen and (max-width: 800px){
+    flex-flow:column nowrap;
+  }
 `;
-const ItemWrapper = styled.div`width: fit-content;
-height: fit-content;
+const TabsContainer = styled.div`width: fit-content;
+height:fit-content;
+min-height: 60vh;
 background-color: var(--content-color);
 border-radius: 10px;
 margin: 5px;
 box-sizing: border-box;
+align-self:center;
 
-width: 50vw;
+min-width: 50vw;
+border:1px solid var(--txt-color3)
 `;
 const Main =  () => {
   const params = useParams<MainParams>();
@@ -37,7 +44,9 @@ const Main =  () => {
           <div>
           </div>
         }
-        <ItemWrapper>Yoyo</ItemWrapper>
+        <TabsContainer>
+          
+        </TabsContainer>
 
         </MainContainer>
       </div>
