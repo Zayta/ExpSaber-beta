@@ -1,8 +1,12 @@
 import { RouteComponentProps, useParams, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
+import Tab from '../../common/tabs/Tab';
+import Tabs from '../../common/tabs/Tabs';
 import { SSDataHook } from '../data/api/ScoreSaberApi';
 import Search from '../search/Search';
 import PlayerDetails from './player-details/PlayerDetails';
+import ScoresOverview from './scores-overview/ScoresOverview';
+
 
 const MainContainer = styled.div`
   margin:5px;
@@ -45,7 +49,11 @@ const Main =  () => {
           </div>
         }
         <TabsContainer>
-          
+        <Tabs>
+          <Tab title="Overview"><ScoresOverview/></Tab>
+          <Tab title="Strawberry">Strawberry is red</Tab>
+          <Tab title="Pear">Pear is green</Tab>
+        </Tabs>
         </TabsContainer>
 
         </MainContainer>
