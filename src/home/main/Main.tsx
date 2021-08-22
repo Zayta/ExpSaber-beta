@@ -5,6 +5,7 @@ import Tabs from '../../common/tabs/Tabs';
 import { SSDataHook } from '../data/api/ScoreSaberApi';
 import Search from '../search/Search';
 import PlayerDetails from './player-details/PlayerDetails';
+import RecentPlays from './recent-plays/RecentPlays';
 import ScoresOverview from './scores-overview/ScoresOverview';
 
 
@@ -12,7 +13,7 @@ const MainContainer = styled.div`
   margin:5px;
   box-sizing: border-box;
   display:flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-flow: row wrap;
   overflow-wrap:anywhere;
   margin:1vw;
@@ -20,7 +21,7 @@ const MainContainer = styled.div`
     flex-flow:column nowrap;
   }
 `;
-const TabsContainer = styled.div`width: fit-content;
+const Content = styled.div`
 height:fit-content;
 min-height: 60vh;
 background-color: var(--content-color);
@@ -29,8 +30,11 @@ margin: 5px;
 box-sizing: border-box;
 align-self:center;
 
-min-width: 50vw;
-border:1px solid var(--txt-color3)
+width: 50vw;
+@media only screen and (max-width: 800px){
+  flex-flow:column nowrap;
+  width:90vw;
+}
 `;
 const Main =  () => {
   const params = useParams<MainParams>();
@@ -48,13 +52,14 @@ const Main =  () => {
           <div>
           </div>
         }
-        <TabsContainer>
+        <Content>
         <Tabs>
-          <Tab title="Overview"><ScoresOverview/></Tab>
-          <Tab title="Strawberry">Strawberry is red</Tab>
-          <Tab title="Pear">Pear is green</Tab>
+          <Tab title="Overview">
+            <ScoresOverview/>
+            </Tab>
+          <Tab title="Recent"><RecentPlays scoresData = {ssData.scoresData}/></Tab>
         </Tabs>
-        </TabsContainer>
+        </Content>
 
         </MainContainer>
       </div>

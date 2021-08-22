@@ -2,7 +2,7 @@
 export default interface ScoresData{
     scores:Score[]
 }
-interface Score{
+export interface Score{
     difficulty: number,
     difficultyRaw: string,
     leaderboardId: number,
