@@ -48,9 +48,6 @@ const PlayerDetails = (props:PlayerDetailProps) => {
       <div className = 'gen-item'>
         {props.playerInfo.country}
       </div>
-      <div className = 'gen-item'>
-        <a target = "_blank" href = {ssWebProfilePrefix+props.playerInfo.playerId}><Bloq color = '#FFDE1A'/></a>
-      </div>
       
             
   </PlayerDetailsContainer>

@@ -6,7 +6,7 @@ import { SSDataHook } from '../data/api/ScoreSaberApi';
 import Search from '../search/Search';
 import PlayerDetails from './player-details/PlayerDetails';
 import RecentPlays from './recent-plays/RecentPlays';
-import ScoresOverview from './scores-overview/ScoresOverview';
+import ScoreSaberOverview from './ss-overview/ScoreSaber';
 
 
 const MainContainer = styled.div`
@@ -54,10 +54,10 @@ const Main =  () => {
         }
         <Content>
         <Tabs>
-          <Tab title="Overview">
-            <ScoresOverview/>
-            </Tab>
           <Tab title="Recent"><RecentPlays scoresData = {ssData.scoresData}/></Tab>
+          <Tab title="ScoreSaber">
+            <ScoreSaberOverview ssData = {ssData}/>
+            </Tab>
         </Tabs>
         </Content>
 
