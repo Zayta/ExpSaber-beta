@@ -34,19 +34,19 @@ h3,h4,h5{
 }
 `;
 const ScoreSaberOverview = (props:ScoreSaberOverviewProps) =>{
-    if(!props.ssData){
-        return <div>[No scores available]</div>
+    if(!props.playerData){
+        return <div></div>
     }
 
     return <div>
     <div style = {{'float':'right'}}>
-    <a target = "_blank" href = {ssWebProfilePrefix+props.ssData.playerData?.playerInfo.playerId}><Bloq color = '#FFDE1A'/></a>
+    <a target = "_blank" href = {ssWebProfilePrefix+props.playerData?.playerInfo.playerId}><Bloq color = '#FFDE1A'/></a>
     </div>
     <SSOverviewContainer>
-            {props.ssData.playerData?
+            {props.playerData?
                 <PlayerDataContainer>
-                    <PPMeter pp = {props.ssData.playerData.playerInfo.pp}/>
-                    <AccuracyBar accuracy={props.ssData.playerData.scoreStats.averageRankedAccuracy}/>
+                    <PPMeter pp = {props.playerData.playerInfo.pp}/>
+                    <AccuracyBar accuracy={props.playerData.scoreStats.averageRankedAccuracy}/>
                     
                 </PlayerDataContainer>
                 :
@@ -59,9 +59,7 @@ export default ScoreSaberOverview;
 
 
 interface ScoreSaberOverviewProps{
-    ssData:{
-        playerData:PlayerData | undefined
-        scoresData:ScoresData | undefined
-    } | undefined
+    playerData:PlayerData | undefined
+        
 }
   

@@ -2,7 +2,8 @@ import { RouteComponentProps, useParams, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import Tab from '../../common/tabs/Tab';
 import Tabs from '../../common/tabs/Tabs';
-import { SSDataHook } from '../data/api/ScoreSaberApi';
+import { ScoresDataHook, SSPlayerDataHook } from '../data/api/ScoreSaberApi';
+import ScoreSortOrder from '../data/models/ScoreSortOrder';
 import Search from '../search/Search';
 import PlayerDetails from './player-details/PlayerDetails';
 import RecentPlays from './recent-plays/RecentPlays';
@@ -39,24 +40,25 @@ width: 50vw;
 const Main =  () => {
   const params = useParams<MainParams>();
   
-  let ssData = SSDataHook(params.ssid);
+  let ssPlayerData = SSPlayerDataHook(params.ssid);
+  let ssScoresData = ScoresDataHook(params.ssid,ScoreSortOrder.recent,3)
   return (
       <div>
         <Search/>
         <MainContainer>
         {
-          ssData.playerData?
+          ssPlayerData?
           <div>
-            <PlayerDetails playerInfo={ssData.playerData.playerInfo}/>
+            <PlayerDetails playerInfo={ssPlayerData.playerInfo}/>
           </div>:
           <div>
           </div>
         }
         <Content>
         <Tabs>
-          <Tab title="Recent"><RecentPlays scoresData = {ssData.scoresData}/></Tab>
+          <Tab title="Recent"><RecentPlays scoresData = {ssScoresData}/></Tab>
           <Tab title="ScoreSaber">
-            <ScoreSaberOverview ssData = {ssData}/>
+            <ScoreSaberOverview playerData = {ssPlayerData}/>
             </Tab>
         </Tabs>
         </Content>
