@@ -7,9 +7,8 @@ const PPMeterContainer = styled.div`
 
 const PPMeter = (props:PPMeterProps) =>{
     return <PPMeterContainer>
-        <h5>pp</h5>
         
-        <div>{props.pp}</div>
+        <div>pp: {props.pp}</div>
         </PPMeterContainer>
 }
 export default PPMeter

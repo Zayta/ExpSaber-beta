@@ -28,6 +28,7 @@ div{
     color:white;
 }
 h3,h4,h5{
+    display:block;
     color: var(--txt-color3);
     text-align:center;
     margin-bottom:5px;
@@ -45,7 +46,12 @@ const ScoreSaberOverview = (props:ScoreSaberOverviewProps) =>{
     <SSOverviewContainer>
             {props.playerData?
                 <PlayerDataContainer>
-                    <PPMeter pp = {props.playerData.playerInfo.pp}/>
+                    <div style = {{'alignItems':'flex-start'}}>
+                    <div style = {{'display':'inline'}}>Global Rank: <a target = "_blank" href = {"https://scoresaber.com/global/"+Math.ceil(props.playerData.playerInfo.rank/50)}>#{props.playerData.playerInfo.rank}</a></div>
+                    <div>Performance Points: {props.playerData.playerInfo.pp}</div>
+                    <div>Ranked Maps Played: {props.playerData.scoreStats.rankedPlayCount}</div>
+                    <div>Total Ranked Score: {props.playerData.scoreStats.totalRankedScore}</div>
+                    </div>
                     <AccuracyBar accuracy={props.playerData.scoreStats.averageRankedAccuracy}/>
                     
                 </PlayerDataContainer>

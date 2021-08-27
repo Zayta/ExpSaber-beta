@@ -7,6 +7,7 @@ import { round } from '../../../../utils/Math';
 
 const AccuracyBarContainer = styled.div`
 width:10vw;
+display:block;
 }`;
 
 const pathColor = 'var(--txt-color3)'
@@ -14,8 +15,8 @@ const trailColor = '#ffffff'
 const circularBarStyle = buildStyles({pathColor:pathColor,textColor:pathColor,trailColor:trailColor,strokeLinecap: 'round'});
 const AccuracyBar = (props:AccuracyBarProps) =>{
     return <AccuracyBarContainer>
-        <h5>Accuracy</h5>
-        <CircularProgressbar styles = {circularBarStyle} value={props.accuracy} text = {""+round(props.accuracy,2)} maxValue={100} minValue={50}/>
+        <h5>Avg Map Accuracy</h5>
+        <CircularProgressbar styles = {circularBarStyle} value={props.accuracy} text = {""+round(props.accuracy,2)+"%"} maxValue={100} minValue={50}/>
     </AccuracyBarContainer>
 }
 

@@ -28,6 +28,7 @@
 }
 .container *{
   box-sizing: border-box;
+  overflow-wrap: break-word;
 }
 .content{
   min-height: 70vh;
