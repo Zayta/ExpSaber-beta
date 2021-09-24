@@ -8,6 +8,7 @@ import { round } from '../../../../utils/Math';
 const AccuracyBarContainer = styled.div`
 width:10vw;
 display:block;
+
 }`;
 
 const pathColor = 'var(--txt-color3)'
