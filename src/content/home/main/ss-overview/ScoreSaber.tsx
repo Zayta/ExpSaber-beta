@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Bloq from "../../../icons/bloq";
+import Bloq from "../../../../icons/bloq";
 import { ssWebProfilePrefix } from "../../data/api/ScoreSaberApi";
 import { PlayerData} from "../../data/models/PlayerData";
 import ScoresData, { Score } from "../../data/models/ScoreData";

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { timeSince } from "../../../utils/Time";
+import { timeSince } from "../../../../utils/Time";
 import { Score } from "../../data/models/ScoreData";
 const PlaysLiContainer = styled.li`
     

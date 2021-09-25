@@ -1,7 +1,7 @@
 import { useContext, useEffect} from 'react'
-import { PlayerData, PlayerInfo } from '../../data/models/PlayerData'
+import { PlayerData, PlayerInfo } from '../data/models/PlayerData'
 import styled from "styled-components";
-import { avatarPrefix, ssWebProfilePrefix } from '../../data/api/ScoreSaberApi';
+import { avatarPrefix, ssWebProfilePrefix } from '../data/api/ScoreSaberApi';
 import Bloq from '../../../icons/bloq';
 
 const PlayerDetailsContainer = styled.div`

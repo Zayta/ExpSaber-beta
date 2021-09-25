@@ -23,7 +23,6 @@ export function SSPlayerDataHook(scoresaber_id:string):PlayerData|undefined{
           setSSPlayerData(srerResponse.data);
           
         }catch (err) {
-          setError(err);
           console.log('Error:', err);
         }
        };
@@ -64,7 +63,6 @@ export function ScoresDataHook(scoresaber_id:string, sortOrder: ScoreSortOrder,p
         // const scoresResponse = await axios.get(ssPlayerApiEndptPrefix+scoresaber_id+'/scores/'+sortOrder+'/1');
             
       }catch (err) {
-        setError(err);
         console.log('Error:', err);
       }
      };
@@ -97,7 +95,6 @@ export function PlayersByNameHook(name:string):PlayersList{
         setListData({playersList:playersListResponse.data});
         setLoading(false);
       }catch (err) {
-        setError(err);
         console.log('Error:', err);
       }
      };

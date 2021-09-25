@@ -5,8 +5,7 @@ import { Search } from 'react-feather';
 
 import { Link } from 'react-router-dom';
 import { PlayersByNameHook } from '../../data/api/ScoreSaberApi';
-import { PlayerData, PlayerInfo } from '../../data/models/PlayerData';
-import LoadingIndicator from '../../../common/Loading';
+import LoadingIndicator from '../../../../common/Loading';
 
 export default class SearchName extends Component{
     state:SearchNameState = {
