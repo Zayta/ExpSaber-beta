@@ -1,5 +1,4 @@
 
-import './header.scss';
 import Navbar from '../routing/navbar/Navbar';
 import {useLocation } from 'react-router-dom';
 import { routes } from '../routing/Routes';
@@ -47,9 +46,9 @@ const Header = () =>{
     
   const location = useLocation();
   console.log(location.pathname);
-    let showSearch = true;
+    // let showSearch = true;
 
-    return  <div className = 'header-container'>
+    return  <HeaderContainer>
             {/* <div className = {showSearch?'title-and-search':'hidden'}> */}
             <div className = 'header-wrapper'>
             <h1>
@@ -68,6 +67,6 @@ const Header = () =>{
             
             </div>
             
-        </div>
+        </HeaderContainer>
 }
 export default Header;
