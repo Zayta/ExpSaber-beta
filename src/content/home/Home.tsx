@@ -6,8 +6,8 @@ import { ScoresDataHook, SSPlayerDataHook } from './data/api/ScoreSaberApi';
 import ScoreSortOrder from './data/models/ScoreSortOrder';
 import Search from './search/Search';
 import PlayerDetails from './player-details/PlayerDetails';
-import RecentPlays from './content/recent-plays/RecentPlays';
-import ScoreSaberOverview from './content/ss-overview/ScoreSaber';
+import RecentPlays from './main/recent-plays/RecentPlays';
+import ScoreSaberOverview from './main/ss-overview/ScoreSaber';
 import ScoresData from './data/models/ScoreData';
 import { PlayerData } from './data/models/PlayerData';
 

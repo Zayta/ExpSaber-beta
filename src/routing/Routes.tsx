@@ -1,7 +1,6 @@
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom"
-import About from "../main/about/About"
-import Header from "../header/Header"
-import Home from "../main/home/Home"
+import About from '../content/about/About';
+import Home from '../content/home/Home'
 
 export const routes = ["Home","About"];
 

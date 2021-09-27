@@ -1,10 +1,8 @@
 
 import './header.scss';
 import Navbar from '../routing/navbar/Navbar';
-import SearchName from '../main/home/search/search-players/SearchName';
-import { useParams,useLocation } from 'react-router-dom';
+import {useLocation } from 'react-router-dom';
 import { routes } from '../routing/Routes';
-import SearchID from '../main/home/search/search-players/SearchID';
 import styled from 'styled-components';
 
 const HeaderContainer = styled.div`
