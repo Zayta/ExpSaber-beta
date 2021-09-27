@@ -40,6 +40,9 @@ export function ScoresDataHook(scoresaber_id:string, sortOrder: ScoreSortOrder,p
   const [error, setError]: [string, (error: string) => void] = useState("");
 
   useEffect(() => {
+    if(!scoresaber_id){
+      return;
+    }
     const fetchScores = async () => {
       try {
         //create urls for scores of different pages
@@ -87,6 +90,9 @@ export function PlayersByNameHook(name:string):PlayersList{
   const [error, setError]: [string, (error: string) => void] = useState("");
 
   useEffect(() => {
+    if(!name){
+      return;
+    }
     const fetchScores = async () => {
       try {
         setLoading(true);

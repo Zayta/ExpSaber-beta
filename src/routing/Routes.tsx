@@ -1,6 +1,7 @@
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom"
 import About from '../content/about/About';
 import Home from '../content/home/Home'
+import Search from "../content/home/search/Search";
 
 export const routes = ["Home","About"];
 
@@ -14,7 +15,7 @@ const RouteContent = () =>{
         </Route>
         
         <Route exact path="/ExpSaber" >
-          <Home  />
+          <Search  />
         </Route>
         
         <Route path="/About" >

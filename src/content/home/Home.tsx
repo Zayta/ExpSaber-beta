@@ -46,7 +46,6 @@ const Home =  () => {
   let ssScoresData:ScoresData|undefined = ScoresDataHook(params.ssid,ScoreSortOrder.recent,3)
   return (
       <div>
-        <Search/>
         <HomeContainer>
         {
           ssPlayerData?
