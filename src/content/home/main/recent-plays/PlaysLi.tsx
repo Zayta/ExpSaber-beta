@@ -58,13 +58,13 @@ const PlaysLi = (props:PlaysLiProps) =>{
         setShowDetails(!showDetails)
             
     }
-    const mapLvl =formatDifficulty(props.score.difficultyRaw);
+    const mapLvl = formatDifficulty(props.score.difficultyRaw);
     return <PlaysLiContainer style = {showDetails?{'listStyleType':'disc'}:{'listStyleType':'circle'}}><div className = 'general-play-info'>
                 
     <div className = 'song-title toggler' onClick={toggleDetails}>
         <div className = {showDetails?'toggled':'untoggled'}>
             <div>{props.score.songName} {props.score.songSubName} - {props.score.songAuthorName}</div>
-            <div className = 'dif'>{MapLevel[mapLvl]} - {props.score.levelAuthorName}</div>
+            <div className = 'dif'>{mapLvl} - {props.score.levelAuthorName}</div>
         </div>
        
     </div>
