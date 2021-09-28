@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useState, useCallback, useMemo, useEffect } from "react";
-import { PlayerData, PlayerInfo } from "../models/PlayerData";
-import ScoresData, { Score } from "../models/ScoreData";
+import { PlayerData, PlayerInfo } from "../../models/PlayerData";
+import ScoresData, { Score } from "../../models/ScoreData";
 import { trackPromise } from 'react-promise-tracker';
-import ScoreSortOrder from "../models/ScoreSortOrder";
+import ScoreSortOrder from "../../models/ScoreSortOrder";
 
 export const ssWebProfilePrefix = 'https://scoresaber.com/u/';
 const ssPlayerApiEndptPrefix = 'https://new.scoresaber.com/api/player/';

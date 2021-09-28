@@ -2,7 +2,7 @@ import { RouteComponentProps, useParams, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import Tab from '../../common/tabs/Tab';
 import Tabs from '../../common/tabs/Tabs';
-import { ScoresDataHook, SSPlayerDataHook } from './data/api-hooks/ScoreSaberApi';
+import { ScoresDataHook, SSPlayerDataHook } from './data/api/hooks/ScoreSaberApi';
 import ScoreSortOrder from './data/models/ScoreSortOrder';
 import Search from './search/Search';
 import PlayerDetails from './player-details/PlayerDetails';
@@ -10,7 +10,9 @@ import RecentPlays from './main/recent-plays/RecentPlays';
 import ScoreSaberOverview from './main/ss-overview/ScoreSaber';
 import ScoresData from './data/models/ScoreData';
 import { PlayerData } from './data/models/PlayerData';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
+import queryClient from './data/api/ClientProvider';
 
 const HomeContainer = styled.div`
   margin:5px;
@@ -39,13 +41,23 @@ width: 50vw;
   width:90vw;
 }
 `;
-const Home =  () => {
+
+const Home = () =>{
+  return <QueryClientProvider client={queryClient}>
+    <HomeContent/>
+    
+    </QueryClientProvider>
+}
+
+
+const HomeContent =  () => {
   const params = useParams<HomeParams>();//grab params from url
   
   let ssPlayerData:PlayerData|undefined = SSPlayerDataHook(params.ssid);
   let ssScoresData:ScoresData|undefined = ScoresDataHook(params.ssid,ScoreSortOrder.recent,3)
   return (
       <div>
+        <Search/>
         <HomeContainer>
         {
           ssPlayerData?
@@ -76,6 +88,7 @@ const renderTabs = (ssScoresData:ScoresData, ssPlayerData:PlayerData) =>{
 type HomeParams = {
   ssid: string; //scoresaber id 
 };
+
 
 
 export default withRouter(Home);

@@ -60,6 +60,7 @@ const PlaysLi = (props:PlaysLiProps) =>{
         setShowDetails(!showDetails)
             
     }
+    console.log('renderplayli')
     return <PlaysLiContainer style = {showDetails?{'listStyleType':'disc'}:{'listStyleType':'circle'}}><div className = 'general-play-info'>
                 
     <div className = 'song-title toggler' onClick={toggleDetails}>
