@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { timeSince } from "../../../../utils/Time";
+import MapLevel from "../../data/models/MapLevel";
 import { Score } from "../../data/models/ScoreData";
 import MapDetails from "./plays-li-components/MapDetails";
 const PlaysLiContainer = styled.li`
@@ -60,18 +61,12 @@ const PlaysLi = (props:PlaysLiProps) =>{
         setShowDetails(!showDetails)
             
     }
-    console.log('renderplayli')
     return <PlaysLiContainer style = {showDetails?{'listStyleType':'disc'}:{'listStyleType':'circle'}}><div className = 'general-play-info'>
                 
     <div className = 'song-title toggler' onClick={toggleDetails}>
         <div className = {showDetails?'toggled':'untoggled'}>
             <div>{props.score.songName} {props.score.songSubName} - {props.score.songAuthorName}</div>
             <div className = 'dif'>{formatDifficulty(props.score.difficultyRaw)}</div>
-        </div>
-        <div>
-            {
-                showDetails?<MapDetails mapHash={props.score.songHash}/>:<div/>
-            }
         </div>
        
     </div>
@@ -83,6 +78,12 @@ const PlaysLi = (props:PlaysLiProps) =>{
                     
         </div>          
     </div>
+    <div>
+            {
+                showDetails?<MapDetails mapHash={props.score.songHash}/>:<div/>
+            }
+        </div>
+       
     
     </PlaysLiContainer>
 }
@@ -93,19 +94,19 @@ interface PlaysLiProps{
 
 
 
-function formatDifficulty(difficulty_str:string){
+function formatDifficulty(difficulty_str:string):MapLevel{
     difficulty_str = difficulty_str.toLowerCase().replace(' ','_').replace('-','_'); 
     if(difficulty_str.includes('plus'))
-        return 'expertPlus';
+        return MapLevel.EXPERT_PLUS;
     if(difficulty_str.includes('expert'))
-        return 'expert';
+        return MapLevel.EXPERT;
     if(difficulty_str.includes('hard'))
-        return 'hard';
+        return MapLevel.HARD;
     if(difficulty_str.includes('normal'))
-        return 'normal';
+        return MapLevel.NORMAL;
     if(difficulty_str.includes('easy'))
-        return 'easy';
+        return MapLevel.EASY;
 
 
-    return '';
+    return MapLevel.UNKNOWN;
 }

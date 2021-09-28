@@ -54,7 +54,7 @@ const HomeContent =  () => {
   const params = useParams<HomeParams>();//grab params from url
   
   let ssPlayerData:PlayerData|undefined = SSPlayerDataHook(params.ssid);
-  let ssScoresData:ScoresData|undefined = ScoresDataHook(params.ssid,ScoreSortOrder.recent,3)
+  let ssScoresData:ScoresData|undefined = ScoresDataHook(params.ssid,ScoreSortOrder.RECENT,3)
   return (
       <div>
         <Search/>

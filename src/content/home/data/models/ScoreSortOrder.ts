@@ -1,5 +1,5 @@
 enum ScoreSortOrder{
-    recent='recent',
-    top='top'
+    RECENT='recent',
+    TOP='top'
 }
 export default ScoreSortOrder

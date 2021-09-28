@@ -1,15 +1,17 @@
-import { memo } from "react";
+import styled from "styled-components";
 import useBeatSaverData from "../../../data/api/hooks/BeatSaverApi";
-
+const MapDetailsContainer = styled.div`
+    display:flex;
+    overflow-wrap:anywhere;
+`;
 function MapDetails(props:MapDetailsProps) {
-    console.log('mapdetail render')
   const { status, data, error, isFetching } = useBeatSaverData(props.mapHash);
 
-  return <div>
+  return <MapDetailsContainer>
       {
           JSON.stringify(data)
       }
-  </div>
+  </MapDetailsContainer>
 }
 interface MapDetailsProps{
     mapHash:string;
