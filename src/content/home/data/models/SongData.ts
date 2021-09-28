@@ -1,63 +1,82 @@
 //data returned by https://beatsaver.com/api/maps/by-hash/<insert-song-hash-here>
 
+import MapLevel from "./MapLevel";
+
 export default interface SongData{
-    metadata: MetaData,
-    stats: Stats,
+    automapper:boolean,
+    createdAt: Date,
     description:string,
-    _id:string,
-    key:string,
+    id:string,
+    lastPublishedAt:string,
+    metadata: MetaData,
     name:string,
-    uploader: Uploader,
-    hash:string,
-    uploaded:string,
-    directDownload:string,
-    downloadURL: string,
-    coverURL:string
+    qualified:boolean,
+    ranked:boolean,
+    stats: Stats,
+    updatedAt:Date,
+    uploaded:Date,
+    uploader:Uploader,
+    versions: Version[]
 }
 
 interface MetaData{
-    difficulties:Difficulties,
+    bpm:number,
     duration:number,
-    automapper: any,
-    characteristics: MapData[],
-
+    levelAuthorName:string,
+    songAuthorName:string,
+    songName:string,
+    songSubName:string
 }
 interface Stats{
     downloads: number,
     plays: number,
     downVotes: number,
     upVotes: number,
-    heat: number,
-    rating: number
-}
-interface MapData{
-    difficulties: {
-        easy: LevelMapData|null,
-        expert: LevelMapData|null,
-        expertPlus: LevelMapData|null,
-        hard: LevelMapData|null,
-        normal: LevelMapData|null
-    },
-    name: string
+    score:number
 }
 
-interface LevelMapData{
-    bombs:number,
-    duration:number,
-    length:number,
-    njs:number,
-    njsOffset:number,
-    notes:number,
-    obstacles:number
-}
 interface Uploader{
-    _id: string,
-    username: string
+    id: string,
+    username: string,
+    avatar:string,
+    hash:string,
+    name:string,
+    type:string,
+    uniqueSet:boolean
+
 }
-interface Difficulties{
-    easy: boolean,
-    expert: boolean,
-    expertPlus: boolean,
-    hard: boolean,
-    normal: boolean
+
+interface Version{
+    coverURL:string,
+    createdAt:Date,
+    diffs:LevelMapData[],
+    downloadURL:string,
+    hash:string,
+    key:string,
+    previewURL:string,
+    sageScore:number,
+    state:String
+}
+export interface LevelMapData{
+    bombs:number,
+    characteristic:string,
+    chroma:boolean,
+    cinema:boolean,
+    difficulty:MapLevel,
+    events:number,
+    length:number,
+    me:boolean,
+    ne:boolean, 
+    njs:number,
+    notes:number,
+    nps:number,
+    obstacles:number,
+    offset:number,
+    paritySummary:ParitySummary,
+    seconds:number
+}
+interface ParitySummary{
+    errors:number,
+    resets:number,
+    warns:number
 }

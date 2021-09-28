@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import styled from "styled-components";
 import { timeSince } from "../../../../utils/Time";
 import MapLevel from "../../data/models/MapLevel";
@@ -43,9 +43,6 @@ const PlaysLiContainer = styled.li`
     color:var(--txt-color5);
     margin-left: 10px;
 }
-.lvlAuthor{
-    color:var(--txt-color2)
-}
 .dif{
     
     font-size: 0.7em;
@@ -61,33 +58,33 @@ const PlaysLi = (props:PlaysLiProps) =>{
         setShowDetails(!showDetails)
             
     }
+    const mapLvl =formatDifficulty(props.score.difficultyRaw);
     return <PlaysLiContainer style = {showDetails?{'listStyleType':'disc'}:{'listStyleType':'circle'}}><div className = 'general-play-info'>
                 
     <div className = 'song-title toggler' onClick={toggleDetails}>
         <div className = {showDetails?'toggled':'untoggled'}>
             <div>{props.score.songName} {props.score.songSubName} - {props.score.songAuthorName}</div>
-            <div className = 'dif'>{formatDifficulty(props.score.difficultyRaw)}</div>
+            <div className = 'dif'>{MapLevel[mapLvl]} - {props.score.levelAuthorName}</div>
         </div>
        
     </div>
     
     <div className = 'gen-score-info'>
-    <div className = 'score-set-time'>{timeSince(props.score.timeSet)} ago</div>
-    
-                    
-                    
+    <div className = 'score-set-time'>{timeSince(props.score.timeSet)} ago</div>         
         </div>          
     </div>
     <div>
             {
-                showDetails?<MapDetails mapHash={props.score.songHash}/>:<div/>
+                showDetails?
+                <MapDetails mapHash={props.score.songHash} mapLvl={mapLvl}/>
+                :<div/>
             }
-        </div>
+    </div>
        
     
     </PlaysLiContainer>
 }
-export default PlaysLi;
+export default memo(PlaysLi);
 interface PlaysLiProps{
     score:Score
 }

@@ -1,9 +1,9 @@
 enum MapLevel{
-    EASY = "Easy",
-    NORMAL = "Normal",
-    HARD = "Hard",
-    EXPERT = "Expert",
-    EXPERT_PLUS = "ExpertPlus",
-    UNKNOWN = ""
+    EASY ,
+    NORMAL,
+    HARD ,
+    EXPERT,
+    EXPERT_PLUS,
+    UNKNOWN
 }
 export default MapLevel
