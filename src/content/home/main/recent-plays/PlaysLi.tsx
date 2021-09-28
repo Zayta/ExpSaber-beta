@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { timeSince } from "../../../../utils/Time";
 import { Score } from "../../data/models/ScoreData";
+import MapDetails from "./plays-li-components/MapDetails";
 const PlaysLiContainer = styled.li`
     
 .general-play-info{
@@ -65,8 +66,11 @@ const PlaysLi = (props:PlaysLiProps) =>{
         <div className = {showDetails?'toggled':'untoggled'}>
             <div>{props.score.songName} {props.score.songSubName} - {props.score.songAuthorName}</div>
             <div className = 'dif'>{formatDifficulty(props.score.difficultyRaw)}</div>
-            
-           
+        </div>
+        <div>
+            {
+                showDetails?<MapDetails mapHash={props.score.songHash}/>:<div/>
+            }
         </div>
        
     </div>

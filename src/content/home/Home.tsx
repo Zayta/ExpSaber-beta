@@ -2,7 +2,7 @@ import { RouteComponentProps, useParams, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import Tab from '../../common/tabs/Tab';
 import Tabs from '../../common/tabs/Tabs';
-import { ScoresDataHook, SSPlayerDataHook } from './data/api/ScoreSaberApi';
+import { ScoresDataHook, SSPlayerDataHook } from './data/api-hooks/ScoreSaberApi';
 import ScoreSortOrder from './data/models/ScoreSortOrder';
 import Search from './search/Search';
 import PlayerDetails from './player-details/PlayerDetails';
