@@ -1,13 +1,17 @@
-import { versions } from "process";
-import { memo } from "react";
 import styled from "styled-components";
-import LoadingIndicator from "../../../../../common/Loading";
-import useBeatSaverData from "../../../data/api/hooks/BeatSaverApi";
-import MapLevel from "../../../data/models/MapLevel";
-import { LevelMapData} from "../../../data/models/SongData";
+import LoadingIndicator from "../../../../../../common/Loading";
+import useBeatSaverData from "../../../../data/api/hooks/BeatSaverApi";
+import MapLevel from "../../../../data/models/MapLevel";
+import { LevelMapData} from "../../../../data/models/SongData";
 const MapDetailsContainer = styled.div`
     display:flex;
     overflow-wrap:anywhere;
+    img{
+      max-width: 100%;
+      max-height: 100%;
+      width: 10vw;
+      height: 10vw
+  }
 `;
 function MapDetails(props:MapDetailsProps) {
   const { status, data, error ,isFetching} = useBeatSaverData(props.mapHash);

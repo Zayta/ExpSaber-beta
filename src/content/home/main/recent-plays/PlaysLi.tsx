@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { timeSince } from "../../../../utils/Time";
 import MapLevel from "../../data/models/MapLevel";
 import { Score } from "../../data/models/ScoreData";
-import MapDetails from "./plays-li-components/MapDetails";
+import MapDetails from "./pli-components/map-details/MapDetails";
 const PlaysLiContainer = styled.li`
     
 .general-play-info{
