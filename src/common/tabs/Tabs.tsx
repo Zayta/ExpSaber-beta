@@ -17,17 +17,20 @@ const ContentContainer = styled.div`
 `;
 const Tabs: React.FC<Props> = ({ children }) => {
   const [selectedTab, setSelectedTab] = useState(0)
-
+  function isSelected(tab:number){
+    return selectedTab==tab;
+  }
   return (
       <div>
           
     <TabsContainer>
         {children.map((item, index) => (
-          <TabTitle
+          <TabTitle 
             key={index}
             title={item.props.title}
             index={index}
             setSelectedTab={setSelectedTab}
+            isSelected={isSelected}
           />
         ))}
       </TabsContainer>
