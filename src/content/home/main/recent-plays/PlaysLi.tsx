@@ -58,7 +58,7 @@ const PlaysLi = (props:PlaysLiProps) =>{
         setShowDetails(!showDetails)
             
     }
-    const mapLvl = formatDifficulty(props.score.difficultyRaw);
+    const mapLvl = getDifficulty(props.score.difficultyRaw);
     return <PlaysLiContainer style = {showDetails?{'listStyleType':'disc'}:{'listStyleType':'circle'}}><div className = 'general-play-info'>
                 
     <div className = 'song-title toggler' onClick={toggleDetails}>
@@ -89,9 +89,7 @@ interface PlaysLiProps{
     score:Score
 }
 
-
-
-function formatDifficulty(difficulty_str:string):MapLevel{
+function getDifficulty(difficulty_str:string):MapLevel{
     difficulty_str = difficulty_str.toLowerCase().replace(' ','_').replace('-','_'); 
     if(difficulty_str.includes('plus'))
         return MapLevel.EXPERT_PLUS;

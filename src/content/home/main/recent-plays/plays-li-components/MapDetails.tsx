@@ -1,20 +1,18 @@
+import { versions } from "process";
 import { memo } from "react";
 import styled from "styled-components";
 import LoadingIndicator from "../../../../../common/Loading";
-import { round } from "../../../../../utils/Math";
-import { formatTime } from "../../../../../utils/Time";
-import useBeatSaverData, { beatsaverApiPrefix } from "../../../data/api/hooks/BeatSaverApi";
+import useBeatSaverData from "../../../data/api/hooks/BeatSaverApi";
 import MapLevel from "../../../data/models/MapLevel";
-import SongData, { LevelMapData } from "../../../data/models/SongData";
+import { LevelMapData} from "../../../data/models/SongData";
 const MapDetailsContainer = styled.div`
     display:flex;
     overflow-wrap:anywhere;
 `;
 function MapDetails(props:MapDetailsProps) {
-  const { status, data, error } = useBeatSaverData(props.mapHash);
-  console.log(data);
-  if(data)
-  console.log(data.versions[0])
+  const { status, data, error ,isFetching} = useBeatSaverData(props.mapHash);
+  console.log('version')
+  console.log(data?.versions)
   return <MapDetailsContainer>
             <div>
         
@@ -26,21 +24,21 @@ function MapDetails(props:MapDetailsProps) {
         <>
           <img src ={data.versions[0].coverURL} alt = ""/>
 
-          {props.mapLvl?renderMapSubInfo(data.versions[0].diffs[0]):<div/>}
+          {props.mapLvl?renderMapSubInfo(findDiff(data.versions[0].diffs,props.mapLvl)):<div/>}
         </>
       )}
     </div>
   </MapDetailsContainer>
 }
-const renderMapSubInfo = (map_data:LevelMapData) =>{
+const renderMapSubInfo = (map_data:LevelMapData|undefined) =>{
     console.log(map_data)
     let stats = [];
     if(map_data){
     
-        for (let key of Object.keys(map_data)) {
+        for (let [key,v] of Object.entries(map_data)) {
             stats.push(
             <div className='info-pt' key = {key}>
-                {key}:{map_data.bombs}
+                {key}:{JSON.stringify(v)}
             </div>)
         }
     }
@@ -49,9 +47,13 @@ const renderMapSubInfo = (map_data:LevelMapData) =>{
     </div>
 
 }
-
+//finds the first difficulty in array that matches mapLvl
+function findDiff(diffs:LevelMapData[], mapLvl:MapLevel){
+  
+    return diffs.find(d=>d.difficulty==mapLvl)
+}
 interface MapDetailsProps{
     mapHash:string;
     mapLvl?:MapLevel
 }
-export default memo(MapDetails);
+export default (MapDetails);
