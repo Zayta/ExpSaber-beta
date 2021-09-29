@@ -16,7 +16,7 @@ const trailColor = '#ffffff'
 const circularBarStyle = buildStyles({pathColor:pathColor,textColor:pathColor,trailColor:trailColor,strokeLinecap: 'round'});
 const AccuracyBar = (props:AccuracyBarProps) =>{
     return <AccuracyBarContainer>
-        <h5>Avg Map Accuracy</h5>
+        <h5>Avg Accuracy</h5>
         <CircularProgressbar styles = {circularBarStyle} value={props.accuracy} text = {""+round(props.accuracy,2)+"%"} maxValue={100} minValue={50}/>
     </AccuracyBarContainer>
 }
