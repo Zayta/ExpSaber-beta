@@ -12,11 +12,15 @@ const MapDetailsContainer = styled.div`
       width: 10vw;
       height: 10vw
   }
+  .info-pt{
+    
+    text-transform: capitalize;
+    font-size: 0.7em;
+  }
 `;
 function MapDetails(props:MapDetailsProps) {
   const { status, data, error ,isFetching} = useBeatSaverData(props.mapHash);
-  console.log('version')
-  console.log(data?.versions)
+  
   return <MapDetailsContainer>
             <div>
         
@@ -27,6 +31,7 @@ function MapDetails(props:MapDetailsProps) {
       ) : (
         <>
           <img src ={data.versions[0].coverURL} alt = ""/>
+          <p>{data.id}</p>
 
           {props.mapLvl?renderMapSubInfo(findDiff(data.versions[0].diffs,props.mapLvl)):<div/>}
         </>
