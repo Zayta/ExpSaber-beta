@@ -2,7 +2,7 @@ import { RouteComponentProps, useParams, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import Tab from '../../common/tabs/Tab';
 import Tabs from '../../common/tabs/Tabs';
-import { ScoresDataHook, SSPlayerDataHook } from './data/api/hooks/ScoreSaberApi';
+import { useScoresData, useSSPlayerData } from './data/api/hooks/ScoreSaberApi';
 import ScoreSortOrder from './data/models/ScoreSortOrder';
 import Search from './search/Search';
 import PlayerDetails from './player-details/PlayerDetails';
@@ -53,8 +53,8 @@ const Home = () =>{
 const HomeContent =  () => {
   const params = useParams<HomeParams>();//grab params from url
   
-  let ssPlayerData:PlayerData|undefined = SSPlayerDataHook(params.ssid);
-  let ssScoresData:ScoresData|undefined = ScoresDataHook(params.ssid,ScoreSortOrder.RECENT,3)
+  let ssPlayerData:PlayerData|undefined = useSSPlayerData(params.ssid);
+  let ssScoresData:ScoresData|undefined = useScoresData(params.ssid,ScoreSortOrder.RECENT,3)
   return (
       <div>
         <Search/>

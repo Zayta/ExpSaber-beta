@@ -12,7 +12,7 @@ export const avatarPrefix = 'https://new.scoresaber.com';
 
 //scoresaber data react hook fetches relevant srer info from scoresaber API
 //=================== Fetching Player General Info (name, country, rank, avatar, etc) ====================//
-export function SSPlayerDataHook(scoresaber_id:string):PlayerData|undefined{
+export function useSSPlayerData(scoresaber_id:string):PlayerData|undefined{
     const [ssPlayerData,setSSPlayerData] = useState<PlayerData>();
     const [error, setError]: [string, (error: string) => void] = useState("");
 
@@ -35,7 +35,7 @@ export function SSPlayerDataHook(scoresaber_id:string):PlayerData|undefined{
 
 //======================== Fetching srer scores ========================//
 
-export function ScoresDataHook(scoresaber_id:string, sortOrder: ScoreSortOrder,pages:number):ScoresData|undefined{
+export function useScoresData(scoresaber_id:string, sortOrder: ScoreSortOrder,pages:number):ScoresData|undefined{
   const [scoresData,setScoresData] = useState<ScoresData>({scores:[]});
   const [error, setError]: [string, (error: string) => void] = useState("");
 
@@ -84,7 +84,7 @@ interface PlayersList{
   }
 }
 
-export function PlayersByNameHook(name:string):PlayersList{
+export function usePlayerNameSearch(name:string):PlayersList{
   const [listData,setListData] = useState<PlayersList>({playersList:{players:[]}});
   const [loading, setLoading]: [boolean, (loading: boolean) => void] = useState<boolean>(true);
   const [error, setError]: [string, (error: string) => void] = useState("");

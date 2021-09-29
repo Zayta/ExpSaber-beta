@@ -4,7 +4,7 @@ import '../search.scss';
 import { Search } from 'react-feather';
 
 import { Link } from 'react-router-dom';
-import { PlayersByNameHook } from '../../data/api/hooks/ScoreSaberApi';
+import { usePlayerNameSearch } from '../../data/api/hooks/ScoreSaberApi';
 import LoadingIndicator from '../../../../common/Loading';
 
 export default class SearchName extends Component{
@@ -58,7 +58,7 @@ const MatchingNamesList = (inpt:MatchingNamesListProp):JSX.Element =>{
         overflow: 'auto',
         alignItems:'center'
     }
-  let playersResponse = PlayersByNameHook(inpt.name);
+  let playersResponse = usePlayerNameSearch(inpt.name);
     console.log(playersResponse)
     if(!playersResponse.playersList.players.length){
         return <div></div>
