@@ -29,7 +29,7 @@ const RecentPlays = (props:RecentPlaysProps) =>{
             <input id="filter"
             name="filter"
             type="text"
-            placeholder="Filter"            
+            placeholder="filter"            
             value={filter}
             onChange={event => setFilter(event.target.value)}
             />
