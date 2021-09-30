@@ -5,7 +5,6 @@ import  Score from "../../models/ScoreData";
 import { trackPromise } from 'react-promise-tracker';
 import ScoreSortOrder from "../../models/ScoreSortOrder";
 
-export const ssWebProfilePrefix = 'https://scoresaber.com/u/';
 const ssPlayerApiEndptPrefix = 'https://new.scoresaber.com/api/player/';
 const ssApiSearchPlayerEndpt = 'https://new.scoresaber.com/api/players/by-name/';
 
