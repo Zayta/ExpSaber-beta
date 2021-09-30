@@ -1,7 +1,7 @@
 import { memo, useState } from "react";
 import styled from "styled-components";
 import { timeSince } from "../../../../utils/Time";
-import MapLevel from "../../data/models/MapLevel";
+import Difficulty from "../../data/models/Difficulty";
 import  Score  from "../../data/models/ScoreData";
 import Details from "./pli-components/Details";
 import MapDetails from "./pli-components/Details";
@@ -96,21 +96,21 @@ interface PlaysLiProps{
     score:Score
 }
 
-function getDifficulty(difficulty_str:string):MapLevel{
+function getDifficulty(difficulty_str:string):Difficulty{
     difficulty_str = difficulty_str.toLowerCase().replace(' ','_').replace('-','_'); 
     if(difficulty_str.includes('plus'))
-        return MapLevel.EXPERT_PLUS;
+        return Difficulty.EXPERT_PLUS;
     if(difficulty_str.includes('expert'))
-        return MapLevel.EXPERT;
+        return Difficulty.EXPERT;
     if(difficulty_str.includes('hard'))
-        return MapLevel.HARD;
+        return Difficulty.HARD;
     if(difficulty_str.includes('normal'))
-        return MapLevel.NORMAL;
+        return Difficulty.NORMAL;
     if(difficulty_str.includes('easy'))
-        return MapLevel.EASY;
+        return Difficulty.EASY;
 
 
-    return MapLevel.UNKNOWN;
+    return Difficulty.UNKNOWN;
 }
 
 

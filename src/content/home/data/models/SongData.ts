@@ -1,6 +1,6 @@
 //data returned by https://beatsaver.com/api/maps/by-hash/<insert-song-hash-here>
 
-import MapLevel from "./MapLevel";
+import Difficulty from "./Difficulty";
 
 export default interface SongData{
     automapper:boolean,
@@ -62,7 +62,7 @@ export interface LevelMapData{
     characteristic:string,
     chroma:boolean,
     cinema:boolean,
-    difficulty:MapLevel,
+    difficulty:Difficulty,
     events:number,
     length:number,
     me:boolean,

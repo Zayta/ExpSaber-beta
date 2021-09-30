@@ -41,13 +41,13 @@ const ScoreSaberOverview = (props:ScoreSaberOverviewProps) =>{
 
     return <div>
     <div style = {{'float':'right'}}>
-    <a target = "_blank" href = {ssWebProfilePrefix+props.playerData?.playerInfo.playerId}><Bloq color = '#FFDE1A'/></a>
+    <a target = "_blank" rel="noreferrer" href = {ssWebProfilePrefix+props.playerData?.playerInfo.playerId}><Bloq color = '#FFDE1A'/></a>
     </div>
     <SSOverviewContainer>
             {props.playerData?
                 <PlayerDataContainer>
                     <div style = {{'alignItems':'flex-start'}}>
-                    <div style = {{'display':'inline'}}>Global Rank: <a target = "_blank" href = {"https://scoresaber.com/global/"+Math.ceil(props.playerData.playerInfo.rank/50)}>#{props.playerData.playerInfo.rank}</a></div>
+                    <div style = {{'display':'inline'}}>Global Rank: <a target = "_blank" rel="noreferrer" href = {"https://scoresaber.com/global/"+Math.ceil(props.playerData.playerInfo.rank/50)}>#{props.playerData.playerInfo.rank}</a></div>
                     <div>Performance Points: {props.playerData.playerInfo.pp}</div>
                     <div>Ranked Maps Played: {props.playerData.scoreStats.rankedPlayCount}</div>
                     <div>Total Ranked Score: {props.playerData.scoreStats.totalRankedScore}</div>

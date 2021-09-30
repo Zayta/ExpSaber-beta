@@ -1,4 +1,4 @@
-enum MapLevel{
+enum Difficulty{
     EASY = "Easy",
     NORMAL = "Normal",
     HARD = "Hard",
@@ -6,4 +6,4 @@ enum MapLevel{
     EXPERT_PLUS = "ExpertPlus",
     UNKNOWN = ""
 }
-export default MapLevel
+export default Difficulty

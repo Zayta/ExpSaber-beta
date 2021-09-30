@@ -10,7 +10,7 @@ flex-direction:column;
 const LevelInfo: React.FC<LevelInfoProps> = ({ score }) =>{
     if(score){
         return <ScoreDetailsContainer>
-                <a target = "_blank" href = {ssLeaderboardURL+score.leaderboardId}>#{score.rank}</a>
+                <a target = "_blank" rel="noreferrer" href = {ssLeaderboardURL+score.leaderboardId}>#{score.rank}</a>
                 {score.score}/{score.maxScore}
                 
         </ScoreDetailsContainer>
