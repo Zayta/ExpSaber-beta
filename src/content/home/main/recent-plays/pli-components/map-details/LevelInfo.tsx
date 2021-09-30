@@ -1,13 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { round } from "../../../../../../utils/Math";
-import { iconURL } from "../../../../data/api/hooks/BeatSaverApi";
+import { iconURL } from "../../../../data/constants/Constants";
 import { LevelMapData } from "../../../../data/models/SongData";
 
 const LevelInfoContainer = styled.div`
     display:flex;
     flex-flow: row wrap;
     border:1px inset grey;
+    width:50%;
 `;
 const InfoPt = styled.span`
 display:flex;

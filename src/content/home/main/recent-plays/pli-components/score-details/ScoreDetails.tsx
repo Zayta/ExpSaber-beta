@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { ssLeaderboardURL } from "../../../../data/api/hooks/ScoreSaberApi";
+import { ssLeaderboardURL } from "../../../../data/constants/Constants";
 import  Score  from "../../../../data/models/ScoreData";
 
 const ScoreDetailsContainer = styled.div`
