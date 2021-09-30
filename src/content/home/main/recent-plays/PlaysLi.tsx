@@ -3,7 +3,9 @@ import styled from "styled-components";
 import { timeSince } from "../../../../utils/Time";
 import MapLevel from "../../data/models/MapLevel";
 import  Score  from "../../data/models/ScoreData";
-import MapDetails from "./pli-components/map-details/MapDetails";
+import Details from "./pli-components/Details";
+import MapDetails from "./pli-components/Details";
+import ScoreDetails from "./pli-components/score-details/ScoreDetails";
 const PlaysLiContainer = styled.li`
     
 .general-play-info{
@@ -52,13 +54,17 @@ const PlaysLiContainer = styled.li`
     margin-left:10px;
 }
 `;
+
 const PlaysLi = (props:PlaysLiProps) =>{
     const [showDetails,setShowDetails] = useState<boolean>();
+
     const toggleDetails = ()=>{
         setShowDetails(!showDetails)
             
     }
     const mapLvl = getDifficulty(props.score.difficultyRaw);
+    
+    
     return <PlaysLiContainer style = {showDetails?{'listStyleType':'disc'}:{'listStyleType':'circle'}}><div className = 'general-play-info'>
                 
     <div className = 'song-title toggler' onClick={toggleDetails}>
@@ -76,9 +82,7 @@ const PlaysLi = (props:PlaysLiProps) =>{
     <div>
             {
                 showDetails?
-                <>
-                <MapDetails mapHash={props.score.songHash} mapLvl={mapLvl}/>
-                </>
+                <Details score = {props.score} mapLvl = {mapLvl}/>
                 :<div/>
             }
     </div>
@@ -86,7 +90,8 @@ const PlaysLi = (props:PlaysLiProps) =>{
     
     </PlaysLiContainer>
 }
-export default memo(PlaysLi);
+
+
 interface PlaysLiProps{
     score:Score
 }
@@ -107,3 +112,7 @@ function getDifficulty(difficulty_str:string):MapLevel{
 
     return MapLevel.UNKNOWN;
 }
+
+
+
+export default memo(PlaysLi);

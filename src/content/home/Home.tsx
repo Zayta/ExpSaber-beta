@@ -7,7 +7,7 @@ import ScoreSortOrder from './data/models/ScoreSortOrder';
 import Search from './search/Search';
 import PlayerDetails from './player-details/PlayerDetails';
 import RecentPlays from './main/recent-plays/RecentPlays';
-import ScoreSaberOverview from './main/ss-overview/ScoreSaber';
+import ScoreSaberOverview from './main/ss-overview/SSProfile';
 import { PlayerData } from './data/models/PlayerData';
 import { QueryClientProvider } from 'react-query';
 
@@ -77,10 +77,11 @@ const HomeContent =  () => {
 const renderTabs = (ssScoresData:Score[], ssPlayerData:PlayerData) =>{
   return <Content>
           <Tabs>
-            <Tab title="Recent"><RecentPlays scoresData = {ssScoresData}/></Tab>
-            <Tab title="ScoreSaber">
+          <Tab title="ScoreSaber">
               <ScoreSaberOverview playerData = {ssPlayerData}/>
               </Tab>
+            <Tab title="Recent"><RecentPlays scoresData = {ssScoresData}/></Tab>
+            
           </Tabs>
         </Content>
 }

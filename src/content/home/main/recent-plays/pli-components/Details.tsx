@@ -1,11 +1,13 @@
 import styled from "styled-components";
-import LoadingIndicator from "../../../../../../common/Loading";
-import useBeatSaverData, { beatsaverMapPrefix } from "../../../../data/api/hooks/BeatSaverApi";
-import MapLevel from "../../../../data/models/MapLevel";
-import { LevelMapData} from "../../../../data/models/SongData";
-import LevelInfo from "./LevelInfo";
-import MapCreationInfo from "./MapCreationInfo";
-const MapDetailsContainer = styled.div`
+import LoadingIndicator from "../../../../../common/Loading";
+import useBeatSaverData, { beatsaverMapPrefix } from "../../../data/api/hooks/BeatSaverApi";
+import MapLevel from "../../../data/models/MapLevel";
+import Score from "../../../data/models/ScoreData";
+import { LevelMapData} from "../../../data/models/SongData";
+import LevelInfo from "./map-details/LevelInfo";
+import MapCreationInfo from "./map-details/MapCreationInfo";
+import ScoreDetails from "./score-details/ScoreDetails";
+const DetailsContainer = styled.div`
     display:flex;
     overflow-wrap:anywhere;
     height:fit-content;
@@ -22,8 +24,8 @@ const MapInfo=styled.div`
   margin-left:10px;
   font-size:0.7em;
 `;
-function MapDetails(props:MapDetailsProps) {
-  const { status, data, error ,isFetching} = useBeatSaverData(props.mapHash);
+function Details(props:DetailsProps) {
+  const { status, data, error ,isFetching} = useBeatSaverData(props.score.songHash);
   
   return <div>
       {!data||status === "loading" ? (
@@ -31,7 +33,7 @@ function MapDetails(props:MapDetailsProps) {
       ) : status === "error" ? (
         <span>Error: {error}</span>
       ) : (
-        <MapDetailsContainer>
+        <DetailsContainer>
           <img id='cover' src ={data.versions[0].coverURL} alt = ""/>
           <MapInfo>
 
@@ -42,7 +44,8 @@ function MapDetails(props:MapDetailsProps) {
           <a target = "_blank" href = {beatsaverMapPrefix+data.id}>View on BeatSaver</a>
 
           </MapInfo>
-          </MapDetailsContainer>
+          <ScoreDetails score = {props.score}/>
+          </DetailsContainer>
       )}
     </div>
 }
@@ -51,8 +54,8 @@ function findDiff(diffs:LevelMapData[], mapLvl:MapLevel):LevelMapData|undefined{
   
     return diffs.find(d=>d.difficulty==mapLvl)
 }
-interface MapDetailsProps{
-    mapHash:string;
+interface DetailsProps{
+    score:Score
     mapLvl?:MapLevel
 }
-export default (MapDetails);
+export default (Details);

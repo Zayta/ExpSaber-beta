@@ -9,6 +9,7 @@ export const ssWebProfilePrefix = 'https://scoresaber.com/u/';
 const ssPlayerApiEndptPrefix = 'https://new.scoresaber.com/api/player/';
 const ssApiSearchPlayerEndpt = 'https://new.scoresaber.com/api/players/by-name/';
 export const avatarPrefix = 'https://new.scoresaber.com';
+export const ssLeaderboardURL = 'https://scoresaber.com/leaderboard/'
 
 //scoresaber data react hook fetches relevant srer info from scoresaber API
 //=================== Fetching Player General Info (name, country, rank, avatar, etc) ====================//
