@@ -1,8 +1,6 @@
 //data that is returned from https://new.scoresaber.com/api/player/<scoresaber_id>/scores/recent/<page>
-export default interface ScoresData{
-    scores:Score[]
-}
-export interface Score{
+
+export default interface Score{
     difficulty: number,
     difficultyRaw: string,
     leaderboardId: number,

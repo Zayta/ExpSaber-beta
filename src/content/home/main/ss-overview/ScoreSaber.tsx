@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Bloq from "../../../../icons/bloq";
 import { ssWebProfilePrefix } from "../../data/api/hooks/ScoreSaberApi";
 import { PlayerData} from "../../data/models/PlayerData";
-import ScoresData, { Score } from "../../data/models/ScoreData";
+import Score from "../../data/models/ScoreData";
 import AccuracyBar from "./ss-metrics/AccuracyBar";
 import PPMeter from "./ss-metrics/PPMeter";
 

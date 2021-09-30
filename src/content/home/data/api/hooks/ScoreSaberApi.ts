@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useCallback, useMemo, useEffect } from "react";
 import { PlayerData, PlayerInfo } from "../../models/PlayerData";
-import ScoresData, { Score } from "../../models/ScoreData";
+import  Score from "../../models/ScoreData";
 import { trackPromise } from 'react-promise-tracker';
 import ScoreSortOrder from "../../models/ScoreSortOrder";
 
@@ -35,8 +35,8 @@ export function useSSPlayerData(scoresaber_id:string):PlayerData|undefined{
 
 //======================== Fetching srer scores ========================//
 
-export function useScoresData(scoresaber_id:string, sortOrder: ScoreSortOrder,pages:number):ScoresData|undefined{
-  const [scoresData,setScoresData] = useState<ScoresData>({scores:[]});
+export function useScoresData(scoresaber_id:string, sortOrder: ScoreSortOrder,pages:number):Score[]|undefined{
+  const [scoresData,setScoresData] = useState<Score[]>([]);
   const [error, setError]: [string, (error: string) => void] = useState("");
 
   useEffect(() => {
@@ -61,7 +61,7 @@ export function useScoresData(scoresaber_id:string, sortOrder: ScoreSortOrder,pa
               
           }
         });
-        setScoresData({scores:scores})
+        setScoresData(scores)
 
         // const scoresResponse = await axios.get(ssPlayerApiEndptPrefix+scoresaber_id+'/scores/'+sortOrder+'/1');
             

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import ScoresData, { Score } from "../../data/models/ScoreData";
+import  Score  from "../../data/models/ScoreData";
 import PlaysLi from "./PlaysLi";
 const FilterContainer = styled.div`
     display:flex;
@@ -36,13 +36,13 @@ const RecentPlays = (props:RecentPlaysProps) =>{
             </FilterContainer>
         <ul>
         {
-            props.scoresData.scores.filter(filterCondition).map(score =><PlaysLi key = {score.scoreId} score = {score}/>)
+            props.scoresData.filter(filterCondition).map(score =><PlaysLi key = {score.scoreId} score = {score}/>)
         }
         </ul>
         </div>
 }
 interface RecentPlaysProps{
-    scoresData:ScoresData | undefined;
+    scoresData:Score[] | undefined;
 }
   
 export default RecentPlays;

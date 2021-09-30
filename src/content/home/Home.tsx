@@ -8,11 +8,11 @@ import Search from './search/Search';
 import PlayerDetails from './player-details/PlayerDetails';
 import RecentPlays from './main/recent-plays/RecentPlays';
 import ScoreSaberOverview from './main/ss-overview/ScoreSaber';
-import ScoresData from './data/models/ScoreData';
 import { PlayerData } from './data/models/PlayerData';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClientProvider } from 'react-query';
 
 import queryClient from './data/api/ClientProvider';
+import  Score  from './data/models/ScoreData';
 
 const HomeContainer = styled.div`
   margin:5px;
@@ -54,7 +54,7 @@ const HomeContent =  () => {
   const params = useParams<HomeParams>();//grab params from url
   
   let ssPlayerData:PlayerData|undefined = useSSPlayerData(params.ssid);
-  let ssScoresData:ScoresData|undefined = useScoresData(params.ssid,ScoreSortOrder.RECENT,3)
+  let ssScoresData:Score[]|undefined = useScoresData(params.ssid,ScoreSortOrder.RECENT,3)
   return (
       <div>
         <Search/>
@@ -74,7 +74,7 @@ const HomeContent =  () => {
   )
 }
 
-const renderTabs = (ssScoresData:ScoresData, ssPlayerData:PlayerData) =>{
+const renderTabs = (ssScoresData:Score[], ssPlayerData:PlayerData) =>{
   return <Content>
           <Tabs>
             <Tab title="Recent"><RecentPlays scoresData = {ssScoresData}/></Tab>
