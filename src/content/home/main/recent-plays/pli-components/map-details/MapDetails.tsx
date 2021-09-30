@@ -8,12 +8,13 @@ import MapCreationInfo from "./MapCreationInfo";
 const MapDetailsContainer = styled.div`
     display:flex;
     overflow-wrap:anywhere;
-    img{
+    height:fit-content;
+    img#cover{
       max-width: 100%;
       max-height: 100%;
       width: 15vw;
       height: 15vw
-  }
+    }
 `;
 const MapInfo=styled.div`
   display:flex;
@@ -31,7 +32,7 @@ function MapDetails(props:MapDetailsProps) {
         <span>Error: {error}</span>
       ) : (
         <MapDetailsContainer>
-          <img src ={data.versions[0].coverURL} alt = ""/>
+          <img id='cover' src ={data.versions[0].coverURL} alt = ""/>
           <MapInfo>
 
           id:{data.id}
