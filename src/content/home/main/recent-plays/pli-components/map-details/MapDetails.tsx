@@ -35,7 +35,7 @@ function MapDetails(props:MapDetailsProps) {
           <img id='cover' src ={data.versions[0].coverURL} alt = ""/>
           <MapInfo>
 
-          id:{data.id}
+          map id: {data.id}
           <MapCreationInfo songData={data}/>
 
           {props.mapLvl?<LevelInfo map_data={findDiff(data.versions[0].diffs,props.mapLvl)}/>:<div/>}

@@ -7,7 +7,7 @@ const LevelInfoContainer = styled.div`
     display:flex;
     flex-flow: row wrap;
     width:50%;
-    border:1px dotted grey;
+    border:1px inset grey;
 `;
 const InfoPt = styled.span`
 display:flex;

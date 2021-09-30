@@ -76,7 +76,9 @@ const PlaysLi = (props:PlaysLiProps) =>{
     <div>
             {
                 showDetails?
+                <>
                 <MapDetails mapHash={props.score.songHash} mapLvl={mapLvl}/>
+                </>
                 :<div/>
             }
     </div>
