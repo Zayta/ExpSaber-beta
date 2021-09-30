@@ -3,6 +3,7 @@ import { useQuery} from "react-query";
 import SongData from "../../models/SongData";
 export const beatsaverApiPrefix = "https://api.beatsaver.com/"
 
+export const beatsaverMapPrefix = "https://beatsaver.com/maps/"
 const getMapByHash = async (mapHash:string) => {
   const { data } = await axios.get(beatsaverApiPrefix+"maps/hash/"+mapHash);
   return data;

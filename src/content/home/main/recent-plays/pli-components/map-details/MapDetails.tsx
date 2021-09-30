@@ -1,63 +1,52 @@
 import styled from "styled-components";
 import LoadingIndicator from "../../../../../../common/Loading";
-import useBeatSaverData from "../../../../data/api/hooks/BeatSaverApi";
+import useBeatSaverData, { beatsaverMapPrefix } from "../../../../data/api/hooks/BeatSaverApi";
 import MapLevel from "../../../../data/models/MapLevel";
 import { LevelMapData} from "../../../../data/models/SongData";
+import LevelInfo from "./LevelInfo";
+import MapCreationInfo from "./MapCreationInfo";
 const MapDetailsContainer = styled.div`
     display:flex;
     overflow-wrap:anywhere;
     img{
       max-width: 100%;
       max-height: 100%;
-      width: 10vw;
-      height: 10vw
+      width: 15vw;
+      height: 15vw
   }
-  .info-pt{
-    
-    text-transform: capitalize;
-    font-size: 0.7em;
-  }
+`;
+const MapInfo=styled.div`
+  display:flex;
+  flex-direction:column;
+  margin-left:10px;
+  font-size:0.7em;
 `;
 function MapDetails(props:MapDetailsProps) {
   const { status, data, error ,isFetching} = useBeatSaverData(props.mapHash);
   
-  return <MapDetailsContainer>
-            <div>
-        
+  return <div>
       {!data||status === "loading" ? (
         <LoadingIndicator/>
       ) : status === "error" ? (
         <span>Error: {error}</span>
       ) : (
-        <>
+        <MapDetailsContainer>
           <img src ={data.versions[0].coverURL} alt = ""/>
-          <p>{data.id}</p>
+          <MapInfo>
 
-          {props.mapLvl?renderMapSubInfo(findDiff(data.versions[0].diffs,props.mapLvl)):<div/>}
-        </>
+          id:{data.id}
+          <MapCreationInfo songData={data}/>
+
+          {props.mapLvl?<LevelInfo map_data={findDiff(data.versions[0].diffs,props.mapLvl)}/>:<div/>}
+          <a target = "_blank" href = {beatsaverMapPrefix+data.id}>View on BeatSaver</a>
+
+          </MapInfo>
+          </MapDetailsContainer>
       )}
     </div>
-  </MapDetailsContainer>
-}
-const renderMapSubInfo = (map_data:LevelMapData|undefined) =>{
-    console.log(map_data)
-    let stats = [];
-    if(map_data){
-    
-        for (let [key,v] of Object.entries(map_data)) {
-            stats.push(
-            <div className='info-pt' key = {key}>
-                {key}:{JSON.stringify(v)}
-            </div>)
-        }
-    }
-    return <div>
-        {stats}
-    </div>
-
 }
 //finds the first difficulty in array that matches mapLvl
-function findDiff(diffs:LevelMapData[], mapLvl:MapLevel){
+function findDiff(diffs:LevelMapData[], mapLvl:MapLevel):LevelMapData|undefined{
   
     return diffs.find(d=>d.difficulty==mapLvl)
 }
