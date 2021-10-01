@@ -9,9 +9,10 @@ export default class About extends Component {
                 <div>ExpSaber is a simple plays tracker for the VR rhythm game
                     <a href = "https://beatsaber.com/">Beat Saber</a>.
                 </div>
-                <div>It is built on top of the ScoreSaber and Beat Savior APIs.</div>
+                <div>It is built on top of the ScoreSaber and Beat Saver APIs.</div>
             </div>
             <div>Any tips or feedback would be appreciated!</div>
+            <h3>Contact</h3>
             <Contact/>
         </div>
     }
