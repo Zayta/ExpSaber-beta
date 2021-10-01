@@ -47,24 +47,23 @@ const Home = () =>{
   
   const params = useParams<HomeParams>();//grab params from url
   
-  const [sortOrder,setSortOrder] = useState(ScoreSortOrder.RECENT);
   const [pages,setPages] = useState(3);
 
   return <QueryClientProvider client={queryClient}>
     {
       params.ssid?
-      <HomeContent ssid = {params.ssid}/>:
-      <Search setSortOrder = {setSortOrder}/>
+      <HomeContent ssid = {params.ssid} pages = {pages}/>:
+      <Search setPages = {setPages}/>
     }
     
     </QueryClientProvider>
 }
 
 
-const HomeContent:React.FC<{ssid:string}> =  ({ssid}) => {
+const HomeContent:React.FC<{ssid:string,pages:number}> =  ({ssid,pages}) => {
   let ssPlayerData:PlayerData|undefined = useSSPlayerData(ssid);
   
-  let ssScoresData:Score[]|undefined = useScoresData(ssid,ScoreSortOrder.RECENT,3);
+  let ssScoresData:Score[]|undefined = useScoresData(ssid,ScoreSortOrder.RECENT,pages);
   return (
       <div>
         <Search/>

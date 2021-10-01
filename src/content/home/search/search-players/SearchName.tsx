@@ -23,13 +23,7 @@ export default class SearchName extends Component<SearchProps,SearchNameState>{
     changeName = (e: React.FormEvent<HTMLInputElement>): void => {
         this.setState({ ss_name: e.currentTarget.value, searched:false });
       };
-    changeSortOrder = (e:React.FormEvent<HTMLSelectElement>):void=>{
-        
-        if(this.props.setSortOrder){
-            console.log('setting sort order');
-            console.log(e);
-        }
-    }
+    
     handleFormSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault();
         console.log(e);
@@ -42,10 +36,7 @@ export default class SearchName extends Component<SearchProps,SearchNameState>{
             
             <form onSubmit={this.handleFormSubmit}>
                 <input type="text" name="scoreSaberID" placeholder='search username'value={this.state.ss_name} onChange={this.changeName} />
-                <select id="searchBy" name="searchBy" defaultValue = {ScoreSortOrder.RECENT} onChange = {this.changeSortOrder}>
-                    <option value={ScoreSortOrder.RECENT}>RECENT</option>
-                    <option value={ScoreSortOrder.TOP}>TOP</option>
-                </select>
+                {this.renderSelect()}
                 <button type = 'submit' className = 'search-ico'><Search/></button>
             </form>
             <LoadingIndicator/>
@@ -55,6 +46,19 @@ export default class SearchName extends Component<SearchProps,SearchNameState>{
  
         </div>
       
+    }
+    changePages  = (e:React.ChangeEvent<HTMLSelectElement>):void=>{
+        if(this.props.setPages){
+            this.props.setPages(parseInt(e.target.value));
+        }
+    }
+    renderSelect = () =>{
+        let opts = [];
+        for(let i = 1; i<=10;i++){
+            opts.push(<option key = {i} value = {i}>{i}</option>)
+        }
+        return <select id="searchBy" name="searchBy" defaultValue = {ScoreSortOrder.RECENT} onChange = {this.changePages}>{opts}
+    </select>
     }
 }
 interface SearchNameState{

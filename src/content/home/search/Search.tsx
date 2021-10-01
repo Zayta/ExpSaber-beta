@@ -43,7 +43,7 @@ export default class Search extends Component<SearchProps,SearchState>{
                 return <SearchID />
             break;
             case SearchBy.NAME:
-                return <SearchName setSortOrder={this.props.setSortOrder}/>
+                return <SearchName setPages={this.props.setPages}/>
                 break;
             default:
                 console.log(this.state.searchBy)
