@@ -52,9 +52,11 @@ const Home = () =>{
 
 const HomeContent =  () => {
   const params = useParams<HomeParams>();//grab params from url
-  
+  let sortOrder = params.sortOrder?params.sortOrder:ScoreSortOrder.RECENT;
+  //arbitrary restraint to prevent 429. TODO in future remove criteria params from url and embed in form data
+  let pages = params.pages &&parseInt(params.pages)<10?parseInt(params.pages,10):3;
   let ssPlayerData:PlayerData|undefined = useSSPlayerData(params.ssid);
-  let ssScoresData:Score[]|undefined = useScoresData(params.ssid,ScoreSortOrder.RECENT,3)
+  let ssScoresData:Score[]|undefined = useScoresData(params.ssid,sortOrder,pages);
   return (
       <div>
         <Search/>
@@ -88,6 +90,8 @@ const renderTabs = (ssScoresData:Score[], ssPlayerData:PlayerData) =>{
 
 type HomeParams = {
   ssid: string; //scoresaber id 
+  sortOrder?:ScoreSortOrder;
+  pages?:string;
 };
 
 

@@ -10,6 +10,10 @@ const RouteContent = () =>{
     const links = []
     return <div className = 'content'>  
         <Switch>
+        <Route path="/ExpSaber/ssid/:ssid/:sortorder/:pages" >
+          <Home  />
+        </Route>
+        
         <Route path="/ExpSaber/ssid/:ssid" >
           <Home  />
         </Route>

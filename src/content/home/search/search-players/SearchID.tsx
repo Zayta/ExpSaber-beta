@@ -4,10 +4,13 @@ import '../search.scss';
 import { Search } from 'react-feather';
 
 import { Link } from 'react-router-dom';
+import ScoreSortOrder from '../../data/models/ScoreSortOrder';
 
 export default class SearchID extends Component{
     state:SearchIDState = {
-        ss_id:""
+        ss_id:"",
+        sortOrder:ScoreSortOrder.RECENT,
+        pages:0
     }
     
     onChange = (e: React.FormEvent<HTMLInputElement>): void => {
@@ -32,5 +35,7 @@ export default class SearchID extends Component{
     }
 }
 interface SearchIDState{
-    ss_id:string
+    ss_id:string,
+    sortOrder:ScoreSortOrder,
+    pages:number,
 }

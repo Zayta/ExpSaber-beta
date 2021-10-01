@@ -6,11 +6,14 @@ import { Search } from 'react-feather';
 import { Link } from 'react-router-dom';
 import { usePlayerNameSearch } from '../../data/api/hooks/ScoreSaberApi';
 import LoadingIndicator from '../../../../common/Loading';
+import ScoreSortOrder from '../../data/models/ScoreSortOrder';
 
 export default class SearchName extends Component{
     state:SearchNameState = {
         ss_name:"",
-        searched:false
+        searched:false,
+        sortOrder:ScoreSortOrder.RECENT,
+        pages:1
     }
     setSearched = () =>{
         this.setState({searched:false})
@@ -37,7 +40,11 @@ export default class SearchName extends Component{
             </form>
             <LoadingIndicator/>
             {
-                this.state.searched?<div><MatchingNamesList setSearched = {this.setSearched} name = {this.state.ss_name}/></div>:<div></div>
+                this.state.searched?
+                    <MatchingNamesList setSearched = {this.setSearched} 
+                    name = {this.state.ss_name}
+                    pages = {this.state.pages}
+                    sortOrder={this.state.sortOrder}/>:<div/>
             }
  
         </div>
@@ -46,11 +53,14 @@ export default class SearchName extends Component{
 }
 interface SearchNameState{
     ss_name:string,
-    searched:boolean
+    searched:boolean,
+    
+    sortOrder:ScoreSortOrder,
+    pages:number,
     // search_results:PlayerInfo[]
 }
 
-const MatchingNamesList = (inpt:MatchingNamesListProp):JSX.Element =>{
+const MatchingNamesList:React.FC<MatchingNamesListProp> = ({name,setSearched,sortOrder,pages}):JSX.Element =>{
     const namesListStyle = 
     {
         display:'flex', 
@@ -58,25 +68,29 @@ const MatchingNamesList = (inpt:MatchingNamesListProp):JSX.Element =>{
         overflow: 'auto',
         alignItems:'center'
     }
-  let playersResponse = usePlayerNameSearch(inpt.name);
+  let playersResponse = usePlayerNameSearch(name);
     console.log(playersResponse)
     if(!playersResponse.playersList.players.length){
         return <div></div>
-        // return <div>No results for {inpt.name}</div>
+        // return <div>No results for {name}</div>
     }
 
     const handleClick = () =>{
-        inpt.setSearched(false)
+        setSearched(false)
     }
+    const criteria = sortOrder+"/"+pages;
     return <div style = {namesListStyle}>
         {
             playersResponse.playersList.players.map(p=>{
-                return(<Link key = {p.playerId} onClick={handleClick} className = 'search-ico' to={"/ExpSaber/ssid/"+p.playerId}>#{p.rank} - {p.playerName}</Link>)
+                return(<Link key = {p.playerId} onClick={handleClick} className = 'search-ico' to={"/ExpSaber/ssid/"+p.playerId+"/"+criteria}>#{p.rank} - {p.playerName}</Link>)
             })
         }
     </div>
 }
 interface MatchingNamesListProp {
     name:string,
-    setSearched:(searched:boolean) =>void
+    setSearched:(searched:boolean) =>void,
+    
+    sortOrder:ScoreSortOrder,
+    pages:number,
 }
