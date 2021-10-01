@@ -44,18 +44,27 @@ width: 50vw;
 `;
 
 const Home = () =>{
+  
+  const params = useParams<HomeParams>();//grab params from url
+  
+  const [sortOrder,setSortOrder] = useState(ScoreSortOrder.RECENT);
+  const [pages,setPages] = useState(3);
+
   return <QueryClientProvider client={queryClient}>
-    <HomeContent/>
+    {
+      params.ssid?
+      <HomeContent ssid = {params.ssid}/>:
+      <Search setSortOrder = {setSortOrder}/>
+    }
     
     </QueryClientProvider>
 }
 
 
-const HomeContent =  () => {
-  const params = useParams<HomeParams>();//grab params from url
-  let ssPlayerData:PlayerData|undefined = useSSPlayerData(params.ssid);
+const HomeContent:React.FC<{ssid:string}> =  ({ssid}) => {
+  let ssPlayerData:PlayerData|undefined = useSSPlayerData(ssid);
   
-  let ssScoresData:Score[]|undefined = useScoresData(params.ssid,ScoreSortOrder.RECENT,3);
+  let ssScoresData:Score[]|undefined = useScoresData(ssid,ScoreSortOrder.RECENT,3);
   return (
       <div>
         <Search/>

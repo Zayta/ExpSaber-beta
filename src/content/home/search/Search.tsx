@@ -10,10 +10,6 @@ export default class Search extends Component<SearchProps,SearchState>{
     state = {
         searchBy:SearchBy.NAME
     }
-    componentDidMount() {
-        console.log('mounte search');
-        console.log(this.props.setSortOrder)
-    }
     updateSearchCriteria=(event:any)=> {
         
         const target = event.target;

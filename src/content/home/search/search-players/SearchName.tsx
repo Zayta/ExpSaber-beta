@@ -24,11 +24,9 @@ export default class SearchName extends Component<SearchProps,SearchNameState>{
         this.setState({ ss_name: e.currentTarget.value, searched:false });
       };
     changeSortOrder = (e:React.FormEvent<HTMLSelectElement>):void=>{
-        console.log('setting sort order');
-            console.log(e);
-        console.log(this.props.setSortOrder)
+        
         if(this.props.setSortOrder){
-            console.log('setting sort order2');
+            console.log('setting sort order');
             console.log(e);
         }
     }

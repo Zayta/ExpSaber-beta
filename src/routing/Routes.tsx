@@ -15,7 +15,7 @@ const RouteContent = () =>{
         </Route>
         
         <Route exact path="/ExpSaber" >
-          <Search  />
+          <Home />
         </Route>
         
         <Route path="/About" >
