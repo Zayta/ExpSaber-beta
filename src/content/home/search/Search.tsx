@@ -3,11 +3,16 @@ import './search.scss';
 
 import SearchID from './search-players/SearchID';
 import SearchName from './search-players/SearchName';
-export default class Search extends Component{
+import ScoreSortOrder from '../data/models/ScoreSortOrder';
+export default class Search extends Component<SearchProps,SearchState>{
 
     
     state = {
         searchBy:SearchBy.NAME
+    }
+    componentDidMount() {
+        console.log('mounte search');
+        console.log(this.props.setSortOrder)
     }
     updateSearchCriteria=(event:any)=> {
         
@@ -42,7 +47,7 @@ export default class Search extends Component{
                 return <SearchID />
             break;
             case SearchBy.NAME:
-                return <SearchName/>
+                return <SearchName setSortOrder={this.props.setSortOrder}/>
                 break;
             default:
                 console.log(this.state.searchBy)
@@ -52,6 +57,11 @@ export default class Search extends Component{
 
         }
     }
+}
+
+export interface SearchProps{
+    setSortOrder?:(sortOrder:ScoreSortOrder)=>void,
+    setPages?:(pages:number)=>void
 }
 
 export interface SearchState{

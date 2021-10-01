@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import ProgressBar from "../../../../../../common/ProgressBar";
 import { round } from "../../../../../../utils/Math";
 import { ssLeaderboardURL } from "../../../../data/constants/Constants";
 import  Score  from "../../../../data/models/ScoreData";

@@ -18,7 +18,7 @@ const ContentContainer = styled.div`
 const Tabs: React.FC<Props> = ({ children }) => {
   const [selectedTab, setSelectedTab] = useState(0)
   function isSelected(tab:number){
-    return selectedTab==tab;
+    return selectedTab===tab;
   }
   return (
       <div>

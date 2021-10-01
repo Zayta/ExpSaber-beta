@@ -7,7 +7,6 @@ import { BrowserRouter } from 'react-router-dom';
 
 import RouteContent from './routing/Routes';
 function App() {
-  const links = ["Home","About"]
   return <div className = 'container'>
       <BrowserRouter>
       <div>

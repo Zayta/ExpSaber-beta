@@ -2,9 +2,7 @@ import styled from "styled-components";
 import Bloq from "../../../../icons/bloq";
 import { ssWebProfilePrefix } from "../../data/constants/Constants";
 import { PlayerData} from "../../data/models/PlayerData";
-import Score from "../../data/models/ScoreData";
 import AccuracyBar from "./ss-metrics/AccuracyBar";
-import PPMeter from "./ss-metrics/PPMeter";
 
 const SSOverviewContainer = styled.div`
 display:flex;

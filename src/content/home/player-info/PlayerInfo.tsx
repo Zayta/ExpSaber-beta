@@ -1,8 +1,6 @@
-import { useContext, useEffect} from 'react'
-import { PlayerData, PlayerInfo } from '../data/models/PlayerData'
+import { PlayerInfo } from '../data/models/PlayerData'
 import styled from "styled-components";
 import { avatarPrefix} from '../data/constants/Constants';
-import Bloq from '../../../icons/bloq';
 
 const PlayerDetailsContainer = styled.div`
   display: flex;

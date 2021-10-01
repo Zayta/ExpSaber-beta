@@ -1,13 +1,10 @@
 import styled from "styled-components";
 import LoadingIndicator from "../../../../../common/Loading";
 import useBeatSaverData from "../../../data/api/hooks/BeatSaverApi"
-import { beatsaverMapPrefix } from "../../../data/constants/Constants";
 import { comboMultiplier, maxScorePerNote } from "../../../data/constants/Constants";
 import Difficulty from "../../../data/models/Difficulty";
 import Score from "../../../data/models/ScoreData";
 import { LevelMapData} from "../../../data/models/SongData";
-import LevelInfo from "./map-details/LevelInfo";
-import MapCreationInfo from "./map-details/MapCreationInfo";
 import MapDetails from "./map-details/MapDetails";
 import ScoreDetails from "./score-details/ScoreDetails";
 const DetailsContainer = styled.div`
@@ -29,7 +26,7 @@ const DetailsContainer = styled.div`
     }
 `;
 function Details(props:DetailsProps) {
-  const { status, data, error ,isFetching} = useBeatSaverData(props.score.songHash);
+  const { status, data, error } = useBeatSaverData(props.score.songHash);
   if(!data||status === "loading"){
     return <LoadingIndicator/>
   }
@@ -62,7 +59,7 @@ function Details(props:DetailsProps) {
 //finds the first difficulty in array that matches mapLvl
 function findDiff(diffs:LevelMapData[], mapLvl:Difficulty):LevelMapData|undefined{
   
-    return diffs.find(d=>d.difficulty==mapLvl)
+    return diffs.find(d=>d.difficulty===mapLvl)
 }
 interface DetailsProps{
     score:Score

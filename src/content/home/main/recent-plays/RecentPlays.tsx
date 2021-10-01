@@ -18,7 +18,7 @@ const RecentPlays = (props:RecentPlaysProps) =>{
         || s.songSubName.toLowerCase().includes(filterLC)
         || s.songAuthorName.toLowerCase().includes(filterLC)
         || s.levelAuthorName.toLowerCase().includes(filterLC)
-        ||filter=='';
+        ||filter==='';
     }
 
     if(!props.scoresData){

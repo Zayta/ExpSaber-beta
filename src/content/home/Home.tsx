@@ -1,11 +1,11 @@
-import { RouteComponentProps, useParams, withRouter } from 'react-router-dom';
+import { useParams, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import Tab from '../../common/tabs/Tab';
 import Tabs from '../../common/tabs/Tabs';
 import { useScoresData, useSSPlayerData } from './data/api/hooks/ScoreSaberApi';
 import ScoreSortOrder from './data/models/ScoreSortOrder';
 import Search from './search/Search';
-import PlayerDetails from './player-details/PlayerDetails';
+import PlayerDetails from './player-info/PlayerInfo';
 import RecentPlays from './main/recent-plays/RecentPlays';
 import ScoreSaberOverview from './main/ss-overview/SSProfile';
 import { PlayerData } from './data/models/PlayerData';
@@ -13,6 +13,7 @@ import { QueryClientProvider } from 'react-query';
 
 import queryClient from './data/api/ClientProvider';
 import  Score  from './data/models/ScoreData';
+import { useState } from 'react';
 
 const HomeContainer = styled.div`
   margin:5px;
@@ -52,14 +53,17 @@ const Home = () =>{
 
 const HomeContent =  () => {
   const params = useParams<HomeParams>();//grab params from url
-  let sortOrder = params.sortOrder?params.sortOrder:ScoreSortOrder.RECENT;
-  //arbitrary restraint to prevent 429. TODO in future remove criteria params from url and embed in form data
-  let pages = params.pages &&parseInt(params.pages)<10?parseInt(params.pages,10):3;
   let ssPlayerData:PlayerData|undefined = useSSPlayerData(params.ssid);
+  
+  const [sortOrder,setSortOrder] = useState(ScoreSortOrder.RECENT);
+  const [pages,setPages] = useState(3);
+  console.log('set sort order at home is ')
+  console.log(setSortOrder);
+  
   let ssScoresData:Score[]|undefined = useScoresData(params.ssid,sortOrder,pages);
   return (
       <div>
-        <Search/>
+        <Search setSortOrder={setSortOrder}/>
         <HomeContainer>
         {
           ssPlayerData?
@@ -89,9 +93,7 @@ const renderTabs = (ssScoresData:Score[], ssPlayerData:PlayerData) =>{
 }
 
 type HomeParams = {
-  ssid: string; //scoresaber id 
-  sortOrder?:ScoreSortOrder;
-  pages?:string;
+  ssid: string; //scoresaber id
 };
 
 

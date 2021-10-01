@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useCallback, useMemo, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { PlayerData, PlayerInfo } from "../../models/PlayerData";
 import  Score from "../../models/ScoreData";
 import { trackPromise } from 'react-promise-tracker';
@@ -13,8 +13,7 @@ const ssApiSearchPlayerEndpt = 'https://new.scoresaber.com/api/players/by-name/'
 //=================== Fetching Player General Info (name, country, rank, avatar, etc) ====================//
 export function useSSPlayerData(scoresaber_id:string):PlayerData|undefined{
     const [ssPlayerData,setSSPlayerData] = useState<PlayerData>();
-    const [error, setError]: [string, (error: string) => void] = useState("");
-
+    
     useEffect(() => {
       const fetchScores = async () => {
         try {
@@ -36,7 +35,6 @@ export function useSSPlayerData(scoresaber_id:string):PlayerData|undefined{
 
 export function useScoresData(scoresaber_id:string, sortOrder: ScoreSortOrder,pages:number):Score[]|undefined{
   const [scoresData,setScoresData] = useState<Score[]>([]);
-  const [error, setError]: [string, (error: string) => void] = useState("");
 
   useEffect(() => {
     if(!scoresaber_id){
@@ -86,7 +84,6 @@ interface PlayersList{
 export function usePlayerNameSearch(name:string):PlayersList{
   const [listData,setListData] = useState<PlayersList>({playersList:{players:[]}});
   const [loading, setLoading]: [boolean, (loading: boolean) => void] = useState<boolean>(true);
-  const [error, setError]: [string, (error: string) => void] = useState("");
 
   useEffect(() => {
     if(!name){

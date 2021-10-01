@@ -4,8 +4,6 @@ import { timeSince } from "../../../../utils/Time";
 import Difficulty from "../../data/models/Difficulty";
 import  Score  from "../../data/models/ScoreData";
 import Details from "./pli-components/Details";
-import MapDetails from "./pli-components/Details";
-import ScoreDetails from "./pli-components/score-details/ScoreDetails";
 const PlaysLiContainer = styled.li`
     
 .general-play-info{
