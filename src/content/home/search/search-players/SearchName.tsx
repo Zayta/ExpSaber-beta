@@ -8,6 +8,7 @@ import { usePlayerNameSearch } from '../../data/api/hooks/ScoreSaberApi';
 import LoadingIndicator from '../../../../common/Loading';
 import { SearchProps } from '../Search';
 import ScoreSortOrder from '../../data/models/ScoreSortOrder';
+import SelectPages from '../options/SelectPages';
 
 export default class SearchName extends Component<SearchProps,SearchNameState>{
     state:SearchNameState = {
@@ -18,7 +19,7 @@ export default class SearchName extends Component<SearchProps,SearchNameState>{
         this.setState({searched:false})
     }
     componentDidMount(){
-        this.setState({searched:false})
+        this.setState({searched:false});
     }
     changeName = (e: React.FormEvent<HTMLInputElement>): void => {
         this.setState({ ss_name: e.currentTarget.value, searched:false });
@@ -36,7 +37,7 @@ export default class SearchName extends Component<SearchProps,SearchNameState>{
             
             <form onSubmit={this.handleFormSubmit}>
                 <input type="text" name="scoreSaberID" placeholder='search username'value={this.state.ss_name} onChange={this.changeName} />
-                {this.renderSelect()}
+                {this.props.setPages?<SelectPages maxPages={10} setPages={this.props.setPages}/>:<div/>}
                 <button type = 'submit' className = 'search-ico'><Search/></button>
             </form>
             <LoadingIndicator/>
@@ -47,19 +48,7 @@ export default class SearchName extends Component<SearchProps,SearchNameState>{
         </div>
       
     }
-    changePages  = (e:React.ChangeEvent<HTMLSelectElement>):void=>{
-        if(this.props.setPages){
-            this.props.setPages(parseInt(e.target.value));
-        }
-    }
-    renderSelect = () =>{
-        let opts = [];
-        for(let i = 1; i<=10;i++){
-            opts.push(<option key = {i} value = {i}>{i}</option>)
-        }
-        return <select id="searchBy" name="searchBy" defaultValue = {ScoreSortOrder.RECENT} onChange = {this.changePages}>{opts}
-    </select>
-    }
+
 }
 interface SearchNameState{
     ss_name:string,
