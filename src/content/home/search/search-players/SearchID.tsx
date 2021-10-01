@@ -4,9 +4,8 @@ import '../search.scss';
 import { Search } from 'react-feather';
 
 import { Link } from 'react-router-dom';
-import { SearchProps } from '../Search';
 
-export default class SearchID extends Component<SearchProps,SearchIDState>{
+export default class SearchID extends Component{
     state:SearchIDState = {
         ss_id:""
     }

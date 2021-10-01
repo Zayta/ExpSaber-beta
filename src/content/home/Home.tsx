@@ -14,6 +14,7 @@ import { QueryClientProvider } from 'react-query';
 import queryClient from './data/api/ClientProvider';
 import  Score  from './data/models/ScoreData';
 import { useState } from 'react';
+import { SettingsProvider } from './context/settings/SettingsContext';
 
 const HomeContainer = styled.div`
   margin:5px;
@@ -50,12 +51,13 @@ const Home = () =>{
   const [pages,setPages] = useState(3);
 
   return <QueryClientProvider client={queryClient}>
+    <SettingsProvider>
     {
       params.ssid?
       <HomeContent ssid = {params.ssid} pages = {pages}/>:
-      <Search setPages = {setPages}/>
+      <Search/>
     }
-    
+    </SettingsProvider>
     </QueryClientProvider>
 }
 

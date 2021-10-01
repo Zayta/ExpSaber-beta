@@ -6,11 +6,8 @@ import { Search } from 'react-feather';
 import { Link } from 'react-router-dom';
 import { usePlayerNameSearch } from '../../data/api/hooks/ScoreSaberApi';
 import LoadingIndicator from '../../../../common/Loading';
-import { SearchProps } from '../Search';
-import ScoreSortOrder from '../../data/models/ScoreSortOrder';
-import SelectPages from '../options/SelectPages';
 
-export default class SearchName extends Component<SearchProps,SearchNameState>{
+export default class SearchName extends Component{
     state:SearchNameState = {
         ss_name:"",
         searched:false
@@ -37,7 +34,6 @@ export default class SearchName extends Component<SearchProps,SearchNameState>{
             
             <form onSubmit={this.handleFormSubmit}>
                 <input type="text" name="scoreSaberID" placeholder='search username'value={this.state.ss_name} onChange={this.changeName} />
-                {this.props.setPages?<SelectPages maxPages={10} setPages={this.props.setPages}/>:<div/>}
                 <button type = 'submit' className = 'search-ico'><Search/></button>
             </form>
             <LoadingIndicator/>

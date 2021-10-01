@@ -4,7 +4,7 @@ import './search.scss';
 import SearchID from './search-players/SearchID';
 import SearchName from './search-players/SearchName';
 import ScoreSortOrder from '../data/models/ScoreSortOrder';
-export default class Search extends Component<SearchProps,SearchState>{
+export default class Search extends Component{
 
     
     state = {
@@ -44,7 +44,7 @@ export default class Search extends Component<SearchProps,SearchState>{
             break;
             case SearchBy.NAME:
                 
-                return <SearchName setPages={this.props.setPages}/>
+                return <SearchName/>
                 break;
             default:
                 console.log(this.state.searchBy)
@@ -54,11 +54,6 @@ export default class Search extends Component<SearchProps,SearchState>{
 
         }
     }
-}
-
-export interface SearchProps{
-    setSortOrder?:(sortOrder:ScoreSortOrder)=>void,
-    setPages?:(pages:number)=>void
 }
 
 export interface SearchState{
