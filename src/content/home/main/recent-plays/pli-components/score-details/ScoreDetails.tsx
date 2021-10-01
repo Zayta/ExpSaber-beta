@@ -1,18 +1,20 @@
 import React from "react";
 import styled from "styled-components";
+import ProgressBar from "../../../../../../common/ProgressBar";
+import { round } from "../../../../../../utils/Math";
 import { ssLeaderboardURL } from "../../../../data/constants/Constants";
 import  Score  from "../../../../data/models/ScoreData";
 
 const ScoreDetailsContainer = styled.div`
 display:flex;
 flex-direction:column;
+text-size:0.7em;
 `;
 const LevelInfo: React.FC<LevelInfoProps> = ({ score }) =>{
     if(score){
         return <ScoreDetailsContainer>
-                <a target = "_blank" rel="noreferrer" href = {ssLeaderboardURL+score.leaderboardId}>#{score.rank}</a>
-                {score.score}/{score.maxScore}
-                
+                Rank: <a target = "_blank" rel="noreferrer" href = {ssLeaderboardURL+score.leaderboardId}>#{score.rank}</a>
+                    Acc: {round(score.score/score.maxScore*100)}%
         </ScoreDetailsContainer>
     }
     return <div/>

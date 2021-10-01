@@ -49,3 +49,4 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ## Credits
 * [Dynamic Routing tutorial](https://programming.vip/docs/using-typescript-to-write-react-router-5.html) 
 * [Tabs tutorial](https://medium.com/weekly-webtips/create-basic-tabs-component-react-typescript-231a2327f7b6)
+*[Progress Bar](https://dev.to/ramonak/react-how-to-create-a-custom-progress-bar-component-in-5-minutes-2lcl)

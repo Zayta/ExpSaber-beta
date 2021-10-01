@@ -13,7 +13,7 @@ font-size:0.7em;
 `;
 const MapDetails: React.FC<MapDetailsProps> = ({songData,mapDiff})=>{
     return <MapDetailsContainer>
-                  map id: {songData.id}
+                  id: {songData.id}
                   <MapCreationInfo songData={songData}/>
                     {mapDiff?<LevelInfo map_data={mapDiff}/>:<div/>}
                     <a target = "_blank" rel="noreferrer" href = {beatsaverMapPrefix+songData.id}>View on BeatSaver</a>

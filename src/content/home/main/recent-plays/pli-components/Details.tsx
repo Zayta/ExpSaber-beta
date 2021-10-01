@@ -13,6 +13,7 @@ import ScoreDetails from "./score-details/ScoreDetails";
 const DetailsContainer = styled.div`
     display:flex;
     flex-flow:row wrap;
+    justify-content:space-between;
     overflow-wrap:anywhere;
     height:fit-content;
     img#cover{
@@ -20,6 +21,11 @@ const DetailsContainer = styled.div`
       max-height: 100%;
       width: 15vw;
       height: 15vw
+    }
+    h1,h2,h3,h4,h5,h6{
+      font-size:0.7em;
+      margin:0;
+      color:white;
     }
 `;
 function Details(props:DetailsProps) {
@@ -40,9 +46,16 @@ function Details(props:DetailsProps) {
     }
   return <DetailsContainer>
 
+          <div style ={{'display':'flex'}}>
           <img id='cover' src ={data.versions[0].coverURL} alt = ""/>
+          <div>
           <MapDetails songData={data} mapDiff={mapDiff}/>
+          </div>
+          </div>
+          <div>
+            
           <ScoreDetails score = {props.score}/>
+          </div>
           </DetailsContainer>
       
 }
