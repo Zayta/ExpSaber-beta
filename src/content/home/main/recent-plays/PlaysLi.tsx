@@ -7,7 +7,7 @@ import  Score  from "../../data/models/ScoreData";
 import Details from "./pli-components/Details";
 import {Plus,Minus} from "react-feather"
 const LiIndicator = styled.div`
-    *{width:40px; margin-right:10px;};
+    *{width:20px; margin-right:10px;};
 `;
 const PlaysLiContainer = styled.li`
     list-style-type:none;
@@ -54,8 +54,6 @@ justify-content: space-between;
 }
 `;
 const Toggler = styled.div`
-display:flex;
-align-items:center;
 cursor: pointer;
 :hover{
     color: var(--txt-color4);
@@ -82,8 +80,10 @@ const PlaysLi = (props:PlaysLiProps) =>{
                     </LiIndicator>
                 </Toggler>
         <FullPlayInfoContainer>
+            
             <GeneralPlayInfoContainer>
             
+        <Toggler  onClick={toggleDetails}>
                 <TitleImageContainer>
                     
                 <img id = 'cover' src = {mapCoverURL+props.score.songHash.toLowerCase()+'.jpg'}/>        
@@ -95,9 +95,11 @@ const PlaysLi = (props:PlaysLiProps) =>{
                     
                     </div>
                 </TitleImageContainer>
+                </Toggler>
                 <div className = 'score-set-time'>{timeSince(props.score.timeSet)} ago</div>         
                         
             </GeneralPlayInfoContainer>
+           
     
             {
                 showDetails?
