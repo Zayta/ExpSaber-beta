@@ -7,8 +7,8 @@ import { LevelMapData } from "../../../../data/models/SongData";
 const LevelInfoContainer = styled.div`
     display:flex;
     flex-flow: row wrap;
+    padding-right:5px;
     border:1px inset grey;
-    width:50%;
 `;
 const InfoPt = styled.span`
 display:flex;

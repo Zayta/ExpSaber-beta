@@ -1,43 +1,46 @@
-import { memo, useState } from "react";
+import React, { memo, useState } from "react";
 import styled from "styled-components";
 import { timeSince } from "../../../../utils/Time";
+import { mapCoverURL } from "../../data/constants/Constants";
 import Difficulty from "../../data/models/Difficulty";
 import  Score  from "../../data/models/ScoreData";
 import Details from "./pli-components/Details";
+import {Plus,Minus} from "react-feather"
+const LiIndicator = styled.div`
+    *{width:40px; margin-right:10px;};
+`;
 const PlaysLiContainer = styled.li`
-    
-.general-play-info{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-}
-.toggler{
-    cursor: pointer;
-}
-.toggler:hover{
-    color: var(--txt-color4);
-}
-.toggled:hover,.untoggled:hover{
-    opacity: 0.9;
-    color:var(--txt-color4);
-
-}
-.toggled{
-    list-style-type: disc;
-    color:var(--txt-color4)
-}
-.untoggled{
-    list-style-type: circle;
-    color:var(--txt-color2)
-
-}
-.toggled,.untoggled{
-    display: flex;
-    justify-content: space-between;
-    flex-flow: row wrap;
-    align-items: center;
-}
+    list-style-type:none;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    margin:5px 0 5px 0;
+img#cover{
+    max-width: 100%;
+    max-height: 100%;
+    min-height:3em;
+    min-width:3em;
+    width: 5vw;
+    height: 5vw
+  }
+`;
+const TitleImageContainer = styled.div`
+  display:flex;
+  flex-flow:row nowrap;
+  *{
+      margin-left:5px;
+  }
+`;
+const FullPlayInfoContainer = styled.div`
+  display: flex;
+  flex-direction:column;
+  
+width: 100%;
+`
+const GeneralPlayInfoContainer = styled.div`
+display: flex;
+align-items: center;
+justify-content: space-between;
 .score-set-time{
     font-size: 0.7em;
     color:var(--txt-color5);
@@ -47,9 +50,15 @@ const PlaysLiContainer = styled.li`
     
     font-size: 0.7em;
     text-transform: capitalize;
-}
-*+.dif{
     margin-left:10px;
+}
+`;
+const Toggler = styled.div`
+display:flex;
+align-items:center;
+cursor: pointer;
+:hover{
+    color: var(--txt-color4);
 }
 `;
 
@@ -63,27 +72,39 @@ const PlaysLi = (props:PlaysLiProps) =>{
     const mapLvl = getDifficulty(props.score.difficultyRaw);
     
     
-    return <PlaysLiContainer style = {showDetails?{'listStyleType':'disc'}:{'listStyleType':'circle'}}><div className = 'general-play-info'>
-                
-    <div className = 'song-title toggler' onClick={toggleDetails}>
-        <div className = {showDetails?'toggled':'untoggled'}>
-            <div>{props.score.songName} {props.score.songSubName} - {props.score.songAuthorName}</div>
-            <div className = 'dif'>{mapLvl} - {props.score.levelAuthorName}</div>
-        </div>
-       
-    </div>
+    return <PlaysLiContainer>
+        <Toggler  onClick={toggleDetails}>
+                    <LiIndicator>
+                    {
+                        showDetails?<Minus/>:
+                        <Plus/>
+                    }
+                    </LiIndicator>
+                </Toggler>
+        <FullPlayInfoContainer>
+            <GeneralPlayInfoContainer>
+            
+                <TitleImageContainer>
+                    
+                <img id = 'cover' src = {mapCoverURL+props.score.songHash.toLowerCase()+'.jpg'}/>        
+                    <div style = {{'display':'flex','flexDirection':'column'}}>
+                        
+                            <div>{props.score.songName} {props.score.songSubName} - {props.score.songAuthorName}</div>
+                            
+                            <div className='dif'>{mapLvl} - {props.score.levelAuthorName}</div>
+                    
+                    </div>
+                </TitleImageContainer>
+                <div className = 'score-set-time'>{timeSince(props.score.timeSet)} ago</div>         
+                        
+            </GeneralPlayInfoContainer>
     
-    <div className = 'gen-score-info'>
-    <div className = 'score-set-time'>{timeSince(props.score.timeSet)} ago</div>         
-        </div>          
-    </div>
-    <div>
             {
                 showDetails?
                 <Details score = {props.score} mapLvl = {mapLvl}/>
                 :<div/>
             }
-    </div>
+    </FullPlayInfoContainer>
        
     
     </PlaysLiContainer>
