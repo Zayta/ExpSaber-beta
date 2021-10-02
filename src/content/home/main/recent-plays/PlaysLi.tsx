@@ -4,8 +4,10 @@ import { timeSince } from "../../../../utils/Time";
 import { mapCoverURL } from "../../data/constants/Constants";
 import Difficulty from "../../data/models/Difficulty";
 import  Score  from "../../data/models/ScoreData";
-import Details from "./pli-components/Details";
 import {Plus,Minus} from "react-feather"
+import MapDetails from "./pli-components/map-details/MapDetails";
+import ScoreDetails from "./pli-components/score-details/ScoreDetails";
+import SongData, { LevelMapData } from "../../data/models/SongData";
 const LiIndicator = styled.div`
     *{width:20px; margin-right:10px;};
 `;
@@ -67,7 +69,6 @@ const PlaysLi = (props:PlaysLiProps) =>{
         setShowDetails(!showDetails)
             
     }
-    const mapLvl = getDifficulty(props.score.difficultyRaw);
     
     
     return <PlaysLiContainer>
@@ -83,7 +84,6 @@ const PlaysLi = (props:PlaysLiProps) =>{
             
             <GeneralPlayInfoContainer>
             
-        <Toggler  onClick={toggleDetails}>
                 <TitleImageContainer>
                     
                 <img id = 'cover' src = {mapCoverURL+props.score.songHash.toLowerCase()+'.jpg'}/>        
@@ -91,11 +91,11 @@ const PlaysLi = (props:PlaysLiProps) =>{
                         
                             <div>{props.score.songName} {props.score.songSubName} - {props.score.songAuthorName}</div>
                             
-                            <div className='dif'>{mapLvl} - {props.score.levelAuthorName}</div>
-                    
+                            <div className='dif'>{props.playedDiff} - {props.score.levelAuthorName}</div>
+                            
                     </div>
                 </TitleImageContainer>
-                </Toggler>
+                
                 <div className = 'score-set-time'>{timeSince(props.score.timeSet)} ago</div>         
                         
             </GeneralPlayInfoContainer>
@@ -103,7 +103,11 @@ const PlaysLi = (props:PlaysLiProps) =>{
     
             {
                 showDetails?
-                <Details score = {props.score} mapLvl = {mapLvl}/>
+                <>
+                <MapDetails songData={props.songData} lvlMapData={props.lvlMapData}/>
+                
+                <ScoreDetails score = {props.score}/>
+                </>
                 :<div/>
             }
     </FullPlayInfoContainer>
@@ -114,25 +118,12 @@ const PlaysLi = (props:PlaysLiProps) =>{
 
 
 interface PlaysLiProps{
-    score:Score
+    score:Score,
+    songData: SongData | undefined,
+    playedDiff:Difficulty,
+    lvlMapData:LevelMapData | undefined
 }
 
-function getDifficulty(difficulty_str:string):Difficulty{
-    difficulty_str = difficulty_str.toLowerCase().replace(' ','_').replace('-','_'); 
-    if(difficulty_str.includes('plus'))
-        return Difficulty.EXPERT_PLUS;
-    if(difficulty_str.includes('expert'))
-        return Difficulty.EXPERT;
-    if(difficulty_str.includes('hard'))
-        return Difficulty.HARD;
-    if(difficulty_str.includes('normal'))
-        return Difficulty.NORMAL;
-    if(difficulty_str.includes('easy'))
-        return Difficulty.EASY;
-
-
-    return Difficulty.UNKNOWN;
-}
 
 
 

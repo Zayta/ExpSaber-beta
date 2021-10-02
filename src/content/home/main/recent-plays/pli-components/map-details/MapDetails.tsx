@@ -11,17 +11,19 @@ margin-left:10px;
 font-size:0.7em;
 
 `;
-const MapDetails: React.FC<MapDetailsProps> = ({songData,mapDiff})=>{
+const MapDetails: React.FC<MapDetailsProps> = ({songData,lvlMapData})=>{
+    if(!songData)
+        return <div/>
     return <MapDetailsContainer>
                   id: {songData.id}
                   <MapCreationInfo songData={songData}/>
-                    {mapDiff?<LevelInfo map_data={mapDiff}/>:<div/>}
+                    {lvlMapData?<LevelInfo map_data={lvlMapData}/>:<div/>}
                     <a target = "_blank" rel="noreferrer" href = {beatsaverMapPrefix+songData.id}>View on BeatSaver</a>
 
     </MapDetailsContainer>
 }
 interface MapDetailsProps{
-    songData:SongData
-    mapDiff:LevelMapData | undefined;
+    songData:SongData | undefined;
+    lvlMapData:LevelMapData | undefined;
 }
 export default MapDetails;
