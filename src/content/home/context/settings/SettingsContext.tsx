@@ -20,7 +20,7 @@ export const SettingsProvider = ({ children }: Props) => {
   React.useEffect(() => {
     // We'd get the pages from a web API / local storage in a real app
     // We've hardcoded the pages in our example
-    const pages=10;
+    const pages=1;
     setPages(pages);
   }, []);
 
