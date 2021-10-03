@@ -5,7 +5,7 @@ const beatsaverApiPrefix = "https://api.beatsaver.com/";
 
 export async function fetchMapByHash (mapHash:string) {
   console.info("fetch song hash", mapHash);
-  let { data } = await axios.get(await axios.get(beatsaverApiPrefix+"maps/hash/"+mapHash));
+  let { data } = await axios.get(beatsaverApiPrefix+"maps/hash/"+mapHash);
   
   await new Promise((r) => setTimeout(r, 1000));
   return data;

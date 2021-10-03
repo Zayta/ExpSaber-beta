@@ -9,13 +9,16 @@ import PlayerDetails from './player-info/PlayerInfo';
 import RecentPlays from './main/recent-plays/RecentPlays';
 import ScoreSaberOverview from './main/ss-overview/SSProfile';
 import { PlayerData } from './data/models/PlayerData';
-import { QueryClientProvider } from 'react-query';
+import { QueryClientProvider, QueryErrorResetBoundary } from 'react-query';
 
 import queryClient from './data/api/ClientProvider';
 import  Score  from './data/models/ScoreData';
 
 import { SettingsProvider, useSettings } from './context/settings/SettingsContext';
-import  AppSettings  from './context/settings/Settings';
+import { ErrorBoundary } from "react-error-boundary";
+
+import { Suspense } from 'react';
+import LoadingIndicator from '../../common/Loading';
 
 const HomeContainer = styled.div`
   margin:5px;
@@ -44,32 +47,68 @@ width: 50vw;
   width:90vw;
 }
 `;
+const ErrorFallback:React.FC<{error:Error,resetErrorBoundary:(...args: unknown[]) => void}>=({error, resetErrorBoundary})=> {
+  return (
+    <div role="alert">
+      <p>Something went wrong:</p>
+      <pre>{error.message}</pre>
+      <button onClick={resetErrorBoundary}>Try again</button>
+    </div>
+  )
+}
+const myErrorHandler = (error: Error, info: {componentStack: any}) => {
+  // Do something with the error
+  // E.g. log to an error logging client here
+  console.log('error handler')
+  // console.log(error);
+  // console.log(info.componentStack)
+}
+
 const Home = () =>{
   
   const params = useParams<HomeParams>();//grab params from url
-  
+  console.log('params',params)
 
   return <QueryClientProvider client={queryClient}>
     <SettingsProvider>
-    {
-      params.ssid?
-      <HomeContent ssid = {params.ssid}/>:
       <Search/>
-    }
+    <QueryErrorResetBoundary>
+        {({ reset }) => (
+          <ErrorBoundary
+          FallbackComponent={ErrorFallback}
+          onReset={() => {
+            // reset the state of your app so the error doesn't happen again
+            console.log('reseting with params:',params)
+          }}
+          resetKeys={[params.ssid]}
+          onError={myErrorHandler}
+          >
+            <Suspense fallback={<LoadingIndicator/>}>
+            {
+              params.ssid?
+              <HomeContent ssid = {params.ssid}/>:
+              <div/>
+            }
+            </Suspense>
+          </ErrorBoundary>
+        )}
+      </QueryErrorResetBoundary>
+    
+    
     </SettingsProvider>
     </QueryClientProvider>
 }
 
 
 const HomeContent:React.FC<{ssid:string}> =  ({ssid}) => {
-  
+  console.log('ssid is ',JSON.stringify(ssid));
   const {pages} = useSettings()!;
+  console.log('pages:',pages)
   let ssPlayerData:PlayerData|undefined = useSSPlayerData(ssid);
   
   let ssScoresData:Score[]|undefined = useScoresData(ssid,ScoreSortOrder.RECENT,pages);
   return (
       <div>
-        <Search/>
         <HomeContainer>
         {
           ssPlayerData?

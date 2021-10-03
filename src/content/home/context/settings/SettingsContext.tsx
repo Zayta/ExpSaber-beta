@@ -2,7 +2,7 @@
 import * as React from "react";
 import { render } from "react-dom";
 
-const defaultMaxPages = 10;
+const defaultPages = 0;
 type SettingsContextType = {
   pages: number;
   setPages: (value: number) => void;
@@ -15,7 +15,7 @@ type Props = {
   children: React.ReactNode;
 };
 export const SettingsProvider = ({ children }: Props) => {
-  const [pages, setPages] = React.useState(defaultMaxPages);
+  const [pages, setPages] = React.useState(defaultPages);
 
   React.useEffect(() => {
     // We'd get the pages from a web API / local storage in a real app

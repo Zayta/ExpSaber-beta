@@ -1,19 +1,22 @@
 import { memo } from "react";
 import LoadingIndicator from "./../../../../common/Loading";
-import useBeatSaverData from "./../../data/api/hooks/BeatSaverApi"
+import useBeatSaverData, { fetchMapByHash } from "./../../data/api/hooks/BeatSaverApi"
 import { comboMultiplier, maxScorePerNote } from "./../../data/constants/Constants";
 import Difficulty from "./../../data/models/Difficulty";
 import Score from "./../../data/models/ScoreData";
 import { LevelMapData} from "./../../data/models/SongData";
 import PlaysLi from "./PlaysLi";
+import { useErrorHandler } from 'react-error-boundary'
+
 function PlaysLiHoc(props:PlaysLiHocProps) {
   const { status, data, error } = useBeatSaverData(props.score.songHash);
+  useErrorHandler(error)
   const playedDiff = getDifficulty(props.score.difficultyRaw);
     
   if(!data||status === "loading"){
     return <LoadingIndicator/>
   }
-  if(status === "error"||error){
+  if(status === "error"){
     return <span>Error: {error}</span>
   }
   let lvlMapData;
@@ -53,4 +56,4 @@ function getDifficulty(difficulty_str:string):Difficulty{
 interface PlaysLiHocProps{
     score:Score
 }
-export default memo(PlaysLiHoc);
+export default (PlaysLiHoc);
