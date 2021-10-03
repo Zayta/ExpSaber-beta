@@ -13,5 +13,3 @@ export const mapCoverURL = "https://na.cdn.beatsaver.com/"//<append hash>
 export const avatarPrefix = 'https://new.scoresaber.com';
 export const ssLeaderboardURL = 'https://scoresaber.com/leaderboard/';
 export const ssWebProfilePrefix = 'https://scoresaber.com/u/';
-
-export const corsPrefix = "https://git.heroku.com/zayta-cors.git/"
