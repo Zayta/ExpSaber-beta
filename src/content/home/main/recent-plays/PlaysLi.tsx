@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import { memo, useState } from "react";
 import styled from "styled-components";
 import { timeSince } from "../../../../utils/Time";
 import { mapCoverURL } from "../../data/constants/Constants";
@@ -8,6 +8,7 @@ import {Plus,Minus} from "react-feather"
 import MapDetails from "./pli-components/map-details/MapDetails";
 import ScoreDetails from "./pli-components/score-details/ScoreDetails";
 import SongData, { LevelMapData } from "../../data/models/SongData";
+import MapActions from "./pli-components/map-actions/MapActions";
 const LiIndicator = styled.div`
     *{width:20px; margin-right:10px;};
 `;
@@ -86,13 +87,13 @@ const PlaysLi = (props:PlaysLiProps) =>{
             
                 <TitleImageContainer>
                     
-                <img id = 'cover' src = {mapCoverURL+props.score.songHash.toLowerCase()+'.jpg'}/>        
+                <img id = 'cover' alt = "" src = {mapCoverURL+props.score.songHash.toLowerCase()+'.jpg'}/>        
                     <div style = {{'display':'flex','flexDirection':'column'}}>
                         
                             <div>{props.score.songName} {props.score.songSubName} - {props.score.songAuthorName}</div>
                             
                             <div className='dif'>{props.playedDiff} - {props.score.levelAuthorName}</div>
-                            
+                            <MapActions songData = {props.songData}/>
                     </div>
                 </TitleImageContainer>
                 

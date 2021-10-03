@@ -1,9 +1,12 @@
-import React,{ChangeEventHandler, Component, FormEventHandler} from 'react';
+import {Component} from 'react';
 import './search.scss';
 
 import SearchID from './search-players/SearchID';
 import SearchName from './search-players/SearchName';
-import ScoreSortOrder from '../data/models/ScoreSortOrder';
+enum SearchBy{
+    NAME=0,
+    ID=1
+}
 export default class Search extends Component{
 
     
@@ -41,11 +44,11 @@ export default class Search extends Component{
         switch(+this.state.searchBy){
             case SearchBy.ID:
                 return <SearchID />
-            break;
+            
             case SearchBy.NAME:
                 
                 return <SearchName/>
-                break;
+                
             default:
                 console.log(this.state.searchBy)
             return <div>
@@ -57,9 +60,6 @@ export default class Search extends Component{
 }
 
 export interface SearchState{
-    searchBy?:SearchBy
+    searchBy:SearchBy
 }
-enum SearchBy{
-    NAME=0,
-    ID=1
-}
+

@@ -48,7 +48,7 @@ const Home = () =>{
   
   const params = useParams<HomeParams>();//grab params from url
   
-  const [pages,setPages] = useState(3);
+  const [pages,setPages] = useState(1);
 
   return <QueryClientProvider client={queryClient}>
     <SettingsProvider>

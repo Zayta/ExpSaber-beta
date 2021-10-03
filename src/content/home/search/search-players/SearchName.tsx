@@ -1,4 +1,4 @@
-import React,{Component, ReactHTMLElement} from 'react';
+import React,{Component} from 'react';
 import '../search.scss';
 
 import { Search } from 'react-feather';

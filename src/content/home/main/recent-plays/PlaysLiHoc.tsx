@@ -1,5 +1,4 @@
 import { memo } from "react";
-import styled from "styled-components";
 import LoadingIndicator from "./../../../../common/Loading";
 import useBeatSaverData from "./../../data/api/hooks/BeatSaverApi"
 import { comboMultiplier, maxScorePerNote } from "./../../data/constants/Constants";

@@ -2,8 +2,8 @@
 
 
 //in beat saber, each note is worth 115 points, with combo multiplier of (max) 8 
-const maxScorePerNote = 115;
-const comboMultiplier = 8;
+export const maxScorePerNote = 115;
+export const comboMultiplier = 8;
 
 //beat saver urls
 export const beatsaverMapPrefix = "https://beatsaver.com/maps/";
@@ -14,4 +14,4 @@ export const avatarPrefix = 'https://new.scoresaber.com';
 export const ssLeaderboardURL = 'https://scoresaber.com/leaderboard/';
 export const ssWebProfilePrefix = 'https://scoresaber.com/u/';
 
-export {maxScorePerNote,comboMultiplier};
+export const corsPrefix = "https://git.heroku.com/zayta-cors.git/"
