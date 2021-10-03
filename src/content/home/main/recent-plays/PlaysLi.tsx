@@ -73,21 +73,23 @@ const PlaysLi = (props:PlaysLiProps) =>{
     
     
     return <PlaysLiContainer>
-        <Toggler  onClick={toggleDetails}>
+        
+        <FullPlayInfoContainer>
+            
+            <GeneralPlayInfoContainer>
+            
+                <TitleImageContainer>
+                <div style = {{'display':'flex','height':'fit-content','alignItems':'center'}}>
+                {/* <Toggler  onClick={toggleDetails}>
                     <LiIndicator>
                     {
                         showDetails?<Minus/>:
                         <Plus/>
                     }
                     </LiIndicator>
-                </Toggler>
-        <FullPlayInfoContainer>
-            
-            <GeneralPlayInfoContainer>
-            
-                <TitleImageContainer>
-                    
-                <img id = 'cover' alt = "" src = {mapCoverURL+props.score.songHash.toLowerCase()+'.jpg'}/>        
+                </Toggler> */}
+                <img id = 'cover' alt = "" src = {mapCoverURL+props.score.songHash.toLowerCase()+'.jpg'}/>  
+                </div>      
                     <div style = {{'display':'flex','flexDirection':'column'}}>
                         
                             <div>{props.score.songName} {props.score.songSubName} - {props.score.songAuthorName}</div>
