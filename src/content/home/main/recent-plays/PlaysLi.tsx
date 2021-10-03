@@ -10,7 +10,7 @@ import ScoreDetails from "./score-details/ScoreDetails";
 import SongData, { LevelMapData } from "../../data/models/SongData";
 import MapActions from "./map-actions/MapActions";
 const LiIndicator = styled.div`
-    *{width:20px; margin-right:10px;};
+    *{width:10px; margin-right:10px;};
 `;
 const PlaysLiContainer = styled.li`
     list-style-type:none;
@@ -80,14 +80,14 @@ const PlaysLi = (props:PlaysLiProps) =>{
             
                 <TitleImageContainer>
                 <div style = {{'display':'flex','height':'fit-content','alignItems':'center'}}>
-                {/* <Toggler  onClick={toggleDetails}>
+                <Toggler  onClick={toggleDetails}>
                     <LiIndicator>
                     {
                         showDetails?<Minus/>:
                         <Plus/>
                     }
                     </LiIndicator>
-                </Toggler> */}
+                </Toggler>
                 <img id = 'cover' alt = "" src = {mapCoverURL+props.score.songHash.toLowerCase()+'.jpg'}/>  
                 </div>      
                     <div style = {{'display':'flex','flexDirection':'column'}}>
