@@ -1,7 +1,7 @@
 //options to download, request map on twitch, view on Beatsaver
 
 import styled from "styled-components";
-import SongData from "../../../../data/models/SongData";
+import SongData from "../../../data/models/SongData";
 import TwitchRq from "./TwitchRq";
 
 const MapActionsContainer = styled.div`

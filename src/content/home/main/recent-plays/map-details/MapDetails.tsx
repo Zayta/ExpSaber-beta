@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { beatsaverMapPrefix } from "../../../../data/constants/Constants";
-import SongData, { LevelMapData } from "../../../../data/models/SongData";
+import { beatsaverMapPrefix } from "../../../data/constants/Constants";
+import SongData, { LevelMapData } from "../../../data/models/SongData";
 import LevelInfo from "./LevelInfo";
 import MapCreationInfo from "./MapCreationInfo";
 

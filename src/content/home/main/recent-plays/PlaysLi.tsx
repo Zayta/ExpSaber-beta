@@ -5,10 +5,10 @@ import { mapCoverURL } from "../../data/constants/Constants";
 import Difficulty from "../../data/models/Difficulty";
 import  Score  from "../../data/models/ScoreData";
 import {Plus,Minus} from "react-feather"
-import MapDetails from "./pli-components/map-details/MapDetails";
-import ScoreDetails from "./pli-components/score-details/ScoreDetails";
+import MapDetails from "./map-details/MapDetails";
+import ScoreDetails from "./score-details/ScoreDetails";
 import SongData, { LevelMapData } from "../../data/models/SongData";
-import MapActions from "./pli-components/map-actions/MapActions";
+import MapActions from "./map-actions/MapActions";
 const LiIndicator = styled.div`
     *{width:20px; margin-right:10px;};
 `;
