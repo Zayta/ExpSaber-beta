@@ -29,7 +29,7 @@ export default class Search extends Component{
         return <div className = 'search-container'>
             <div className = 'search-criteria'>
             <label>Search By </label>
-            <select id="searchBy" name="searchBy" defaultValue = {this.state.searchBy} value = {this.state.searchBy} onChange = {this.updateSearchCriteria}>
+            <select id="searchBy" name="searchBy" value = {this.state.searchBy} onChange = {this.updateSearchCriteria}>
                 <option value={SearchBy.ID}>ID</option>
                 <option value={SearchBy.NAME}>Name</option>
             </select>

@@ -21,7 +21,7 @@ const RecentPlays = (props:RecentPlaysProps) =>{
         ||filter==='';
     }
 
-    if(!props.scoresData){
+    if(!props.scoresData||!props.scoresData.length){
         return <div>No recent plays</div>
     }
     return <div>

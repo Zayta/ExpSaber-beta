@@ -67,7 +67,7 @@ export function useScoresData(scoresaber_id:string, sortOrder: ScoreSortOrder,pa
       }
      };
      fetchScores();
-  }, [scoresaber_id]);
+  }, [scoresaber_id,pages]);
   
   return scoresData
 
