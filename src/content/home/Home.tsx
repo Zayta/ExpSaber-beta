@@ -13,8 +13,9 @@ import { QueryClientProvider } from 'react-query';
 
 import queryClient from './data/api/ClientProvider';
 import  Score  from './data/models/ScoreData';
-import { useState } from 'react';
-import { SettingsProvider } from './context/settings/SettingsContext';
+
+import { SettingsProvider, useSettings } from './context/settings/SettingsContext';
+import  AppSettings  from './context/settings/Settings';
 
 const HomeContainer = styled.div`
   margin:5px;
@@ -43,18 +44,16 @@ width: 50vw;
   width:90vw;
 }
 `;
-
 const Home = () =>{
   
   const params = useParams<HomeParams>();//grab params from url
   
-  const [pages,setPages] = useState(1);
 
   return <QueryClientProvider client={queryClient}>
     <SettingsProvider>
     {
       params.ssid?
-      <HomeContent ssid = {params.ssid} pages = {pages}/>:
+      <HomeContent ssid = {params.ssid}/>:
       <Search/>
     }
     </SettingsProvider>
@@ -62,7 +61,9 @@ const Home = () =>{
 }
 
 
-const HomeContent:React.FC<{ssid:string,pages:number}> =  ({ssid,pages}) => {
+const HomeContent:React.FC<{ssid:string}> =  ({ssid}) => {
+  
+  const {pages} = useSettings()!;
   let ssPlayerData:PlayerData|undefined = useSSPlayerData(ssid);
   
   let ssScoresData:Score[]|undefined = useScoresData(ssid,ScoreSortOrder.RECENT,pages);

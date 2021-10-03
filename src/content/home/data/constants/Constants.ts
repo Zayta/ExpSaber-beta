@@ -1,5 +1,5 @@
 //this file contains constants to be used in the rest of the application
-
+export const maxPages = 10;
 
 //in beat saber, each note is worth 115 points, with combo multiplier of (max) 8 
 export const maxScorePerNote = 115;

@@ -13,7 +13,7 @@ function PlaysLiHoc(props:PlaysLiHocProps) {
   if(!data||status === "loading"){
     return <LoadingIndicator/>
   }
-  if(status === "error"){
+  if(status === "error"||error){
     return <span>Error: {error}</span>
   }
   let lvlMapData;
