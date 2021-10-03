@@ -9,7 +9,7 @@ display:flex;
 flex-direction:column;
 text-size:0.7em;
 `;
-const LevelInfo: React.FC<LevelInfoProps> = ({ score }) =>{
+const LevelInfo = ({ score }:LevelInfoProps) =>{
     if(score){
         return <ScoreDetailsContainer>
                 Rank: <a target = "_blank" rel="noreferrer" href = {ssLeaderboardURL+score.leaderboardId}>#{score.rank}</a>

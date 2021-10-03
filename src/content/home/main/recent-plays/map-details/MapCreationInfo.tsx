@@ -3,7 +3,7 @@ import styled from "styled-components";
 import SongData from "../../../data/models/SongData";
 
 const MapCreationInfoContainer = styled.div``;
-const MapCreationInfo: React.FC<MapCreationInfoProps> = ({ songData }) =>{
+const MapCreationInfo = ({ songData }:MapCreationInfoProps) =>{
     if(songData){
 
         const createdAtDate:Date = new Date(songData.createdAt);

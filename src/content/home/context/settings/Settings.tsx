@@ -1,7 +1,7 @@
 import { useState } from "react";
 import SelectPages from "./options/SelectPages";
 import {Settings} from "react-feather"
-const AppSettings:React.FC<{}>=()=>{
+const AppSettings=()=>{
     const [toggled,setToggled] = useState<boolean>(false);
     function toggle(){
         setToggled(!toggled);
