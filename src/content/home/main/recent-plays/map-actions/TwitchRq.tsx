@@ -7,6 +7,8 @@ import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { useState } from "react";
 const TwitchRqContainer = styled.div`
     width:fit-content;
+    color:inherit;
+    background:inherit;
     :hover{
         cursor:pointer
     };
