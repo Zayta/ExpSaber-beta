@@ -18,7 +18,7 @@ import { SettingsProvider, useSettings } from './context/settings/SettingsContex
 import { ErrorBoundary } from "react-error-boundary";
 
 import { Suspense } from 'react';
-import LoadingIndicator from '../../common/Loading';
+import { Loader } from 'react-feather';
 
 const HomeContainer = styled.div`
   margin:5px;
@@ -72,27 +72,26 @@ const Home = () =>{
   return <QueryClientProvider client={queryClient}>
     <SettingsProvider>
       <Search/>
-    <QueryErrorResetBoundary>
+    {/* <QueryErrorResetBoundary>
         {({ reset }) => (
           <ErrorBoundary
           FallbackComponent={ErrorFallback}
-          onReset={() => {
-            // reset the state of your app so the error doesn't happen again
-            console.log('reseting with params:',params)
-          }}
+          onReset={reset}
           resetKeys={[params.ssid]}
           onError={myErrorHandler}
           >
-            <Suspense fallback={<LoadingIndicator/>}>
+            <Suspense fallback={<Loader/>}>
+            { */}
             {
               params.ssid?
               <HomeContent ssid = {params.ssid}/>:
               <div/>
             }
+            {/* }
             </Suspense>
           </ErrorBoundary>
         )}
-      </QueryErrorResetBoundary>
+      </QueryErrorResetBoundary> */}
     
     
     </SettingsProvider>

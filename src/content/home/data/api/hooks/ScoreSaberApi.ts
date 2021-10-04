@@ -64,6 +64,7 @@ export function useScoresData(scoresaber_id:string, sortOrder: ScoreSortOrder,pa
             
       }catch (err) {
         console.log('Error:', err);
+        return [];
       }
      };
      fetchScores();

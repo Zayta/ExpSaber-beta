@@ -144,4 +144,4 @@ interface PlaysLiProps{
 
 
 
-export default memo(PlaysLi);
+export default (PlaysLi);

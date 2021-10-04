@@ -21,7 +21,6 @@ const RecentPlays = (props:RecentPlaysProps) =>{
         || s.levelAuthorName.toLowerCase().includes(filterLC)
         ||filter==='';
     }
-
     if(!props.scoresData||!props.scoresData.length){
         return <div>No recent plays</div>
     }
