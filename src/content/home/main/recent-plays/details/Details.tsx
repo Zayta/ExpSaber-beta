@@ -1,11 +1,9 @@
 import { memo } from "react";
-import LoadingIndicator from "../../../../../common/Loading";
 import useBeatSaverData from "../../../data/api/hooks/BeatSaverApi"
 import { comboMultiplier, maxScorePerNote } from "../../../data/constants/Constants";
 import Difficulty from "../../../data/models/Difficulty";
 import Score from "../../../data/models/ScoreData";
 import { LevelMapData} from "../../../data/models/SongData";
-import { useErrorHandler } from 'react-error-boundary'
 import styled from "styled-components";
 import MapDetails from "./map-details/MapDetails";
 import MapActions from "./map-actions/MapActions";
@@ -19,8 +17,6 @@ justify-content:space-between;
 `;
 function Details(props:DetailsProps) {
   const { status, data, error } = useBeatSaverData(props.score.songHash);
-//   useErrorHandler(error);
-  console.log('render');
   if(!data||status === "loading"){
     return <DetailsContainer><Loader/></DetailsContainer>
   }

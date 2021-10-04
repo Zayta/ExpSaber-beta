@@ -1,6 +1,6 @@
 //options to download, request map on twitch, view on Beatsaver
 
-import { Box, Download, DownloadCloud, Play } from "react-feather";
+import { Box, Download, DownloadCloud, Music, Play } from "react-feather";
 import styled from "styled-components";
 import { beatsaverMapPrefix } from "../../../../data/constants/Constants";
 import SongData from "../../../../data/models/SongData";
@@ -29,7 +29,7 @@ const MapActions:React.FC<MapActionsProps> = ({songData})=>{
 
         <a className = 'action'title="Download zip" aria-label="Download zip" href = {songData.versions[0].downloadURL}><Download/></a>
 
-        <a className = 'action' title="Preview" aria-label="Preview" href = {songData.versions[0].previewURL}><Play/></a>
+        <a className = 'action' title="Audio Sample" aria-label="Audio Sample" href = {songData.versions[0].previewURL}><Music/></a>
         <a className = 'action'href="beatsaver://188c9" title="One-Click" aria-label="One-Click"><i className="fas fa-cloud-download-alt text-info"></i></a>
     </MapActionsContainer>
 }

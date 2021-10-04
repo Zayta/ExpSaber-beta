@@ -43,10 +43,7 @@ justify-content: space-between;
 `;
 
 const Header = () =>{
-    
-  const location = useLocation();
-  console.log(location.pathname);
-    // let showSearch = true;
+
 
     return  <HeaderContainer>
             {/* <div className = {showSearch?'title-and-search':'hidden'}> */}

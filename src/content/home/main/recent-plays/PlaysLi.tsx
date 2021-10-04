@@ -61,7 +61,7 @@ display:flex;
     align-items:center;
 cursor: pointer;
 :hover{
-    color: var(--txt-color4);
+    color: var(--txt-color3);
 }
 `;
 
