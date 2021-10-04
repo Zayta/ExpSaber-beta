@@ -4,11 +4,17 @@ import { timeSince } from "../../../../utils/Time";
 import { mapCoverURL } from "../../data/constants/Constants";
 import Difficulty from "../../data/models/Difficulty";
 import  Score  from "../../data/models/ScoreData";
-import {Plus,Minus} from "react-feather"
 import Details from "./details/Details";
+import { mobileBreakpoint } from "../../../../config";
+import { ChevronRight, Minus, Plus } from "react-feather";
 const LiIndicator = styled.div`
-    
-    *{width:20px;};
+@media only screen and (max-width: ${mobileBreakpoint}) {
+    * {
+        display:none;
+        width:0;
+    }
+  }
+    *{width:12px;};
 `;
 const PlaysLiContainer = styled.li`
     list-style-type:none;
@@ -30,7 +36,7 @@ const TitleImageContainer = styled.div`
   display:flex;
   flex-flow:row nowrap;
   #cover+div{
-      margin-left:10px;
+      margin-left:15px;
   }
 `;
 const GeneralPlayInfoContainer = styled.div`
@@ -60,7 +66,8 @@ cursor: pointer;
 `;
 
 const PlaysLi = (props:PlaysLiProps) =>{
-    const [showDetails,setShowDetails] = useState<boolean>();
+    const initShowDetails = props.initShowDetails?props.initShowDetails:false;
+    const [showDetails,setShowDetails] = useState<boolean>(initShowDetails);
 
     const toggleDetails = ()=>{
         setShowDetails(!showDetails)
@@ -71,16 +78,16 @@ const PlaysLi = (props:PlaysLiProps) =>{
     
     return <PlaysLiContainer>
         <Toggler  onClick={toggleDetails}>
-            <LiIndicator>
+            <LiIndicator >
             {
-                showDetails?<Minus/>:
-                <Plus/>
+                showDetails?<Minus/>:<Plus/>
             }
             </LiIndicator>
         </Toggler>
         
             <GeneralPlayInfoContainer>
             
+            <Toggler onClick={toggleDetails}>
                 <TitleImageContainer>
                 
                 <img id = 'cover' alt = "" src = {mapCoverURL+props.score.songHash.toLowerCase()+'.jpg'}/>  
@@ -93,6 +100,7 @@ const PlaysLi = (props:PlaysLiProps) =>{
                             
                     </div>
                 </TitleImageContainer>
+            </Toggler>
                 
                 <div className = 'score-set-time'>{timeSince(props.score.timeSet)} ago</div>         
                         
@@ -130,6 +138,7 @@ function getDifficulty(difficulty_str:string):Difficulty{
 
 interface PlaysLiProps{
     score:Score
+    initShowDetails?:boolean;
 }
 
 

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { numInitialLoadedMapData } from "../../data/constants/Constants";
 import  Score  from "../../data/models/ScoreData";
 import PlaysLi from "./PlaysLi";
 const FilterContainer = styled.div`
@@ -36,7 +37,7 @@ const RecentPlays = (props:RecentPlaysProps) =>{
             </FilterContainer>
         <ul>
         {
-            props.scoresData.filter(filterCondition).map(score =><PlaysLi key = {score.scoreId} score = {score}/>)
+            props.scoresData.filter(filterCondition).map((score,index) =><PlaysLi key = {score.scoreId} score = {score} initShowDetails={index<numInitialLoadedMapData}/>)
         }
         </ul>
         </div>

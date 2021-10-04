@@ -1,8 +1,7 @@
 //https://codesandbox.io/s/react-ts-complex-context-function-f1cv4?fontsize=14&hidenavigation=1&pages=dark&file=/src/index.tsx:0-1402
 import * as React from "react";
-import { render } from "react-dom";
 
-const defaultPages = 0;
+const defaultPages = 5;
 type SettingsContextType = {
   pages: number;
   setPages: (value: number) => void;
@@ -20,7 +19,7 @@ export const SettingsProvider = ({ children }: Props) => {
   React.useEffect(() => {
     // We'd get the pages from a web API / local storage in a real app
     // We've hardcoded the pages in our example
-    const pages=1;
+    const pages=defaultPages;
     setPages(pages);
   }, []);
 
