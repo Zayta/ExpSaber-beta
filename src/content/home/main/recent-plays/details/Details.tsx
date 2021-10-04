@@ -10,17 +10,19 @@ import styled from "styled-components";
 import MapDetails from "./map-details/MapDetails";
 import MapActions from "./map-actions/MapActions";
 import ScoreDetails from "./score-details/ScoreDetails";
+import { Loader } from "react-feather";
 
 const DetailsContainer = styled.div`
 margin:0 10px;
 display:flex;
+justify-content:space-between;
 `;
 function Details(props:DetailsProps) {
   const { status, data, error } = useBeatSaverData(props.score.songHash);
-  useErrorHandler(error);
-  <LoadingIndicator/>
+//   useErrorHandler(error);
+  console.log('render');
   if(!data||status === "loading"){
-    return <div/>
+    return <DetailsContainer><Loader/></DetailsContainer>
   }
   if(status === "error"||error){
       console.log(error)
@@ -35,10 +37,11 @@ function Details(props:DetailsProps) {
       props.score.maxScore=lvlMapData.notes*maxScorePerNote*comboMultiplier;
     }
   return <DetailsContainer>
+      <div>
             <MapActions songData = {data}/>
             
             <MapDetails songData={data} lvlMapData={lvlMapData}/>
-            
+           </div> 
             <ScoreDetails score = {props.score}/>
         </DetailsContainer>    
 }

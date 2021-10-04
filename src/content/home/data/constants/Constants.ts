@@ -5,6 +5,9 @@ export const maxPages = 5;
 export const maxScorePerNote = 115;
 export const comboMultiplier = 8;
 
+//query
+export const queryCacheStaleTime = 5*60*1000;
+
 //beat saver urls
 export const beatsaverMapPrefix = "https://beatsaver.com/maps/";
 export const iconURL = "https://beatsaver.com/static/icons/";

@@ -1,13 +1,15 @@
 import axios from "axios";
 import { trackPromise } from "react-promise-tracker";
 import { useQuery} from "react-query";
+import { queryCacheStaleTime } from "../../constants/Constants";
 import SongData from "../../models/SongData";
+import queryClient from "../ClientProvider";
 const beatsaverApiPrefix = "https://api.beatsaver.com/";
 
 export async function fetchMapByHash (mapHash:string) {
   console.info("fetch song hash", mapHash);
   try{
-    let { data } = await trackPromise(axios.get(beatsaverApiPrefix+"maps/hash/"+mapHash));
+    let { data } = await (axios.get(beatsaverApiPrefix+"maps/hash/"+mapHash));
     
     await new Promise((r) => setTimeout(r, 1000));
     return data;
@@ -18,5 +20,9 @@ export async function fetchMapByHash (mapHash:string) {
 }
 
 export default function useBeatSaverData(mapHash:string) {
-  return useQuery<SongData,Error>(["map", mapHash], () => fetchMapByHash(mapHash),{ useErrorBoundary: true });
+  return useQuery<SongData,Error>(["map", mapHash], () => fetchMapByHash(mapHash),{ useErrorBoundary: true,staleTime: queryCacheStaleTime  });
+}
+export async function preFetchBeatSaverData(mapHash:string){
+  // The results of this query will be cached like a normal query
+  await queryClient.prefetchQuery(["map", mapHash], () => fetchMapByHash(mapHash),{staleTime: queryCacheStaleTime  })
 }

@@ -14,10 +14,7 @@ const MapDetails: React.FC<MapDetailsProps> = ({songData,lvlMapData})=>{
     if(!songData)
         return <div/>
     return <MapDetailsContainer>
-                  id: {songData.id}
-                  <MapCreationInfo songData={songData}/>
                     {lvlMapData?<LevelInfo map_data={lvlMapData}/>:<div/>}
-                    <a target = "_blank" rel="noreferrer" href = {beatsaverMapPrefix+songData.id}>View on BeatSaver</a>
 
     </MapDetailsContainer>
 }
