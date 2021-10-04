@@ -11,7 +11,10 @@ import MapDetails from "./map-details/MapDetails";
 import MapActions from "./map-actions/MapActions";
 import ScoreDetails from "./score-details/ScoreDetails";
 
-const DetailsContainer = styled.div``;
+const DetailsContainer = styled.div`
+margin:0 10px;
+display:flex;
+`;
 function Details(props:DetailsProps) {
   const { status, data, error } = useBeatSaverData(props.score.songHash);
   useErrorHandler(error);
@@ -32,8 +35,9 @@ function Details(props:DetailsProps) {
       props.score.maxScore=lvlMapData.notes*maxScorePerNote*comboMultiplier;
     }
   return <DetailsContainer>
-            <MapDetails songData={data} lvlMapData={lvlMapData}/>
             <MapActions songData = {data}/>
+            
+            <MapDetails songData={data} lvlMapData={lvlMapData}/>
             
             <ScoreDetails score = {props.score}/>
         </DetailsContainer>    

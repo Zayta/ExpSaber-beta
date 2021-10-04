@@ -7,7 +7,6 @@ import MapCreationInfo from "./MapCreationInfo";
 const MapDetailsContainer=styled.div`
 display:flex;
 flex-direction:column;
-margin-left:10px;
 font-size:0.7em;
 
 `;
