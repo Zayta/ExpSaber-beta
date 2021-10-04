@@ -17,7 +17,7 @@ export function useSSPlayerData(scoresaber_id:string):PlayerData|undefined{
     useEffect(() => {
       const fetchScores = async () => {
         try {
-          const srerResponse = await axios.get(ssPlayerApiEndptPrefix+scoresaber_id+'/full');
+          const srerResponse = await trackPromise(axios.get(ssPlayerApiEndptPrefix+scoresaber_id+'/full'));
           setSSPlayerData(srerResponse.data);
           
         }catch (err) {
@@ -49,7 +49,7 @@ export function useScoresData(scoresaber_id:string, sortOrder: ScoreSortOrder,pa
             urls.push(base_sr_url+i);
         }
         let scoresResponse  = await Promise.all(urls.map(
-            async url=>await axios.get(url)));
+            async url=>await trackPromise(axios.get(url))));
             
         let scores:Score[] = [];
         scoresResponse.forEach(sr=>{

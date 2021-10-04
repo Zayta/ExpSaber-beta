@@ -5,10 +5,11 @@ import { mapCoverURL } from "../../data/constants/Constants";
 import Difficulty from "../../data/models/Difficulty";
 import  Score  from "../../data/models/ScoreData";
 import {Plus,Minus} from "react-feather"
-import MapDetails from "./map-details/MapDetails";
-import ScoreDetails from "./score-details/ScoreDetails";
+import MapDetails from "./details/map-details/MapDetails";
+import ScoreDetails from "./details/score-details/ScoreDetails";
 import SongData, { LevelMapData } from "../../data/models/SongData";
-import MapActions from "./map-actions/MapActions";
+import MapActions from "./details/map-actions/MapActions";
+import Details from "./details/Details";
 const LiIndicator = styled.div`
     *{width:10px; margin-right:10px;};
 `;
@@ -70,7 +71,8 @@ const PlaysLi = (props:PlaysLiProps) =>{
         setShowDetails(!showDetails)
             
     }
-    
+    const playedDiff = getDifficulty(props.score.difficultyRaw);
+  
     
     return <PlaysLiContainer>
         
@@ -94,8 +96,8 @@ const PlaysLi = (props:PlaysLiProps) =>{
                         
                             <div>{props.score.songName} {props.score.songSubName} - {props.score.songAuthorName}</div>
                             
-                            <div className='dif'>{props.playedDiff} - {props.score.levelAuthorName}</div>
-                            <MapActions songData = {props.songData}/>
+                            <div className='dif'>{playedDiff} - {props.score.levelAuthorName}</div>
+                            
                     </div>
                 </TitleImageContainer>
                 
@@ -107,9 +109,7 @@ const PlaysLi = (props:PlaysLiProps) =>{
             {
                 showDetails?
                 <>
-                <MapDetails songData={props.songData} lvlMapData={props.lvlMapData}/>
-                
-                <ScoreDetails score = {props.score}/>
+                <Details score = {props.score} playedDiff = {playedDiff}/>
                 </>
                 :<div/>
             }
@@ -120,11 +120,26 @@ const PlaysLi = (props:PlaysLiProps) =>{
 }
 
 
+//parses the difficulty level from data string
+function getDifficulty(difficulty_str:string):Difficulty{
+    difficulty_str = difficulty_str.toLowerCase().replace(' ','_').replace('-','_'); 
+    if(difficulty_str.includes('plus'))
+        return Difficulty.EXPERT_PLUS;
+    if(difficulty_str.includes('expert'))
+        return Difficulty.EXPERT;
+    if(difficulty_str.includes('hard'))
+        return Difficulty.HARD;
+    if(difficulty_str.includes('normal'))
+        return Difficulty.NORMAL;
+    if(difficulty_str.includes('easy'))
+        return Difficulty.EASY;
+
+
+    return Difficulty.UNKNOWN;
+}
+
 interface PlaysLiProps{
-    score:Score,
-    songData: SongData | undefined,
-    playedDiff:Difficulty,
-    lvlMapData:LevelMapData | undefined
+    score:Score
 }
 
 

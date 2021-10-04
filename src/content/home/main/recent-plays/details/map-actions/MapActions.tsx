@@ -2,9 +2,8 @@
 
 import { Box, Download, DownloadCloud, Play } from "react-feather";
 import styled from "styled-components";
-import { bsBloq } from "../../../../../icons/bloq";
-import { beatsaverMapPrefix } from "../../../data/constants/Constants";
-import SongData from "../../../data/models/SongData";
+import { beatsaverMapPrefix } from "../../../../data/constants/Constants";
+import SongData from "../../../../data/models/SongData";
 import TwitchRq from "./TwitchRq";
 
 const MapActionsContainer = styled.div`

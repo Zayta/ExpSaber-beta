@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import SongData from "../../../data/models/SongData";
+import SongData from "../../../../data/models/SongData";
 
 const MapCreationInfoContainer = styled.div``;
 const MapCreationInfo = ({ songData }:MapCreationInfoProps) =>{

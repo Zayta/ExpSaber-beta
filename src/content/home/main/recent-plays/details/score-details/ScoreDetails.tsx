@@ -1,8 +1,7 @@
-import React from "react";
 import styled from "styled-components";
-import { round } from "../../../../../utils/Math";
-import { ssLeaderboardURL } from "../../../data/constants/Constants";
-import  Score  from "../../../data/models/ScoreData";
+import { round } from "../../../../../../utils/Math";
+import { ssLeaderboardURL } from "../../../../data/constants/Constants";
+import  Score  from "../../../../data/models/ScoreData";
 
 const ScoreDetailsContainer = styled.div`
 display:flex;
