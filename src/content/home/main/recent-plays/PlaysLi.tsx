@@ -17,11 +17,13 @@ const LiIndicator = styled.div`
     *{width:12px;};
 `;
 const PlaysLiContainer = styled.li`
+    background-color:var(--bckgrnd-lite);
     list-style-type:none;
     display:grid;
     grid-template-columns:max-content 11fr;
     grid-gap:10px;
-
+    margin-top:10px;
+    padding:5px;
     width: 100%;
 img#cover{
     max-width: 100%;
@@ -43,6 +45,8 @@ const GeneralPlayInfoContainer = styled.div`
 display: flex;
 align-items: center;
 justify-content: space-between;
+width:100%;
+padding:5px;
 .score-set-time{
     font-size: 0.7em;
     color:var(--txt-color5);
@@ -85,9 +89,9 @@ const PlaysLi = (props:PlaysLiProps) =>{
             </LiIndicator>
         </Toggler>
         
+        <Toggler onClick={toggleDetails}>
             <GeneralPlayInfoContainer>
             
-            <Toggler onClick={toggleDetails}>
                 <TitleImageContainer>
                 
                 <img id = 'cover' alt = "" src = {mapCoverURL+props.score.songHash.toLowerCase()+'.jpg'}/>  
@@ -100,11 +104,12 @@ const PlaysLi = (props:PlaysLiProps) =>{
                             
                     </div>
                 </TitleImageContainer>
-            </Toggler>
-                
+            
                 <div className = 'score-set-time'>{timeSince(props.score.timeSet)} ago</div>         
                         
             </GeneralPlayInfoContainer>
+            </Toggler>
+                
            <div/>
     
             {

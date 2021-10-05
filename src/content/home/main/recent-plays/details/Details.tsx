@@ -17,13 +17,14 @@ justify-content:space-between;
 `;
 function Details(props:DetailsProps) {
   const { status, data, error } = useBeatSaverData(props.score.songHash);
-  if(!data||status === "loading"){
+  if(status === "loading"){
     return <DetailsContainer><Loader/></DetailsContainer>
   }
   if(status === "error"||error){
       
     return <span>[No details available]</span>
   }
+  if(!data){return <div style = {{'fontSize':'0.5em'}}><DetailsContainer>[No details available]</DetailsContainer></div>}
   let lvlMapData;
   if(props.playedDiff){
 
