@@ -9,10 +9,11 @@ const SelectPages = () => {
     }
     return (
       <div>
+        
+        <span style = {{'margin':'10px'}}>Select pages</span>
         <select defaultValue={pages} onChange={e => setPages(parseInt(e.currentTarget.value))}>
           {opts}
         </select>
-        <span>Select pages</span>
       </div>
     );
   };
