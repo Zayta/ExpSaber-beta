@@ -15,12 +15,13 @@ const LiIndicator = styled.div`
     }
   }
   
-  
+  display:flex;
+  align-items:center;
+  height:100%;
     *{width:12px;};
 `;
 const PlaysLiContainer = styled.li`
 
-    background-color:var(--bckgrnd-lite);
     list-style-type:none;
     display:grid;
     grid-gap:10px;
@@ -65,10 +66,11 @@ const Toggler = styled.div`
 display:flex;
     align-items:center;
     width:100%;
+    height:100%;
 cursor: pointer;
 border-radius:5px 5px 2px 2px;
 :hover *{
-    color:var(--txt-color4);
+    background-color:var(--bckgrnd-lite);
 }
 `;
 
@@ -83,7 +85,7 @@ const PlaysLi = (props:PlaysLiProps) =>{
     const playedDiff = getDifficulty(props.score.difficultyRaw);
   
     
-    return <PlaysLiContainer>
+    return <PlaysLiContainer style={showDetails?{'backgroundColor':'var(--bckgrnd-lite)'}:{}}>
         
         <Toggler onClick={toggleDetails}>
         <LiIndicator >
