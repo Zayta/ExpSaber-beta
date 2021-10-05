@@ -21,7 +21,7 @@ function Details(props:DetailsProps) {
     return <DetailsContainer><Loader/></DetailsContainer>
   }
   if(status === "error"||error){
-      console.log(error)
+      
     return <span>[No details available]</span>
   }
   let lvlMapData;

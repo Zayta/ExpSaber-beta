@@ -61,7 +61,7 @@ const MatchingNamesList = (inpt:MatchingNamesListProp):JSX.Element =>{
         alignItems:'center'
     }
   let playersResponse = usePlayerNameSearch(inpt.name);
-    console.log(playersResponse)
+ 
     if(!playersResponse.playersList.players.length){
         return <div></div>
         // return <div>No results for {inpt.name}</div>

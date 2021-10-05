@@ -47,62 +47,27 @@ width: 50vw;
   width:90vw;
 }
 `;
-const ErrorFallback:React.FC<{error:Error,resetErrorBoundary:(...args: unknown[]) => void}>=({error, resetErrorBoundary})=> {
-  return (
-    <div role="alert">
-      <p>Something went wrong:</p>
-      <pre>{error.message}</pre>
-      <button onClick={resetErrorBoundary}>Try again</button>
-    </div>
-  )
-}
-const myErrorHandler = (error: Error, info: {componentStack: any}) => {
-  // Do something with the error
-  // E.g. log to an error logging client here
-  console.log('error handler')
-  // console.log(error);
-  // console.log(info.componentStack)
-}
 
 const Home = () =>{
   
   const params = useParams<HomeParams>();//grab params from url
-  console.log('params',params)
 
   return <QueryClientProvider client={queryClient}>
     <SettingsProvider>
       <Search/>
-    {/* <QueryErrorResetBoundary>
-        {({ reset }) => (
-          <ErrorBoundary
-          FallbackComponent={ErrorFallback}
-          onReset={reset}
-          resetKeys={[params.ssid]}
-          onError={myErrorHandler}
-          >
-            <Suspense fallback={<Loader/>}>
-            { */}
             {
               params.ssid?
               <HomeContent ssid = {params.ssid}/>:
               <div/>
             }
-            {/* }
-            </Suspense>
-          </ErrorBoundary>
-        )}
-      </QueryErrorResetBoundary> */}
-    
-    
     </SettingsProvider>
     </QueryClientProvider>
 }
 
 
 const HomeContent:React.FC<{ssid:string}> =  ({ssid}) => {
-  console.log('ssid is ',JSON.stringify(ssid));
   const {pages} = useSettings()!;
-  console.log('pages:',pages)
+
   let ssPlayerData:PlayerData|undefined = useSSPlayerData(ssid);
   
   let ssScoresData:Score[]|undefined = useScoresData(ssid,ScoreSortOrder.RECENT,pages);
