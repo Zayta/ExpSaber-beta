@@ -14,11 +14,9 @@ import { QueryClientProvider, QueryErrorResetBoundary } from 'react-query';
 import queryClient from './data/api/ClientProvider';
 import  Score  from './data/models/ScoreData';
 
-import { SettingsProvider, useSettings } from './context/settings/SettingsContext';
-import { ErrorBoundary } from "react-error-boundary";
+import { SettingsProvider, useSettings } from './context/SettingsContext';
 
-import { Suspense } from 'react';
-import { Loader } from 'react-feather';
+import AppSettings from './settings/Settings';
 
 const HomeContainer = styled.div`
   margin:5px;
@@ -60,6 +58,7 @@ const Home = () =>{
               <HomeContent ssid = {params.ssid}/>:
               <div/>
             }
+             <AppSettings/>
     </SettingsProvider>
     </QueryClientProvider>
 }

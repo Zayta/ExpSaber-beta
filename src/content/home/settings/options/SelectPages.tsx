@@ -1,5 +1,5 @@
-import { maxPages } from "../../../data/constants/Constants";
-import { useSettings } from "../SettingsContext";
+import { maxPages } from "../../data/constants/Constants";
+import { useSettings } from "../../context/SettingsContext";
 
 const SelectPages = () => {
     const { pages, setPages } = useSettings()!;
@@ -9,7 +9,7 @@ const SelectPages = () => {
     }
     return (
       <div>
-        <select value={pages} onChange={e => setPages(parseInt(e.currentTarget.value))}>
+        <select defaultValue={pages} onChange={e => setPages(parseInt(e.currentTarget.value))}>
           {opts}
         </select>
         <span>Select pages</span>

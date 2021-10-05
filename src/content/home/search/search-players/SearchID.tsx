@@ -4,7 +4,7 @@ import '../search.scss';
 import { Search } from 'react-feather';
 
 import { Link } from 'react-router-dom';
-import AppSettings from '../../context/settings/Settings';
+import AppSettings from '../../settings/Settings';
 
 export default class SearchID extends Component{
     state:SearchIDState = {
