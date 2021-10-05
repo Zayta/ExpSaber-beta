@@ -6,7 +6,7 @@ import Difficulty from "../../data/models/Difficulty";
 import  Score  from "../../data/models/ScoreData";
 import Details from "./details/Details";
 import { mobileBreakpoint } from "../../../../config";
-import { ChevronRight, Minus, Plus } from "react-feather";
+import { Minus, Plus } from "react-feather";
 const LiIndicator = styled.div`
 @media only screen and (max-width: ${mobileBreakpoint}) {
     * {
@@ -14,13 +14,15 @@ const LiIndicator = styled.div`
         width:0;
     }
   }
+  
+  
     *{width:12px;};
 `;
 const PlaysLiContainer = styled.li`
+
     background-color:var(--bckgrnd-lite);
     list-style-type:none;
     display:grid;
-    grid-template-columns:max-content 11fr;
     grid-gap:10px;
     margin-top:10px;
     padding:5px;
@@ -49,8 +51,7 @@ width:100%;
 padding:5px;
 .score-set-time{
     font-size: 0.7em;
-    color:var(--txt-color5);
-    
+    opacity:0.75;
 }
 .dif{
     
@@ -63,9 +64,11 @@ padding:5px;
 const Toggler = styled.div`
 display:flex;
     align-items:center;
+    width:100%;
 cursor: pointer;
-:hover{
-    color: var(--txt-color3);
+border-radius:5px 5px 2px 2px;
+:hover *{
+    color:var(--txt-color4);
 }
 `;
 
@@ -81,15 +84,14 @@ const PlaysLi = (props:PlaysLiProps) =>{
   
     
     return <PlaysLiContainer>
-        <Toggler  onClick={toggleDetails}>
-            <LiIndicator >
+        
+        <Toggler onClick={toggleDetails}>
+        <LiIndicator >
             {
                 showDetails?<Minus/>:<Plus/>
             }
             </LiIndicator>
-        </Toggler>
-        
-        <Toggler onClick={toggleDetails}>
+            
             <GeneralPlayInfoContainer>
             
                 <TitleImageContainer>

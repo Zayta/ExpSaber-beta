@@ -7,6 +7,8 @@ const FilterContainer = styled.div`
     display:flex;
     flex-direction:row;
     justify-content:flex-end;
+    position:sticky;
+    top:0;
 `;
 
 const RecentPlays = (props:RecentPlaysProps) =>{
