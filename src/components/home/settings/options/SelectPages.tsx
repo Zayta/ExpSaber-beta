@@ -1,4 +1,4 @@
-import { maxPages } from "../../../../config/Constants";
+import { maxPages } from "../../../../config";
 import { useSettings } from "../../../../context/SettingsContext";
 
 const SelectPages = () => {

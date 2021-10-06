@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { numInitialLoadedMapData } from "../../../../config/Constants";
+import { numInitialLoadedMapData } from "../../../../config";
 import  Score  from "../../../../data/models/ScoreData";
 import PlaysLi from "./PlaysLi";
 const FilterContainer = styled.div`

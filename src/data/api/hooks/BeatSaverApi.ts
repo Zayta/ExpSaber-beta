@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useQuery} from "react-query";
-import { queryCacheStaleTime } from "../../../config/Constants";
+import { queryCacheStaleTime } from "../../../config";
 import SongData from "../../models/SongData";
 import queryClient from "../ClientProvider";
 const beatsaverApiPrefix = "https://api.beatsaver.com/";
