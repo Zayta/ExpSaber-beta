@@ -1,6 +1,6 @@
 import { Redirect, Route, Switch } from "react-router-dom"
-import About from '../components/about/About';
-import Home from '../components/home/Home'
+import AboutPage from '../pages/AboutPage';
+import HomePage from '../pages/HomePage'
 
 export const routes = ["Home","About"];
 
@@ -10,15 +10,15 @@ const RouteContent = () =>{
         <Switch>
         
         <Route path="/ExpSaber/ssid/:ssid" >
-          <Home  />
+          <HomePage  />
         </Route>
         
         <Route exact path="/ExpSaber" >
-          <Home />
+          <HomePage />
         </Route>
         
         <Route path="/About" >
-            <About/>
+            <AboutPage/>
         </Route>
         <Route path="/" >
             <Redirect to="/ExpSaber" />
