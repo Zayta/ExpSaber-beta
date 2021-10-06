@@ -21,7 +21,11 @@ const LiIndicator = styled.div`
     *{width:12px;};
 `;
 const PlaysLiContainer = styled.li`
-
+@media only screen and (max-width: ${mobileBreakpoint}) {
+        display:flex;
+        flex-flow:row wrap;
+        width:100%;
+  }
     list-style-type:none;
     display:grid;
     grid-gap:10px;
@@ -40,6 +44,10 @@ img#cover{
 const TitleImageContainer = styled.div`
   display:flex;
   flex-flow:row nowrap;
+  
+@media only screen and (max-width: ${mobileBreakpoint}) {
+    flex-flow: row wrap;
+}
   #cover+div{
       margin-left:15px;
   }

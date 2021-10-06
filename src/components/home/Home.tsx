@@ -17,6 +17,7 @@ import  Score  from '../../data/models/ScoreData';
 import { SettingsProvider, useSettings } from '../../context/SettingsContext';
 
 import AppSettings from './settings/Settings';
+import { mobileBreakpoint } from '../../config';
 
 const HomeContainer = styled.div`
   margin:5px;
@@ -26,7 +27,7 @@ const HomeContainer = styled.div`
   flex-flow: row wrap;
   overflow-wrap:anywhere;
   margin:1vw;
-  @media only screen and (max-width: 800px){
+  @media only screen and (max-width: ${mobileBreakpoint}){
     flex-flow:column nowrap;
   }
 `;
@@ -40,7 +41,7 @@ box-sizing: border-box;
 align-self:center;
 
 width: 50vw;
-@media only screen and (max-width: 800px){
+@media only screen and (max-width: ${mobileBreakpoint}){
   flex-flow:column nowrap;
   width:90vw;
 }

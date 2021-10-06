@@ -10,7 +10,7 @@ const LevelInfoContainer = styled.div`
     padding-right:5px;
     border:1px inset grey;
     
-width:fit-content;
+max-width:100%;
 `;
 const InfoPt = styled.span`
 display:flex;

@@ -14,6 +14,9 @@ const DetailsContainer = styled.div`
 margin:0 10px;
 display:flex;
 justify-content:space-between;
+flex-flow:row wrap;
+max-width:100%;
+box-sizing:border-box;
 `;
 function Details(props:DetailsProps) {
   const { status, data, error } = useBeatSaverData(props.score.songHash);

@@ -9,9 +9,12 @@ import TwitchRq from "./TwitchRq";
 const MapActionsContainer = styled.div`
 margin: 5px 0 0 0;
 display:flex;
+max-width:100%;
+flex-flow:row wrap;
 a{
     margin:0 5px 0 0;
-    
+    min-width:32px;
+    min-height:32px;
 }
 `;
 const MapActions:React.FC<MapActionsProps> = ({songData})=>{
