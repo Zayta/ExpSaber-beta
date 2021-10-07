@@ -21,7 +21,7 @@ box-sizing:border-box;
 function Details(props:DetailsProps) {
   const { status, data, error } = useBeatSaverData(props.score.songHash);
   if(status === "loading"){
-    return <DetailsContainer><Loader/></DetailsContainer>
+    return <DetailsContainer style = {{'justifyContent':'center'}}><Loader/></DetailsContainer>
   }
   if(status === "error"||error){
       
