@@ -9,6 +9,7 @@ const FilterContainer = styled.div`
     justify-content:flex-end;
     position:sticky;
     top:0;
+    background:var(--bckgrnd);
 `;
 
 const RecentPlays = (props:RecentPlaysProps) =>{

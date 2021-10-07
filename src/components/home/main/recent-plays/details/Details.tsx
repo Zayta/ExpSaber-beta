@@ -11,11 +11,11 @@ import ScoreDetails from "./score-details/ScoreDetails";
 import { Loader } from "react-feather";
 
 const DetailsContainer = styled.div`
-margin:0 10px;
+padding:0 10px;
 display:flex;
 justify-content:space-between;
 flex-flow:row wrap;
-max-width:100%;
+width:100%;
 box-sizing:border-box;
 `;
 function Details(props:DetailsProps) {
