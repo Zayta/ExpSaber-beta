@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { round } from "../../../../../../utils/Math";
-import { ssLeaderboardURL } from "../../../../../../config/Constants";
+import { ssLeaderboardURL } from "../../../../../../config/static";
 import  Score  from "../../../../../../data/models/ScoreData";
 
 const ScoreDetailsContainer = styled.div`

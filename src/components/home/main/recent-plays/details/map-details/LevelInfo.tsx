@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { round } from "../../../../../../utils/Math";
-import { iconURL } from "../../../../../../config/Constants";
+import { iconURL } from "../../../../../../config/static";
 import { LevelMapData } from "../../../../../../data/models/SongData";
 
 const LevelInfoContainer = styled.div`

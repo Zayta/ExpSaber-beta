@@ -1,6 +1,6 @@
 import { PlayerInfo } from '../../../data/models/PlayerData'
 import styled from "styled-components";
-import { avatarPrefix} from '../../../config/Constants';
+import { avatarPrefix} from '../../../config/static';
 
 const PlayerDetailsContainer = styled.div`
   display: flex;

@@ -1,6 +1,6 @@
 import { memo } from "react";
 import useBeatSaverData from "../../../../../data/api/hooks/BeatSaverApi"
-import { comboMultiplier, maxScorePerNote } from "../../../../../config/Constants";
+import { comboMultiplier, maxScorePerNote } from "../../../../../config/static";
 import Difficulty from "../../../../../data/models/Difficulty";
 import Score from "../../../../../data/models/ScoreData";
 import { LevelMapData} from "../../../../../data/models/SongData";

@@ -2,7 +2,7 @@
 
 import { Box, Download, DownloadCloud, Music, Play } from "react-feather";
 import styled from "styled-components";
-import { beatsaverMapPrefix } from "../../../../../../config/Constants";
+import { beatsaverMapPrefix } from "../../../../../../config/static";
 import SongData from "../../../../../../data/models/SongData";
 import TwitchRq from "./TwitchRq";
 

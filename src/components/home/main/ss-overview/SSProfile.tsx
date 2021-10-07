@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ssWebProfilePrefix } from "../../../../config/Constants";
+import { ssWebProfilePrefix } from "../../../../config/static";
 import { PlayerData} from "../../../../data/models/PlayerData";
 import AccuracyBar from "./ss-metrics/AccuracyBar";
 import { Box } from "react-feather";
