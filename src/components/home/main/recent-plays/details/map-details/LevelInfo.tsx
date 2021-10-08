@@ -34,15 +34,15 @@ const LevelInfo: React.FC<LevelInfoProps> = ({ map_data }) =>{
     if(map_data){
         return <LevelInfoContainer>
                 
-                <InfoPt><img alt="Notes" src={iconURL+"notes.png"}  /> {map_data.notes}</InfoPt>
+                <InfoPt><img alt="Notes" src={iconURL+"notes.png"}  title="Total Notes"  /> {map_data.notes}</InfoPt>
                 
                 <InfoPt><img alt="Bombs" src={iconURL+"bombs.png"}  title="Bombs" />{map_data.bombs}</InfoPt>
                 
                 <InfoPt><img alt="Walls" src={iconURL+"walls.png"}  title="Walls" />{map_data.obstacles}</InfoPt>
                 
-                <InfoPt><img alt="Note jump speed" src={iconURL+"njs.png"}  title="njs" />{round(map_data.njs)}</InfoPt>
+                <InfoPt><img alt="Note jump speed" src={iconURL+"njs.png"}  title="Note jump speed" />{round(map_data.njs)}</InfoPt>
                 
-                <InfoPt><img alt="Notes per second" src={iconURL+"nps.png"}  title="nps" />{round(map_data.nps)}</InfoPt>
+                <InfoPt><img alt="Notes per second" src={iconURL+"nps.png"}  title="Notes per second" />{round(map_data.nps)}</InfoPt>
         </LevelInfoContainer>
     }
     return <div/>

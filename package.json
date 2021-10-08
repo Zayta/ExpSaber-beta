@@ -33,7 +33,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "predeploy": "npm run build && echo /index.html>build/_redirects",
+    "predeploy": "echo /index.html>build/_redirects && npm run build",
     "deploy": "netlify deploy --prod --dir=build",
     "eject": "react-scripts eject"
   },

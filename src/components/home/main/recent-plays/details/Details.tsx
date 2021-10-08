@@ -39,10 +39,17 @@ function Details(props:DetailsProps) {
   if(props.playedDiff){
 
     lvlMapData = findLvlMapData(data.versions[0].diffs,props.playedDiff);
-    //fix unranked maps
-    if(props.score.maxScore===0&&lvlMapData)
-      props.score.maxScore=lvlMapData.notes*maxScorePerNote*comboMultiplier;
+    //fix unranked maps by calculating max score
+    if(props.score.maxScore===0&&lvlMapData){
+      //https://www.reddit.com/r/beatsaber/comments/kswak5/how_to_calculate_the_highest_possible_score_of/
+      //without multipliers
+      //1 block = 115 => 1*115
+      //next 4 blocks = 2*115 => 8*115
+      //next 8 blocks = 4*115 => 32*115
+      //afterwards all blocks = 8*115.
+      props.score.maxScore=(lvlMapData.notes-13)*maxScorePerNote*comboMultiplier+ (1+8+32)*maxScorePerNote;
     }
+  }
   return <DetailsContainer>
       <MapInfoContainer>
             <MapActions songData = {data}/>
