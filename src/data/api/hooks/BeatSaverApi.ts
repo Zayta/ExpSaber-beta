@@ -23,5 +23,5 @@ export default function useBeatSaverData(mapHash:string) {
 }
 export async function preFetchBeatSaverData(mapHash:string){
   // The results of this query will be cached like a normal query
-  await queryClient.prefetchQuery(["map", mapHash], () => fetchMapByHash(mapHash),{staleTime: queryCacheStaleTime  })
+  await queryClient.prefetchQuery(["map", mapHash], () => fetchMapByHash(mapHash))
 }

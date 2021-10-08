@@ -9,11 +9,8 @@ import RouteContent from './routing/Routes';
 function App() {
   return <div className = 'container'>
       <BrowserRouter>
-      <div>
-        <Header/>
-        <RouteContent/>
-      </div>
-        <Footer/>
+      <RouteContent/>
+      
       </BrowserRouter>
   </div>
 }
