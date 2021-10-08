@@ -9,9 +9,13 @@ const LevelInfoContainer = styled.div`
     display:flex;
     flex-flow: row wrap;
     padding-right:5px;
+    
     border:1px inset grey;
     
     max-width:100%;
+    @media only screen and (max-width:${mobileBreakpoint}){
+        margin-top:10px;
+    }
 `;
 const InfoPt = styled.span`
 display:flex;
