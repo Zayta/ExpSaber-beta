@@ -7,6 +7,7 @@ display:flex;
 flex-direction:column;
 font-size:0.7em;
 max-width:100%;
+width:fit-content;
 `;
 const MapDetails: React.FC<MapDetailsProps> = ({songData,lvlMapData})=>{
     if(!songData)

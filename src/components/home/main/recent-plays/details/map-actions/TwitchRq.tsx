@@ -5,8 +5,8 @@ import styled from "styled-components";
 
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { useState } from "react";
-const TwitchRqContainer = styled.div`
-    width:fit-content;
+const TwitchRqContainer = styled.span`
+    
     color:inherit;
     background:inherit;
     :hover{

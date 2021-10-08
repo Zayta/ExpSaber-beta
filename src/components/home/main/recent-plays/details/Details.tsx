@@ -9,14 +9,21 @@ import MapDetails from "./map-details/MapDetails";
 import MapActions from "./map-actions/MapActions";
 import ScoreDetails from "./score-details/ScoreDetails";
 import { Loader } from "react-feather";
+import { mobileBreakpoint } from "../../../../../config";
 
 const DetailsContainer = styled.div`
-padding:0 10px;
+padding:10px;
 display:flex;
 justify-content:space-between;
 flex-flow:row wrap;
 width:100%;
 box-sizing:border-box;
+`;
+const MapInfoContainer = styled.div`
+@media only screen and (max-width: ${mobileBreakpoint}){
+  width:100%;
+  margin-bottom:10px;
+}
 `;
 function Details(props:DetailsProps) {
   const { status, data, error } = useBeatSaverData(props.score.songHash);
@@ -37,11 +44,13 @@ function Details(props:DetailsProps) {
       props.score.maxScore=lvlMapData.notes*maxScorePerNote*comboMultiplier;
     }
   return <DetailsContainer>
-      <div>
+      <MapInfoContainer>
             <MapActions songData = {data}/>
             
             <MapDetails songData={data} lvlMapData={lvlMapData}/>
-           </div> 
+           </MapInfoContainer> 
+
+
             <ScoreDetails score = {props.score}/>
         </DetailsContainer>    
 }

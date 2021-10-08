@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { round } from "../../../../../../utils/Math";
 import { iconURL } from "../../../../../../config/static";
 import { LevelMapData } from "../../../../../../data/models/SongData";
+import { mobileBreakpoint } from "../../../../../../config";
 
 const LevelInfoContainer = styled.div`
     display:flex;
@@ -10,7 +11,7 @@ const LevelInfoContainer = styled.div`
     padding-right:5px;
     border:1px inset grey;
     
-max-width:100%;
+    max-width:100%;
 `;
 const InfoPt = styled.span`
 display:flex;
@@ -19,6 +20,9 @@ width:fit-content;
 img{
     height:1em;
     margin:2px;
+}
+@media only screen and (max-width:${mobileBreakpoint}){
+    font-size:large;
 }
 
 `;

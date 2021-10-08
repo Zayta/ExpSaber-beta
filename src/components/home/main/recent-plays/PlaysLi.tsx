@@ -5,10 +5,10 @@ import { mapCoverURL } from "../../../../config/static";
 import Difficulty from "../../../../data/models/Difficulty";
 import  Score  from "../../../../data/models/ScoreData";
 import Details from "./details/Details";
-import { mobileBreakpoint } from "../../../../config";
+import { tabletBreakpoint } from "../../../../config";
 import { Minus, Plus } from "react-feather";
 const LiIndicator = styled.div`
-@media only screen and (max-width: ${mobileBreakpoint}) {
+@media only screen and (max-width: ${tabletBreakpoint}) {
     * {
         display:none;
         width:0;
@@ -21,7 +21,7 @@ const LiIndicator = styled.div`
     *{width:12px;};
 `;
 const PlaysLiContainer = styled.li`
-@media only screen and (max-width: ${mobileBreakpoint}) {
+@media only screen and (max-width: ${tabletBreakpoint}) {
         display:flex;
         flex-flow:row wrap;
         width:100%;
@@ -45,7 +45,7 @@ const TitleImageContainer = styled.div`
   display:flex;
   flex-flow:row nowrap;
   
-@media only screen and (max-width: ${mobileBreakpoint}) {
+@media only screen and (max-width: ${tabletBreakpoint}) {
     flex-flow: row wrap;
 }
   #cover+div{

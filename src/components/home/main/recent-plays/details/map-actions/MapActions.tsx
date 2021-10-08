@@ -2,6 +2,7 @@
 
 import { Box, Download, DownloadCloud, Music, Play } from "react-feather";
 import styled from "styled-components";
+import { mobileBreakpoint } from "../../../../../../config";
 import { beatsaverMapPrefix } from "../../../../../../config/static";
 import SongData from "../../../../../../data/models/SongData";
 import TwitchRq from "./TwitchRq";
@@ -13,8 +14,25 @@ max-width:100%;
 flex-flow:row wrap;
 a{
     margin:0 5px 0 0;
-    min-width:32px;
-    min-height:32px;
+    min-width:38px;
+    min-height:38px;
+    :hover{
+        color:var(txt-color3);
+    }
+}
+@media only screen and (max-width: ${mobileBreakpoint}){
+    flex-flow: row wrap;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
+        div {
+            padding:5px;
+        }
+        svg{
+            min-width:38px;
+            min-height:38px;
+            width:100%;
+        }
 }
 `;
 const MapActions:React.FC<MapActionsProps> = ({songData})=>{
@@ -33,7 +51,6 @@ const MapActions:React.FC<MapActionsProps> = ({songData})=>{
         <a className = 'action'title="Download zip" aria-label="Download zip" href = {songData.versions[0].downloadURL}><Download/></a>
 
         <a className = 'action' title="Audio Sample" aria-label="Audio Sample" href = {songData.versions[0].previewURL}><Music/></a>
-        <a className = 'action'href="beatsaver://188c9" title="One-Click" aria-label="One-Click"><i className="fas fa-cloud-download-alt text-info"></i></a>
     </MapActionsContainer>
 }
 
