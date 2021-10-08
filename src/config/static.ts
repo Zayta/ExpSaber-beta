@@ -1,8 +1,11 @@
+//list of constants that do not change. 
 
 //in beat saber, each note is worth 115 points, with combo multiplier of (max) 8 
 export const maxScorePerNote = 115;
 export const comboMultiplier = 8;
 
+//number of scores per page of data in scoresaber api
+export const scoresPerPage=8;
 
 //beat saver urls
 export const beatsaverMapPrefix = "https://beatsaver.com/maps/";

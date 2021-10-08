@@ -18,6 +18,8 @@ import { SettingsProvider, useSettings } from '../../context/SettingsContext';
 
 import AppSettings from './settings/Settings';
 import { tabletBreakpoint } from '../../config';
+import { preFetchBeatSaverData } from '../../data/api/hooks/BeatSaverApi';
+import { scoresPerPage } from '../../config/static';
 
 const HomeContainer = styled.div`
   margin:5px;
@@ -71,6 +73,7 @@ const HomeContent:React.FC<{ssid:string}> =  ({ssid}) => {
   let ssPlayerData:PlayerData|undefined = useSSPlayerData(ssid);
   
   let ssScoresData:Score[]|undefined = useScoresData(ssid,ScoreSortOrder.RECENT,pages);
+  
   return (
       <div>
         <HomeContainer>
