@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import SongData, { LevelMapData } from "../../../../../../data/models/SongData";
+import SongData, { LevelMapData } from "../../../../../data/models/SongData";
 import LevelInfo from "./LevelInfo";
 
 const MapDetailsContainer=styled.div`

@@ -6,8 +6,8 @@ import { useScoresData, useSSPlayerData } from '../../data/api/hooks/ScoreSaberA
 import ScoreSortOrder from '../../data/models/ScoreSortOrder';
 import Search from './search/Search';
 import PlayerDetails from './player-info/PlayerInfo';
-import RecentPlays from './main/recent-plays/RecentPlays';
-import ScoreSaberOverview from './main/ss-overview/SSProfile';
+import RecentPlays from './recent-plays/RecentPlays';
+import ScoreSaberOverview from './ss-overview/SSProfile';
 import { PlayerData } from '../../data/models/PlayerData';
 import { QueryClientProvider, QueryErrorResetBoundary } from 'react-query';
 
@@ -20,6 +20,8 @@ import AppSettings from './settings/Settings';
 import { tabletBreakpoint } from '../../config';
 import { preFetchBeatSaverData } from '../../data/api/hooks/BeatSaverApi';
 import { scoresPerPage } from '../../config/static';
+import { TrackerStats } from '../../data/models/BeatSaviorData';
+import useBeatSaviorData from '../../data/api/hooks/BeatSaviorApi';
 
 const HomeContainer = styled.div`
   margin:5px;
@@ -74,6 +76,8 @@ const HomeContent:React.FC<{ssid:string}> =  ({ssid}) => {
   
   let ssScoresData:Score[]|undefined = useScoresData(ssid,ScoreSortOrder.RECENT,pages);
   
+  let bsaviorData:TrackerStats|undefined = useBeatSaviorData(ssid);
+  console.log('bsvior data: ',bsaviorData)
   return (
       <div>
         <HomeContainer>

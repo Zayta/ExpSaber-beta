@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { round } from "../../../../../../utils/Math";
-import { iconURL } from "../../../../../../config/static";
-import { LevelMapData } from "../../../../../../data/models/SongData";
-import { mobileBreakpoint } from "../../../../../../config";
+import { round } from "../../../../../utils/Math";
+import { iconURL } from "../../../../../config/static";
+import { LevelMapData } from "../../../../../data/models/SongData";
+import { mobileBreakpoint } from "../../../../../config";
 
 const LevelInfoContainer = styled.div`
     display:flex;

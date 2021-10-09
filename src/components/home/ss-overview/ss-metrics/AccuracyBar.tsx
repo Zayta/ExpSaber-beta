@@ -3,7 +3,7 @@ import { CircularProgressbar,buildStyles  } from 'react-circular-progressbar';
 import "react-circular-progressbar/dist/styles.css";
 
 import styled from 'styled-components';
-import { round } from '../../../../../utils/Math';
+import { round } from '../../../../utils/Math';
 
 const AccuracyBarContainer = styled.div`
 width:10vw;

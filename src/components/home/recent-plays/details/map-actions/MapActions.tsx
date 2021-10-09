@@ -2,9 +2,9 @@
 
 import { Box, Download, DownloadCloud, Music, Play } from "react-feather";
 import styled from "styled-components";
-import { mobileBreakpoint } from "../../../../../../config";
-import { beatsaverMapPrefix } from "../../../../../../config/static";
-import SongData from "../../../../../../data/models/SongData";
+import { mobileBreakpoint } from "../../../../../config";
+import { beatsaverMapPrefix } from "../../../../../config/static";
+import SongData from "../../../../../data/models/SongData";
 import TwitchRq from "./TwitchRq";
 
 const MapActionsContainer = styled.div`

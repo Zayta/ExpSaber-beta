@@ -1,15 +1,15 @@
 import { memo } from "react";
-import useBeatSaverData from "../../../../../data/api/hooks/BeatSaverApi"
-import { comboMultiplier, maxScorePerNote } from "../../../../../config/static";
-import Difficulty from "../../../../../data/models/Difficulty";
-import Score from "../../../../../data/models/ScoreData";
-import { LevelMapData} from "../../../../../data/models/SongData";
+import useBeatSaverData from "../../../../data/api/hooks/BeatSaverApi"
+import { comboMultiplier, maxScorePerNote } from "../../../../config/static";
+import Difficulty from "../../../../data/models/Difficulty";
+import Score from "../../../../data/models/ScoreData";
+import { LevelMapData} from "../../../../data/models/SongData";
 import styled from "styled-components";
 import MapDetails from "./map-details/MapDetails";
 import MapActions from "./map-actions/MapActions";
 import ScoreDetails from "./score-details/ScoreDetails";
 import { Loader } from "react-feather";
-import { mobileBreakpoint } from "../../../../../config";
+import { mobileBreakpoint } from "../../../../config";
 
 const DetailsContainer = styled.div`
 padding:10px;

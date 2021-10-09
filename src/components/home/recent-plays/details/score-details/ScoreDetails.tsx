@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { round } from "../../../../../../utils/Math";
-import { ssLeaderboardURL } from "../../../../../../config/static";
-import  Score  from "../../../../../../data/models/ScoreData";
-import { mobileBreakpoint } from "../../../../../../config";
+import { round } from "../../../../../utils/Math";
+import { ssLeaderboardURL } from "../../../../../config/static";
+import  Score  from "../../../../../data/models/ScoreData";
+import { mobileBreakpoint } from "../../../../../config";
 
 const ScoreDetailsContainer = styled.div`
 display:flex;
@@ -29,7 +29,7 @@ const LevelInfo = ({ score }:LevelInfoProps) =>{
             </div>
             <div>
                     Acc: {round(score.score/score.maxScore*100)}%
-                    </div>
+            </div>
         </ScoreDetailsContainer>
     }
     return <div/>
