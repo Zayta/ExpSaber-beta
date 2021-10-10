@@ -7,6 +7,7 @@ import  Score  from "../../../data/models/ScoreData";
 import Details from "./details/DetailsHoc";
 import { tabletBreakpoint } from "../../../config";
 import { Minus, Plus } from "react-feather";
+import { TrackerStat } from "../../../data/models/BeatSaviorData";
 const LiIndicator = styled.div`
 @media only screen and (max-width: ${tabletBreakpoint}) {
     * {

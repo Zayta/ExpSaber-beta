@@ -1,5 +1,5 @@
 import {Component} from 'react'
-import { TrackerStats } from '../../../../../../data/models/BeatSaviorData';
+import { TrackerStat} from '../../../../../../data/models/BeatSaviorData';
 import AccuracyPerf from './AccuracyPerf';
 
 
@@ -48,5 +48,5 @@ export default class PerfInfo extends Component<PerfInfoProps>{
 }
 
 interface PerfInfoProps{
-    trackerStats:Array<TrackerStats>
+    trackerStats:Array<TrackerStat>
 }

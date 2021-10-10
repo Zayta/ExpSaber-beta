@@ -1,5 +1,5 @@
 //based on data from https://github.com/Mystogan98/BeatSaviorData
-export interface TrackerStats{
+export interface TrackerStat{
     deepTrackers:any,
     playerID:string,
     songArtist:string,

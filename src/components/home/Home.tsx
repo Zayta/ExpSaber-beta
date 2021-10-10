@@ -20,7 +20,7 @@ import AppSettings from './settings/Settings';
 import { tabletBreakpoint } from '../../config';
 import { preFetchBeatSaverData } from '../../data/api/hooks/BeatSaverApi';
 import { scoresPerPage } from '../../config/static';
-import { TrackerStats } from '../../data/models/BeatSaviorData';
+import { TrackerStat} from '../../data/models/BeatSaviorData';
 import useBeatSaviorData from '../../data/api/hooks/BeatSaviorApi';
 
 const HomeContainer = styled.div`
@@ -76,7 +76,7 @@ const HomeContent:React.FC<{ssid:string}> =  ({ssid}) => {
   
   let ssScoresData:Score[]|undefined = useScoresData(ssid,ScoreSortOrder.RECENT,pages);
   
-  let bsaviorData:TrackerStats|undefined = useBeatSaviorData(ssid);
+  let bsaviorData:TrackerStat[]|undefined = useBeatSaviorData(ssid);
   console.log('bsvior data: ',bsaviorData)
   return (
       <div>
@@ -89,14 +89,14 @@ const HomeContent:React.FC<{ssid:string}> =  ({ssid}) => {
         }
         {
           ssPlayerData &&ssScoresData?
-          renderTabs(ssScoresData,ssPlayerData):<div></div>
+          renderTabs(ssScoresData,ssPlayerData,bsaviorData):<div></div>
         }
         </HomeContainer>
       </div>
   )
 }
 
-const renderTabs = (ssScoresData:Score[], ssPlayerData:PlayerData) =>{
+const renderTabs = (ssScoresData:Score[], ssPlayerData:PlayerData, trackerStats?:TrackerStat[]) =>{
   return <Content>
           <Tabs>
           <Tab title="ScoreSaber">

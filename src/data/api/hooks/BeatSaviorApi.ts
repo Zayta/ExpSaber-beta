@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useQuery} from "react-query";
 import { queryCacheStaleTime } from "../../../config";
-import { TrackerStats } from "../../models/BeatSaviorData";
+import { TrackerStat} from "../../models/BeatSaviorData";
 import queryClient from "../ClientProvider";
 const myBeatSaviorApiPrefix = "https://my-saber-server.herokuapp.com/perf-info/";
 
@@ -25,8 +25,8 @@ export async function fetchBeatSaviorData (ssid:string) {
   }
 }
 
-export default function useBeatSaviorData(ssid:string):TrackerStats|undefined {
-  const { isLoading, isError, error, data } = useQuery<TrackerStats,Error>(["trackerstats", ssid], () => fetchBeatSaviorData(ssid),{ useErrorBoundary: true,staleTime: queryCacheStaleTime  });
+export default function useBeatSaviorData(ssid:string):TrackerStat[]|undefined {
+  const { isLoading, isError, error, data } = useQuery<TrackerStat[],Error>(["trackerstats", ssid], () => fetchBeatSaviorData(ssid),{ useErrorBoundary: true,staleTime: queryCacheStaleTime  });
   if(isError){
     console.log(error)
     return undefined;
