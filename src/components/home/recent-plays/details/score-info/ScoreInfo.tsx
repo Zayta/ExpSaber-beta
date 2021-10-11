@@ -31,7 +31,7 @@ width:100%;
 
 }
 `;
-const AccContainer = styled.div`
+const AccContainer = styled.span`
 display:inline-flex;
 
 `;
