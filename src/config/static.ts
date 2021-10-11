@@ -6,6 +6,7 @@ export const comboMultiplier = 8;
 
 //number of scores per page of data in scoresaber api
 export const scoresPerPage=8;
+export const scoresPerLeaderboardPage=12;//scores per page on leaderboard
 
 //beat saver urls
 export const beatsaverMapPrefix = "https://beatsaver.com/maps/";
