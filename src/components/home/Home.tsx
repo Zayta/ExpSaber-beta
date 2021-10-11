@@ -2,7 +2,7 @@ import { useParams, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import Tab from '../common/tabs/Tab';
 import Tabs from '../common/tabs/Tabs';
-import { useScoresData, useSSPlayerData } from '../../data/api/hooks/ScoreSaberApi';
+import {useSSPlayerData } from '../../data/api/hooks/ScoreSaberApi';
 import ScoreSortOrder from '../../data/models/ScoreSortOrder';
 import Search from './search/Search';
 import PlayerDetails from './player-info/PlayerInfo';
@@ -18,9 +18,7 @@ import { SettingsProvider, useSettings } from '../../context/SettingsContext';
 
 import AppSettings from './settings/Settings';
 import { tabletBreakpoint } from '../../config';
-import { TrackerStat} from '../../data/models/BeatSaviorData';
-import useBeatSaviorData from '../../data/api/hooks/BeatSaviorApi';
-import { useEffect } from 'react';
+import { useScoresData } from '../../data/ScoresDataHook';
 
 const HomeContainer = styled.div`
   margin:5px;
@@ -73,20 +71,9 @@ const HomeContent:React.FC<{ssid:string}> =  ({ssid}) => {
 
   let ssPlayerData:PlayerData|undefined = useSSPlayerData(ssid);
   
-  let ssScoresData:Score[]|undefined = useScoresData(ssid,ScoreSortOrder.RECENT,pages);
+  let scoresData:Score[]|undefined = useScoresData(ssid,ScoreSortOrder.RECENT,pages);
   
-  let bsaviorData:TrackerStat[]|undefined = useBeatSaviorData(ssid);
-  useEffect(()=>{
-    if(ssScoresData&&bsaviorData){
-      console.log('useEffect in home is run to update beatsavior and ssscores') 
-      ssScoresData.forEach(score=>{
-        if(!bsaviorData)
-          return;
-        score.trackerStat=bsaviorData[0];
-      })
-    }
-  },[bsaviorData,ssScoresData]);
-  console.log('bsvior data: ',bsaviorData)
+  
   return (
       <div>
         <HomeContainer>
@@ -97,15 +84,15 @@ const HomeContent:React.FC<{ssid:string}> =  ({ssid}) => {
           </div>
         }
         {
-          ssPlayerData &&ssScoresData?
-          renderTabs(ssScoresData,ssPlayerData,bsaviorData):<div></div>
+          ssPlayerData &&scoresData?
+          renderTabs(scoresData,ssPlayerData):<div></div>
         }
         </HomeContainer>
       </div>
   )
 }
 
-const renderTabs = (ssScoresData:Score[], ssPlayerData:PlayerData, trackerStats?:TrackerStat[]) =>{
+const renderTabs = (ssScoresData:Score[], ssPlayerData:PlayerData) =>{
   return <Content>
           <Tabs>
           <Tab title="ScoreSaber">

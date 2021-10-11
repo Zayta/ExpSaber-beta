@@ -33,7 +33,7 @@ export function useSSPlayerData(scoresaber_id:string):PlayerData|undefined{
 
 //======================== Fetching srer scores ========================//
 
-export function useScoresData(scoresaber_id:string, sortOrder: ScoreSortOrder,pages:number):Score[]|undefined{
+export function useSSScoresData(scoresaber_id:string, sortOrder: ScoreSortOrder,pages:number):Score[]|undefined{
   const [scoresData,setScoresData] = useState<Score[]>([]);
 
   useEffect(() => {

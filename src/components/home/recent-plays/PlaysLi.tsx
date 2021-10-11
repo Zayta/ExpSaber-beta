@@ -8,6 +8,7 @@ import Details from "./details/DetailsHoc";
 import { tabletBreakpoint } from "../../../config";
 import { Minus, Plus } from "react-feather";
 import { TrackerStat } from "../../../data/models/BeatSaviorData";
+import getMapDifficulty from "../../../data/parsers/DifficultyParser";
 const LiIndicator = styled.div`
 @media only screen and (max-width: ${tabletBreakpoint}) {
     * {
@@ -91,7 +92,7 @@ const PlaysLi = (props:PlaysLiProps) =>{
         setShowDetails(!showDetails)
             
     }
-    const playedDiff = getDifficulty(props.score.difficultyRaw);
+    const playedDiff = getMapDifficulty(props.score.difficultyRaw);
   
     
     return <PlaysLiContainer style={showDetails?{'backgroundColor':'var(--bckgrnd-lite)'}:{}}>
@@ -136,23 +137,7 @@ const PlaysLi = (props:PlaysLiProps) =>{
 }
 
 
-//parses the difficulty level from data string
-function getDifficulty(difficulty_str:string):Difficulty{
-    difficulty_str = difficulty_str.toLowerCase().replace(' ','_').replace('-','_'); 
-    if(difficulty_str.includes('plus'))
-        return Difficulty.EXPERT_PLUS;
-    if(difficulty_str.includes('expert'))
-        return Difficulty.EXPERT;
-    if(difficulty_str.includes('hard'))
-        return Difficulty.HARD;
-    if(difficulty_str.includes('normal'))
-        return Difficulty.NORMAL;
-    if(difficulty_str.includes('easy'))
-        return Difficulty.EASY;
 
-
-    return Difficulty.UNKNOWN;
-}
 
 interface PlaysLiProps{
     score:Score
