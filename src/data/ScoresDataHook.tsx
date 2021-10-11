@@ -14,6 +14,7 @@ export function useScoresData(scoresaber_id:string, sortOrder: ScoreSortOrder,pa
   
   useEffect(()=>{
     if(ssScoresData&&bsaviorData){
+      console.log('update bsavior data',bsaviorData)
       ssScoresData.forEach(score=>{
         if(!bsaviorData)
           return;

@@ -3,9 +3,8 @@ import { round } from "../../../../../utils/Math";
 import { ssLeaderboardURL } from "../../../../../config/static";
 import  Score  from "../../../../../data/models/ScoreData";
 import { mobileBreakpoint } from "../../../../../config";
-import AccuracyPerf from "./perf-info/AccuracyPerf";
 
-const ScoreDetailsContainer = styled.div`
+const ScoreInfoContainer = styled.div`
 display:flex;
 flex-direction:column;
 align-items:flex-end;
@@ -22,23 +21,21 @@ width:100%;
     }
 }
 `;
-const LevelInfo = ({ score }:LevelInfoProps) =>{
+const ScoreInfo = ({ score }:ScoreInfoProps) =>{
     if(score){
-        return <ScoreDetailsContainer>
+        return <ScoreInfoContainer>
             <div>
                 Rank: <a target = "_blank" rel="noreferrer" href = {ssLeaderboardURL+score.leaderboardId}>#{score.rank}</a>
             </div>
             <div>
                     Acc: {round(score.score/score.maxScore*100)}%
-                    
-                    <AccuracyPerf accTracker = {score.trackerStat?.trackers.accuracyTracker}/>
             </div>
-        </ScoreDetailsContainer>
+        </ScoreInfoContainer>
     }
     return <div/>
 
 }
-export default LevelInfo;
-interface LevelInfoProps{
+export default ScoreInfo;
+interface ScoreInfoProps{
     score:Score|undefined;
 }
