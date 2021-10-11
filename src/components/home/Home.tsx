@@ -54,13 +54,13 @@ const Home = () =>{
 
   return <QueryClientProvider client={queryClient}>
     <SettingsProvider>
-      <Search/>
+      
+    <AppSettings/><Search/>
             {
               params.ssid?
               <HomeContent ssid = {params.ssid}/>:
               <div/>
             }
-             <AppSettings/>
     </SettingsProvider>
     </QueryClientProvider>
 }

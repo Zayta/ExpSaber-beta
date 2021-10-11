@@ -22,10 +22,10 @@ width:100%;
 }
 .canToggle{
     cursor:pointer;
-    color:var(--txt-color3);
+    color:var(--txt-color1);
 }
 .canToggle:hover{
-    color:var(--txt-color1);
+    color:var(--txt-color3);
 }
 .cannotToggle{
 

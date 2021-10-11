@@ -4,12 +4,18 @@ import Header from "../components/Header";
 import Home from "../components/home/Home";
 
 const HomeLayout = styled.div`
-display:block;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+min-height:100vh;
 `;
 const HomePage = ()=>{
 
-    return <HomeLayout><Header/>
+    return <HomeLayout>
+        <div>
+    <Header/>
     <Home/>
+    </div>
     <Footer/>
     </HomeLayout>
 }

@@ -6,7 +6,7 @@ const AppSettings=()=>{
     function toggle(){
         setToggled(!toggled);
     }
-    return <div style = {{'display':'flex','width':'fit-content'}}>
+    return <div style = {{'display':'flex','width':'fit-content','height':'fit-content'}}>
         <Settings  onClick={toggle}/>
         {
         toggled?<SelectPages/>:<div/>
