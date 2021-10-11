@@ -18,10 +18,9 @@ import { SettingsProvider, useSettings } from '../../context/SettingsContext';
 
 import AppSettings from './settings/Settings';
 import { tabletBreakpoint } from '../../config';
-import { preFetchBeatSaverData } from '../../data/api/hooks/BeatSaverApi';
-import { scoresPerPage } from '../../config/static';
 import { TrackerStat} from '../../data/models/BeatSaviorData';
 import useBeatSaviorData from '../../data/api/hooks/BeatSaviorApi';
+import { useEffect } from 'react';
 
 const HomeContainer = styled.div`
   margin:5px;
@@ -77,6 +76,16 @@ const HomeContent:React.FC<{ssid:string}> =  ({ssid}) => {
   let ssScoresData:Score[]|undefined = useScoresData(ssid,ScoreSortOrder.RECENT,pages);
   
   let bsaviorData:TrackerStat[]|undefined = useBeatSaviorData(ssid);
+  useEffect(()=>{
+    if(ssScoresData&&bsaviorData){
+      console.log('useEffect in home is run to update beatsavior and ssscores') 
+      ssScoresData.forEach(score=>{
+        if(!bsaviorData)
+          return;
+        score.trackerStat=bsaviorData[0];
+      })
+    }
+  },[bsaviorData,ssScoresData]);
   console.log('bsvior data: ',bsaviorData)
   return (
       <div>

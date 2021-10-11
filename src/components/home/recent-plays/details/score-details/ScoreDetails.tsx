@@ -3,6 +3,7 @@ import { round } from "../../../../../utils/Math";
 import { ssLeaderboardURL } from "../../../../../config/static";
 import  Score  from "../../../../../data/models/ScoreData";
 import { mobileBreakpoint } from "../../../../../config";
+import AccuracyPerf from "./perf-info/AccuracyPerf";
 
 const ScoreDetailsContainer = styled.div`
 display:flex;
@@ -29,6 +30,8 @@ const LevelInfo = ({ score }:LevelInfoProps) =>{
             </div>
             <div>
                     Acc: {round(score.score/score.maxScore*100)}%
+                    
+                    <AccuracyPerf accTracker = {score.trackerStat?.trackers.accuracyTracker}/>
             </div>
         </ScoreDetailsContainer>
     }

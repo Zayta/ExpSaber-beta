@@ -3,6 +3,9 @@ import { AccuracyTracker } from "../../../../../../data/models/BeatSaviorData";
 import { round } from "../../../../../../utils/Math";
 
 const AccuracyPerf = ({accTracker}:AccProps) =>{
+    if(!accTracker){
+        return <div/>
+    }
     const leftColor = '#f70063';
         const rightColor = '#25ecf7';
         return <div >
@@ -97,6 +100,6 @@ const renderAvgCut = (avgCut:Array<number>, color:string) =>{
 }
 
 interface AccProps{
-    accTracker:AccuracyTracker
+    accTracker:AccuracyTracker|undefined
 }
 export default AccuracyPerf;
