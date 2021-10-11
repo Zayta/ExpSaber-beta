@@ -20,17 +20,31 @@ width:100%;
         padding:5px;
     }
 }
+.canToggle{
+    cursor:pointer;
+    color:var(--txt-color3);
+}
+.canToggle:hover{
+    color:var(--txt-color1);
+}
+.cannotToggle{
+
+}
 `;
-const ScoreInfo = ({ score }:ScoreInfoProps) =>{
+const AccContainer = styled.div`
+display:inline-flex;
+
+`;
+const ScoreInfo = ({ score,togglePerf }:ScoreInfoProps) =>{
     if(score){
         return <ScoreInfoContainer>
-            <div>
-                Rank: <a target = "_blank" rel="noreferrer" href = {ssLeaderboardURL+score.leaderboardId}>#{score.rank}</a>
-            </div>
-            <div>
-                    Acc: {round(score.score/score.maxScore*100)}%
-            </div>
-        </ScoreInfoContainer>
+        <div>
+            Rank: <a target = "_blank" rel="noreferrer" href = {ssLeaderboardURL+score.leaderboardId}>#{score.rank}</a>
+        </div>
+        <div>
+            Acc: <AccContainer className = {score.trackerStat?'canToggle':'cannotToggle'} onClick={togglePerf}>{round(score.score/score.maxScore*100)}%</AccContainer>
+        </div>
+    </ScoreInfoContainer>
     }
     return <div/>
 
@@ -38,4 +52,5 @@ const ScoreInfo = ({ score }:ScoreInfoProps) =>{
 export default ScoreInfo;
 interface ScoreInfoProps{
     score:Score|undefined;
+    togglePerf?:()=>void
 }

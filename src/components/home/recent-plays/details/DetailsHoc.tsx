@@ -61,8 +61,8 @@ function Details({score,playedDiff}:DetailsProps) {
             <MapDetails songData={data} lvlMapData={lvlMapData}/>
            </MapInfoContainer> 
 
-            <div onClick={togglePerf}>
-            <ScoreDetails score = {score}/>
+            <div>
+            <ScoreDetails score = {score} togglePerf={togglePerf}/>
             </div>
             
         {
