@@ -8,9 +8,9 @@ const SelectPages = () => {
         opts.push(<option key = {i} value = {i}>{i}</option>)
     }
     return (
-      <div>
+      <div style = {{'marginBottom':'5px'}}>
         
-        <span style = {{'margin':'10px'}}>Select pages</span>
+        <span style = {{'margin':'10px'}}>Pages:</span>
         <select defaultValue={pages} onChange={e => setPages(parseInt(e.currentTarget.value))}>
           {opts}
         </select>

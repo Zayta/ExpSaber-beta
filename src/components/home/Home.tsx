@@ -47,6 +47,14 @@ width: 50vw;
   width:90vw;
 }
 `;
+const BottomLeft = styled.div`
+position:fixed;
+bottom:10px;
+left:10px;
+@media only screen and (max-width: ${tabletBreakpoint}){
+  display:none;
+}
+`;
 
 const Home = () =>{
   
@@ -54,13 +62,13 @@ const Home = () =>{
 
   return <QueryClientProvider client={queryClient}>
     <SettingsProvider>
-      
-    <AppSettings/><Search/>
+      <Search/>
             {
               params.ssid?
               <HomeContent ssid = {params.ssid}/>:
-              <div/>
+              <div style={{'minHeight':'80vh'}}/>
             }
+            
     </SettingsProvider>
     </QueryClientProvider>
 }

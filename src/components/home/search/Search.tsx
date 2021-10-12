@@ -1,12 +1,99 @@
 import {Component} from 'react';
-import './search.scss';
 
 import SearchID from './search-players/SearchID';
 import SearchName from './search-players/SearchName';
+import styled from 'styled-components';
+import AppSettings from '../settings/Settings';
 enum SearchBy{
     NAME=0,
     ID=1
 }
+const SearchContainer=styled.div`
+width:100%;
+display:flex;
+align-items:flex-end;
+justify-content:center;
+`;
+const SearchFormContainer = styled.div`
+
+.search-container{
+    display:flex;
+    flex-direction: column;
+    height:fit-content;
+}
+.search-criteria{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-bottom:5px;
+    font-size: 0.5em;
+}
+.search-container label+select{
+    margin-left: 5px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    align-self: center;
+}
+#searchBy{
+    margin:0;
+    padding:0;
+    border-radius: 5px;
+    background-color: var(--content-color);
+    color: inherit;
+    font-size: inherit;
+    font-family:inherit;
+    outline: none;
+    border: none;
+}
+
+.search-wrapper{
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+}
+.search-wrapper form{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    max-height: 100%;
+}
+.search-wrapper form label+input{
+    margin-left: 5px;
+}
+.search-wrapper form input + button{
+    margin-left: 2px;
+}
+.search-wrapper form button{
+    margin:5px;
+    text-align: center;
+    display: flex;
+    align-self: center;
+}
+select{
+    border-radius: 5px;
+}
+.name-results{
+    display: flex;
+    flex-flow: row wrap;
+    overflow-wrap: anywhere;
+}
+.name-result{
+    cursor: pointer;
+}
+a.search-ico,button.search-ico{
+    display: flex;
+    align-items: center;
+    padding:0;
+    margin:0;
+    background-color: transparent;
+    color:var(--main-btn-color)
+}
+button.search-ico:hover{
+    color:white;
+}
+`;
 export default class Search extends Component{
 
     
@@ -26,9 +113,15 @@ export default class Search extends Component{
 
 
     render(){
-        return <div className = 'search-container'>
+        return <SearchContainer>
+            <AppSettings/>
+        <SearchFormContainer>
+            
+            <div className = 'search-container'>
+            
             <div className = 'search-criteria'>
             <label>Search By </label>
+            
             <select id="searchBy" name="searchBy" value = {this.state.searchBy} onChange = {this.updateSearchCriteria}>
                 <option value={SearchBy.ID}>ID</option>
                 <option value={SearchBy.NAME}>Name</option>
@@ -39,6 +132,9 @@ export default class Search extends Component{
         }
       
         </div>
+        </SearchFormContainer>
+        
+        </SearchContainer>
     }
     renderSearch(){
         switch(+this.state.searchBy){

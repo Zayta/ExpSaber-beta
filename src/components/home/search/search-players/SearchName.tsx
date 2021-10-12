@@ -1,5 +1,4 @@
 import React,{Component} from 'react';
-import '../search.scss';
 
 import { Search } from 'react-feather';
 
@@ -33,7 +32,7 @@ export default class SearchName extends Component{
         return <div className = 'search-wrapper'>
             
             <form onSubmit={this.handleFormSubmit}>
-                <input type="text" name="scoreSaberID" placeholder='search username'value={this.state.ss_name} onChange={this.changeName} />
+                <input type="text" name="scoreSaberName" placeholder='search username'value={this.state.ss_name} onChange={this.changeName} />
                 <button type = 'submit' className = 'search-ico'><Search/></button>
             </form>
             <LoadingIndicator/>
