@@ -45,6 +45,14 @@
 .shadow{
   box-shadow: -1px 1px 10px var(--border-color);
 }
+.toggler *{
+  cursor:pointer;
+  width:16px;
+  height:16px;
+}
+.toggler :hover{
+  color:var(--txt-color4);
+}
 div.container{
   font:20px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif
 }

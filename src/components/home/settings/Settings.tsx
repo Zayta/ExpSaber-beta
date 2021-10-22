@@ -17,14 +17,7 @@ const AppSettingsContainer = styled.div`
         align-items:center;
         justify-content:flex-start;
     }
-    .toggler *{
-        cursor:pointer;
-        width:16px;
-        height:16px;
-    }
-    .toggler :hover{
-        color:var(--txt-color4);
-    }
+    
 `;
 const AvailableSettingsContainer = styled.div`
 display: flex;
