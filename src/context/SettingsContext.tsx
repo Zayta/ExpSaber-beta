@@ -1,7 +1,7 @@
 //https://codesandbox.io/s/react-ts-complex-context-function-f1cv4?fontsize=14&hidenavigation=1&pages=dark&file=/src/index.tsx:0-1402
 import * as React from "react";
+import { defaultPages } from "../config";
 
-const defaultPages = 5;
 type SettingsContextType = {
   pages: number;
   setPages: (value: number) => void;
