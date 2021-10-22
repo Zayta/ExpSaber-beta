@@ -1,9 +1,10 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { numInitialLoadedMapData } from "../../../config";
-import { TrackerStat} from "../../../data/models/BeatSaviorData";
 import  Score  from "../../../data/models/ScoreData";
 import PlaysLi from "./PlaysLi";
+import { sortBy, SortCriteria } from "./sort/ScoreSortFunctions";
+import SortOptions from "./sort/SortOptions";
 const FilterContainer = styled.div`
     display:flex;
     flex-direction:row;
@@ -16,6 +17,7 @@ const FilterContainer = styled.div`
 const RecentPlays = (props:RecentPlaysProps) =>{
     //set filter to empty initially
     const [filter, setFilter] = useState('');
+
     //condition for filter (by songName, song author etc. modify this to include dif criteria)
     function filterCondition(s:Score){
         const filterLC = filter.toLowerCase();
@@ -25,10 +27,14 @@ const RecentPlays = (props:RecentPlaysProps) =>{
         || s.levelAuthorName.toLowerCase().includes(filterLC)
         ||filter==='';
     }
+    const sortCondition = sortBy(SortCriteria.TIME_SET);
+
+
     if(!props.scoresData||!props.scoresData.length){
         return <div>No recent plays</div>
     }
     return <div>
+        <h3 style = {{'display':'inline-flex', 'width':'fit-content'}}>{} Plays</h3>
           <FilterContainer>
             <input id="filter"
             name="filter"
@@ -37,10 +43,11 @@ const RecentPlays = (props:RecentPlaysProps) =>{
             value={filter}
             onChange={event => setFilter(event.target.value)}
             />
+            <SortOptions/>
             </FilterContainer>
         <ul>
         {
-            props.scoresData.filter(filterCondition).map((score,index) =><PlaysLi key = {score.scoreId} score = {score} initShowDetails={index<numInitialLoadedMapData}/>)
+            props.scoresData.filter(filterCondition).sort(sortCondition).map((score,index) =><PlaysLi key = {score.scoreId} score = {score} initShowDetails={index<numInitialLoadedMapData}/>)
         }
         </ul>
         </div>

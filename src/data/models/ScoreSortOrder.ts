@@ -4,6 +4,3 @@ enum ScoreSortOrder{
 }
 
 export default ScoreSortOrder
-export enum SortOrder{
-    ASC,DESC
-}

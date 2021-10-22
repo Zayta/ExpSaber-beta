@@ -106,7 +106,7 @@ const renderTabs = (ssScoresData:Score[], ssPlayerData:PlayerData) =>{
           <Tab title="ScoreSaber">
               <ScoreSaberOverview playerData = {ssPlayerData}/>
               </Tab>
-            <Tab title="Recent"><RecentPlays scoresData = {ssScoresData}/></Tab>
+            <Tab title="Scores"><RecentPlays scoresData = {ssScoresData}/></Tab>
             
           </Tabs>
         </Content>

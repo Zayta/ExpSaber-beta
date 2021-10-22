@@ -1,11 +1,7 @@
 import { useSettings } from "../../../../context/SettingsContext";
 import ScoreSortOrder from "../../../../data/models/ScoreSortOrder";
-function mapToScoreSortOrder(sortOrder:string):ScoreSortOrder{
-  if(sortOrder.toLowerCase()===ScoreSortOrder.TOP){
-      return ScoreSortOrder.TOP
-  }
-  return ScoreSortOrder.RECENT
-}
+import { mapToScoreSortOrder } from "../../../../data/parsers/ScoreSortOrderParser";
+
 const SelectScoreSortOrder = () => {
     const { scoreSortOrder, setScoreSortOrder } = useSettings()!;
     
