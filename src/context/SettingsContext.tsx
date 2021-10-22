@@ -4,7 +4,8 @@ import { defaultPages, defaultSortBy } from "../config";
 import ScoreSortOrder from "../data/models/ScoreSortOrder";
 
 type SettingsContextType = {
-  
+  toggled:boolean;
+  setToggled:(toggle:boolean)=>void;
 
   pages: number;
   setPages: (value: number) => void;
@@ -22,6 +23,7 @@ type Props = {
 export const SettingsProvider = ({ children }: Props) => {
   const [pages, setPages] = React.useState(defaultPages);
   const [scoreSortOrder, setScoreSortOrder] = React.useState(defaultSortBy);
+  const [toggled, setToggled] = React.useState(false);
 
   React.useEffect(() => {
     // We'd get the pages from a web API / local storage in a real app
@@ -32,7 +34,7 @@ export const SettingsProvider = ({ children }: Props) => {
   }, []);
 
   return (
-    <SettingsContext.Provider value={{ pages, setPages, scoreSortOrder, setScoreSortOrder }}>
+    <SettingsContext.Provider value={{ pages, setPages, scoreSortOrder, setScoreSortOrder, toggled, setToggled}}>
       {children}
     </SettingsContext.Provider>
   );

@@ -1,10 +1,12 @@
 import React,{Component} from 'react';
-
 import { Search } from 'react-feather';
+
 
 import { Link } from 'react-router-dom';
 import { usePlayerNameSearch } from '../../../../data/api/hooks/ScoreSaberApi';
 import LoadingIndicator from '../../../common/Loading';
+import SearchLink from '../SearchLink';
+import SearchIcon from '../SearchLink';
 
 export default class SearchName extends Component{
     state:SearchNameState = {
@@ -72,7 +74,9 @@ const MatchingNamesList = (inpt:MatchingNamesListProp):JSX.Element =>{
     return <div style = {namesListStyle}>
         {
             playersResponse.playersList.players.map(p=>{
-                return(<Link key = {p.playerId} onClick={handleClick} className = 'search-ico' to={"/ExpSaber/ssid/"+p.playerId}>#{p.rank} - {p.playerName}</Link>)
+                return(<Link key = {p.playerId} onClick={handleClick} className = 'search-ico' to={"/ExpSaber/ssid/"+p.playerId}>
+                    <SearchLink>#{p.rank} - {p.playerName}</SearchLink>
+                    </Link>)
             })
         }
     </div>

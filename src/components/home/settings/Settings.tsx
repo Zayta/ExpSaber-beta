@@ -4,6 +4,7 @@ import {Settings} from "react-feather"
 import styled from "styled-components";
 import SelectScoreSortOrder from "./options/SelectScoreSort";
 import { tabletBreakpoint } from "../../../config";
+import { useSettings } from "../../../context/SettingsContext";
 const AppSettingsContainer = styled.div`
     display:flex;
     flex-direction:column;
@@ -29,10 +30,14 @@ const AvailableSettingsContainer = styled.div`
 display: flex;
     flex-flow: row wrap;
     justify-content:flex-end;
-    
+    @media only screen and (max-width:${tabletBreakpoint}){
+        flex-direction:row;
+        align-items:center;
+        justify-content:flex-start;
+    }
 `;
 const AppSettings=()=>{
-    const [toggled,setToggled] = useState<boolean>(false);
+    const {toggled,setToggled} = useSettings()!;
     function toggle(){
         setToggled(!toggled);
     }
