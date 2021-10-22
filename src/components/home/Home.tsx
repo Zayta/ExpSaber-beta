@@ -92,8 +92,8 @@ const HomeContent:React.FC<{ssid:string}> =  ({ssid}) => {
           </div>
         }
         {
-          ssPlayerData &&scoresData?
-          renderTabs(scoresData,ssPlayerData):<div></div>
+          ssPlayerData &&scoresData &&
+          renderTabs(scoresData,ssPlayerData)
         }
         </HomeContainer>
       </div>

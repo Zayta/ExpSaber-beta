@@ -39,7 +39,7 @@ const AppSettings=()=>{
         <Settings  onClick={toggle}/>
         </div>
         {
-        toggled?<AvailableSettings/>:<div/>
+        toggled&&<AvailableSettings/>
     }</AppSettingsContainer>
 }
 const AvailableSettings = () =>{

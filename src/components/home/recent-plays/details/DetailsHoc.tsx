@@ -66,7 +66,7 @@ function Details({score,playedDiff}:DetailsProps) {
             </div>
             
         {
-            showPerf&&score.trackerStat?<AccuracyPerf accTracker={score.trackerStat.trackers.accuracyTracker}/>:<div style = {{'display':'none'}}/>
+            showPerf&&score.trackerStat && <AccuracyPerf accTracker={score.trackerStat.trackers.accuracyTracker}/>
         }
         </DetailsContainer>    
 }

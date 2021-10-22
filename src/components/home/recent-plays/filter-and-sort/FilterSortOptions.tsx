@@ -47,9 +47,9 @@ const SortOptions = ({setSortCriteria,setFilter}:SortOptionsProps) =>{
         <Filter/>
         </span>
         </div>
-        {toggled?<span>sort by: <select onChange = {(e)=>{setSortCriteria(parseInt(e.currentTarget.value))}}>
+        {toggled&&<span>sort by: <select onChange = {(e)=>{setSortCriteria(parseInt(e.currentTarget.value))}}>
             {opts}
-    </select></span>:<div/>}</SortOptionsContainer>
+    </select></span>}</SortOptionsContainer>
 }
 interface SortOptionsProps{
     setSortCriteria:(sortCriteria:SortCriteria)=>void;
