@@ -35,7 +35,7 @@ export default class SearchName extends Component{
             
             <form onSubmit={this.handleFormSubmit}>
                 <input type="text" name="scoreSaberName" placeholder='search username'value={this.state.ss_name} onChange={this.changeName} />
-                <button type = 'submit' className = 'search-ico'><Search/></button>
+                <button type = 'submit' className = 'search-ico'><SearchLink><Search/></SearchLink></button>
             </form>
             <LoadingIndicator/>
             {
