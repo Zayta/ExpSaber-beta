@@ -6,9 +6,9 @@ import Score from "./models/ScoreData";
 import ScoreSortOrder from "./models/ScoreSortOrder";
 import getMapDifficulty from "./parsers/DifficultyParser";
 //hook that combines data from scoresaber api and beatsavior api
-export function useScoresData(scoresaber_id:string, sortOrder: ScoreSortOrder,pages:number):Score[]|undefined{
+export function useScoresData(scoresaber_id:string, sortBy: ScoreSortOrder,pages:number):Score[]|undefined{
     
-  let ssScoresData:Score[]|undefined = useSSScoresData(scoresaber_id,sortOrder,pages);
+  let ssScoresData:Score[]|undefined = useSSScoresData(scoresaber_id,sortBy,pages);
   
   let bsaviorData:TrackerStat[]|undefined = useBeatSaviorData(scoresaber_id);
   

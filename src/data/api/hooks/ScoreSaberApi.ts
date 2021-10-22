@@ -33,7 +33,7 @@ export function useSSPlayerData(scoresaber_id:string):PlayerData|undefined{
 
 //======================== Fetching srer scores ========================//
 
-export function useSSScoresData(scoresaber_id:string, sortOrder: ScoreSortOrder,pages:number):Score[]|undefined{
+export function useSSScoresData(scoresaber_id:string, sortBy: ScoreSortOrder,pages:number):Score[]|undefined{
   const [scoresData,setScoresData] = useState<Score[]>([]);
 
   useEffect(() => {
@@ -44,7 +44,7 @@ export function useSSScoresData(scoresaber_id:string, sortOrder: ScoreSortOrder,
       try {
         //create urls for scores of different pages
         let urls = []
-        const base_sr_url = ssPlayerApiEndptPrefix+scoresaber_id+"/scores/"+sortOrder+"/";
+        const base_sr_url = ssPlayerApiEndptPrefix+scoresaber_id+"/scores/"+sortBy+"/";
         for(let i = 1; i<=pages;i++){
             urls.push(base_sr_url+i);
         }
@@ -60,7 +60,7 @@ export function useSSScoresData(scoresaber_id:string, sortOrder: ScoreSortOrder,
         });
         setScoresData(scores)
 
-        // const scoresResponse = await axios.get(ssPlayerApiEndptPrefix+scoresaber_id+'/scores/'+sortOrder+'/1');
+        // const scoresResponse = await axios.get(ssPlayerApiEndptPrefix+scoresaber_id+'/scores/'+sortBy+'/1');
             
       }catch (err) {
         console.log('Error:', err);

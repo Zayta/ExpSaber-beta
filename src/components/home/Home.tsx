@@ -9,7 +9,7 @@ import PlayerDetails from './player-info/PlayerInfo';
 import RecentPlays from './recent-plays/RecentPlays';
 import ScoreSaberOverview from './ss-overview/SSProfile';
 import { PlayerData } from '../../data/models/PlayerData';
-import { QueryClientProvider, QueryErrorResetBoundary } from 'react-query';
+import { QueryClientProvider } from 'react-query';
 
 import queryClient from '../../data/api/ClientProvider';
 import  Score  from '../../data/models/ScoreData';
@@ -75,11 +75,11 @@ const Home = () =>{
 
 
 const HomeContent:React.FC<{ssid:string}> =  ({ssid}) => {
-  const {pages} = useSettings()!;
+  const {pages,scoreSortOrder} = useSettings()!;
 
   let ssPlayerData:PlayerData|undefined = useSSPlayerData(ssid);
   
-  let scoresData:Score[]|undefined = useScoresData(ssid,ScoreSortOrder.RECENT,pages);
+  let scoresData:Score[]|undefined = useScoresData(ssid,scoreSortOrder,pages);
   
   
   return (
