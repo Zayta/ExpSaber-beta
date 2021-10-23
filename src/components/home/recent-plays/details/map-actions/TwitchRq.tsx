@@ -25,7 +25,7 @@ const TwitchRq:React.FC<TwitchRqProps> = ({bsr})=>{
           }, 1500);
     }
     return <TwitchRqContainer>
-        <CopyToClipboard text={bsr}
+        <CopyToClipboard text={"!bsr "+bsr}
           onCopy={() => copy(true)}>
               {
                   copied?<Copied>Copied!</Copied>:
