@@ -30,7 +30,7 @@ const SortOptions = ({setSortCriteria,setFilter}:SortOptionsProps) =>{
     let opts = [];
     for (let sc in SortCriteria) {
         if(!isNaN(Number(sc)))
-            opts.push(<option key = {sc} value = {sc}>{SortCriteria[sc].toLowerCase()}</option>)
+            opts.push(<option key = {sc} value = {sc}>{SortCriteria[sc].toLowerCase().replace('_',' ')}</option>)
     }
     return <SortOptionsContainer>
         <div style = {{'display':'flex'}}>

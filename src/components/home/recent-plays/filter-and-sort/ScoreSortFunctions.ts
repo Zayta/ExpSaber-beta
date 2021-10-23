@@ -1,6 +1,6 @@
 import Score from "../../../../data/models/ScoreData";
 export enum SortCriteria{
-    SONG_NAME,SONG_AUTHOR,RANK,DIFFICULTY,LEVEL_AUTHOR,SCORE, TIME_SET
+    TIME_SET,SONG_NAME,SONG_AUTHOR,RANK,DIFFICULTY,LEVEL_AUTHOR,SCORE
 }
 export enum SortOrder{
     ASC=1,DESC=-1
