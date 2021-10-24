@@ -32,4 +32,4 @@ const sortByRank = (s1:Score, s2:Score) => (s1.rank > s2.rank) ? 1 : -1;
 const sortByDifficulty = (s1:Score, s2:Score) => (s1.difficulty > s2.difficulty) ? 1 : -1;
 const sortByLevelAuthor = (s1:Score, s2:Score) => (s1.levelAuthorName > s2.levelAuthorName) ? 1 : -1;
 const sortByScore = (s1:Score, s2:Score) => (s1.score > s2.score) ? 1 : -1;
-const sortByTime = (s1:Score, s2:Score) => (s1.timeSet > s2.timeSet) ? 1 : -1;
+const sortByTime = (s1:Score, s2:Score) => (s1.timeSet > s2.timeSet) ? -1 : 1;
