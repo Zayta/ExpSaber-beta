@@ -1,5 +1,6 @@
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import styled from "styled-components";
+import { leftColor, rightColor } from "../../../../../config";
 import { AccuracyTracker } from "../../../../../data/models/BeatSaviorData";
 import { round } from "../../../../../utils/Math";
 
@@ -77,8 +78,6 @@ const AccuracyPerf = ({accTracker}:AccProps) =>{
     if(!accTracker){
         return <div/>
     }
-    const leftColor = '#f70063';
-        const rightColor = '#25ecf7';
         return <AccPerfContainer>
             
              <div className = 'total-acc'>

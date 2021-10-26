@@ -11,6 +11,7 @@ import ScoreDetails from "./score-info/ScoreInfo";
 import { Loader } from "react-feather";
 import { mobileBreakpoint } from "../../../../config";
 import AccuracyPerf from "./perf-details/AccuracyPerf";
+import HitPerf from "./perf-details/HitPerf";
 
 const DetailsContainer = styled.div`
 padding:10px;
@@ -66,7 +67,12 @@ function Details({score,playedDiff}:DetailsProps) {
             </div>
             
         {
-            showPerf&&score.trackerStat && <AccuracyPerf accTracker={score.trackerStat.trackers.accuracyTracker}/>
+            showPerf&&score.trackerStat && 
+            <div>
+            <AccuracyPerf accTracker={score.trackerStat.trackers.accuracyTracker}
+            />
+            <HitPerf hitTracker = {score.trackerStat.trackers.hitTracker}/>
+            </div>
         }
         </DetailsContainer>    
 }

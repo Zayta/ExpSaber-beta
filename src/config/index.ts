@@ -12,5 +12,9 @@ export const numInitialLoadedMapData=8;
 
 export const defaultSortBy = ScoreSortOrder.RECENT;
 
+//style 
+export const leftColor = '#f70063';
+export const rightColor = '#25ecf7';
+
 //query
 export const queryCacheStaleTime = 5*60*1000;
