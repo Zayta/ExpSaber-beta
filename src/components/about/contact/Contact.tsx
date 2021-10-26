@@ -57,6 +57,7 @@ form #message{
 }
 form button{
     margin-top:5px;
+    padding:10px;
 }
 .verif{
     font-size: xx-small;

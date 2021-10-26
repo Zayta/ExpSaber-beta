@@ -2,29 +2,32 @@ import styled from 'styled-components';
 import Contact from './contact/Contact'
 const AboutContainer = styled.div`
 display: flex;
-flex-flow: column wrap;
-justify-content: center;
+flex-flow: column nowrap;
 align-items: center;
+margin:10px;
+`;
+const AboutItem = styled.div`
 
-.about-item-wrapper{
-    text-align: center;
+text-align: left;
+a#bs{
+
+    color:var(--txt-color1);
 }
-.about-item-wrapper a{
+a{
     margin-left: 5px;
-    color:var(--txt-color1)
+    color:var(--main-btn-color);
 }
 `;
 
 const About = () =>{
     
     return <AboutContainer>
-    <div className='about-item-wrapper'>
+    <AboutItem>
         <div>ExpSaber is a simple plays tracker for the VR rhythm game
-            <a href = "https://beatsaber.com/">Beat Saber</a>.
+            <a id = 'bs' href = "https://beatsaber.com/">Beat Saber</a>.
         </div>
-        <div>It is built on top of the ScoreSaber and Beat Saver APIs.</div>
-    </div>
-    <div>Any tips or feedback would be appreciated!</div>
+        <div>It is built on top of the <a href = "https://new.scoresaber.com/">ScoreSaber</a> and <a href = "https://api.beatsaver.com/docs/index.html?url=./swagger.json">BeatSaver</a>, and <a href = "http://next.beatsavior.io/">BeatSavior</a> APIs.</div>
+    </AboutItem>
     <Contact/>
 </AboutContainer>
 }
