@@ -1,19 +1,31 @@
-import React, { Component} from 'react'
+import styled from 'styled-components';
 import Contact from './contact/Contact'
-import './about.scss'
-export default class About extends Component {
-    
-    render() {
-        return <div className='about-container'>
-            <div className='about-item-wrapper'>
-                <div>ExpSaber is a simple plays tracker for the VR rhythm game
-                    <a href = "https://beatsaber.com/">Beat Saber</a>.
-                </div>
-                <div>It is built on top of the ScoreSaber and Beat Saver APIs.</div>
-            </div>
-            <div>Any tips or feedback would be appreciated!</div>
-            <h3>Contact</h3>
-            <Contact/>
-        </div>
-    }
+const AboutContainer = styled.div`
+display: flex;
+flex-flow: column wrap;
+justify-content: center;
+align-items: center;
+
+.about-item-wrapper{
+    text-align: center;
 }
+.about-item-wrapper a{
+    margin-left: 5px;
+    color:var(--txt-color1)
+}
+`;
+
+const About = () =>{
+    
+    return <AboutContainer>
+    <div className='about-item-wrapper'>
+        <div>ExpSaber is a simple plays tracker for the VR rhythm game
+            <a href = "https://beatsaber.com/">Beat Saber</a>.
+        </div>
+        <div>It is built on top of the ScoreSaber and Beat Saver APIs.</div>
+    </div>
+    <div>Any tips or feedback would be appreciated!</div>
+    <Contact/>
+</AboutContainer>
+}
+export default About;
