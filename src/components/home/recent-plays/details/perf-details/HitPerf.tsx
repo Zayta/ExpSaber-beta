@@ -30,7 +30,8 @@ font-size:small;
 `;
 
 const HitPerf = ({hitTracker}:HitPerfProps) =>{
-    return <HitPerfStyle>
+    return <div style = {{'display':'flex','justifyContent':'center'}}>
+    <HitPerfStyle>
 
 
 <span className = 'lbl'>Missed Notes:</span>
@@ -54,6 +55,7 @@ const HitPerf = ({hitTracker}:HitPerfProps) =>{
         </div>
         
     </HitPerfStyle>
+    </div>
 }
 interface HitPerfProps{
     hitTracker:HitTracker
