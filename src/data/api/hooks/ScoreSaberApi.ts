@@ -67,7 +67,7 @@ export function useSSScoresData(scoresaber_id:string, sortBy: ScoreSortOrder,pag
       }
      };
      fetchScores();
-  }, [scoresaber_id,pages]);
+  }, [scoresaber_id,pages,sortBy]);
   
   return scoresData
 
