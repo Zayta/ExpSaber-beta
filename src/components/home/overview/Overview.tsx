@@ -1,8 +1,8 @@
-import { useState } from "react";
 import styled from "styled-components";
-import { numInitialLoadedMapData } from "../../../config";
-import { useSettings } from "../../../context/SettingsContext";
+import { PlayerData } from "../../../data/models/PlayerData";
 import  Score  from "../../../data/models/ScoreData";
+import General from "./recent/General";
+import ScoreSaberOverview from "./ss-overview/SSProfile";
 
 const OverviewStyle = styled.div`
     display:flex;
@@ -12,15 +12,21 @@ const OverviewStyle = styled.div`
         margin:0;
     }
 `;
-const Overview = (props:OverviewProps) =>{
-    if(!props.scoresData||!props.scoresData.length){
+const Overview = ({playerData,scoresData}:OverviewProps) =>{
+    if(!scoresData||!scoresData.length){
         return <div>No recent plays</div>
     }
 
     return <OverviewStyle>
+        <h3>General</h3>
+        <General playerData={playerData} scoresData={scoresData}/>
+        <h3>ScoreSaber</h3>
+        <ScoreSaberOverview playerData={playerData}/>
         </OverviewStyle>
 }
 interface OverviewProps{
+    
+    playerData:PlayerData | undefined
     scoresData:Score[] | undefined;
 }
   

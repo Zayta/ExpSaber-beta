@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { ssWebProfilePrefix } from "../../../config/static";
-import { PlayerData} from "../../../data/models/PlayerData";
-import AccuracyBar from "./ss-metrics/AccuracyBar";
+import { ssWebProfilePrefix } from "../../../../config/static";
+import { PlayerData} from "../../../../data/models/PlayerData";
+import AccuracyBar from "../metrics/AccuracyBar";
 import { Box } from "react-feather";
 
 const SSOverviewStyle = styled.div`
@@ -24,12 +24,7 @@ div{
     justify-content:center;
     align-items:center;
     color:white;
-}
-h3,h4,h5{
-    display:block;
-    color: var(--txt-color3);
     text-align:center;
-    margin-bottom:5px;
 }
 `;
 const ScoreSaberOverview = (props:ScoreSaberOverviewProps) =>{
@@ -50,8 +45,10 @@ const ScoreSaberOverview = (props:ScoreSaberOverviewProps) =>{
                     <div>Ranked Maps Played: {props.playerData.scoreStats.rankedPlayCount}</div>
                     <div>Total Ranked Score: {props.playerData.scoreStats.totalRankedScore}</div>
                     </div>
+                    <div>
+                        Avg Ranked Accuracy
                     <AccuracyBar accuracy={props.playerData.scoreStats.averageRankedAccuracy}/>
-                    
+                    </div>
                 </PlayerDataStyle>
                 :
                 <div>[No player data]</div>}

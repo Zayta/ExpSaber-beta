@@ -7,7 +7,7 @@ import ScoreSortOrder from '../../data/models/ScoreSortOrder';
 import Search from './search/Search';
 import PlayerDetails from './player-info/PlayerInfo';
 import RecentPlays from './recent-plays/RecentPlays';
-import ScoreSaberOverview from './ss-overview/SSProfile';
+import Overview from './overview/Overview';
 import { PlayerData } from '../../data/models/PlayerData';
 import { QueryClientProvider } from 'react-query';
 
@@ -16,7 +16,6 @@ import  Score  from '../../data/models/ScoreData';
 
 import { SettingsProvider, useSettings } from '../../context/SettingsContext';
 
-import AppSettings from './settings/Settings';
 import { tabletBreakpoint } from '../../config';
 import { useScoresData } from '../../data/ScoresDataHook';
 
@@ -103,8 +102,8 @@ const HomeContent:React.FC<{ssid:string}> =  ({ssid}) => {
 const renderTabs = (ssScoresData:Score[], ssPlayerData:PlayerData) =>{
   return <Content>
           <Tabs>
-          <Tab title="ScoreSaber">
-              <ScoreSaberOverview playerData = {ssPlayerData}/>
+          <Tab title="Overview">
+              <Overview playerData = {ssPlayerData} scoresData={ssScoresData}/>
               </Tab>
             <Tab title="Scores"><RecentPlays scoresData = {ssScoresData}/></Tab>
             
