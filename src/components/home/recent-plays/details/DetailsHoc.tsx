@@ -13,7 +13,7 @@ import { mobileBreakpoint } from "../../../../config";
 import AccuracyPerf from "./perf-details/AccuracyPerf";
 import HitPerf from "./perf-details/HitPerf";
 
-const DetailsContainer = styled.div`
+const DetailsStyle = styled.div`
 padding:10px;
 display:flex;
 justify-content:space-between;
@@ -21,7 +21,7 @@ flex-flow:row wrap;
 width:100%;
 box-sizing:border-box;
 `;
-const MapInfoContainer = styled.div`
+const MapInfoStyle = styled.div`
 @media only screen and (max-width: ${mobileBreakpoint}){
   width:100%;
   margin-bottom:10px;
@@ -33,13 +33,13 @@ function Details({score,playedDiff}:DetailsProps) {
 
   const { status, data, error } = useBeatSaverData(score.songHash);
   if(status === "loading"){
-    return <DetailsContainer style = {{'justifyContent':'center'}}><Loader/></DetailsContainer>
+    return <DetailsStyle style = {{'justifyContent':'center'}}><Loader/></DetailsStyle>
   }
   if(status === "error"||error){
       
     return <span>[No details available]</span>
   }
-  if(!data){return <div style = {{'fontSize':'0.5em'}}><DetailsContainer>[No details available]</DetailsContainer></div>}
+  if(!data){return <div style = {{'fontSize':'0.5em'}}><DetailsStyle>[No details available]</DetailsStyle></div>}
   let lvlMapData;
   if(playedDiff){
 
@@ -55,12 +55,12 @@ function Details({score,playedDiff}:DetailsProps) {
       score.maxScore=(lvlMapData.notes-13)*maxScorePerNote*comboMultiplier+ (1+8+32)*maxScorePerNote;
     }
   }
-  return <DetailsContainer>
-      <MapInfoContainer>
+  return <DetailsStyle>
+      <MapInfoStyle>
             <MapActions songData = {data}/>
             
             <MapDetails songData={data} lvlMapData={lvlMapData}/>
-           </MapInfoContainer> 
+           </MapInfoStyle> 
 
             <div>
             <ScoreDetails score = {score} togglePerf={togglePerf}/>
@@ -74,7 +74,7 @@ function Details({score,playedDiff}:DetailsProps) {
             <HitPerf hitTracker = {score.trackerStat.trackers.hitTracker}/>
             </div>
         }
-        </DetailsContainer>    
+        </DetailsStyle>    
 }
 //finds the lvl map data with the corresponding difficulty in array
 function findLvlMapData(diffs:LevelMapData[], playedDiff:Difficulty):LevelMapData|undefined{

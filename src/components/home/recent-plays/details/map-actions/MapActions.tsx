@@ -7,7 +7,7 @@ import { beatsaverMapPrefix } from "../../../../../config/static";
 import SongData from "../../../../../data/models/SongData";
 import TwitchRq from "./TwitchRq";
 
-const MapActionsContainer = styled.div`
+const MapActionsStyle = styled.div`
 margin: 5px 0 0 0;
 display:flex;
 max-width:100%;
@@ -38,7 +38,7 @@ a{
 const MapActions:React.FC<MapActionsProps> = ({songData})=>{
     if(!songData)
     {return <div/>}
-    return <MapActionsContainer>
+    return <MapActionsStyle>
         
         
         <a className = 'action' title = "Copy bsr" aria-label = "Copy bsr" ><TwitchRq bsr = {songData.id}/></a>
@@ -51,7 +51,7 @@ const MapActions:React.FC<MapActionsProps> = ({songData})=>{
         <a className = 'action'title="Download zip" aria-label="Download zip" href = {songData.versions[0].downloadURL}><Download/></a>
 
         <a className = 'action' title="Audio Sample" aria-label="Audio Sample" href = {songData.versions[0].previewURL}><Music/></a>
-    </MapActionsContainer>
+    </MapActionsStyle>
 }
 
 interface MapActionsProps{

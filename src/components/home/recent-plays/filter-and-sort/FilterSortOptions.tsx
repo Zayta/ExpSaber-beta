@@ -3,7 +3,7 @@ import { Filter } from "react-feather";
 import styled from "styled-components";
 import Score from "../../../../data/models/ScoreData";
 import { SortCriteria } from "./ScoreSortFunctions";
-const FilterContainer = styled.div`
+const FilterStyle = styled.div`
     display:flex;
     flex-direction:row;
     input{
@@ -15,7 +15,7 @@ const FilterContainer = styled.div`
     top:0;
     background:var(--bckgrnd);
 `;
-const SortOptionsContainer = styled.span`
+const SortOptionsStyle = styled.span`
     display:flex;
     flex-flow:column wrap;
     align-items:flex-start;
@@ -32,9 +32,9 @@ const SortOptions = ({setSortCriteria,setFilter}:SortOptionsProps) =>{
         if(!isNaN(Number(sc)))
             opts.push(<option key = {sc} value = {sc}>{SortCriteria[sc].toLowerCase().replace('_',' ')}</option>)
     }
-    return <SortOptionsContainer>
+    return <SortOptionsStyle>
         <div style = {{'display':'flex'}}>
-            <FilterContainer>
+            <FilterStyle>
          <input id="filter"
             name="filter"
             type="text"
@@ -42,14 +42,14 @@ const SortOptions = ({setSortCriteria,setFilter}:SortOptionsProps) =>{
             defaultValue={''}
             onChange={event => setFilter(event.target.value)}
             />
-            </FilterContainer>
+            </FilterStyle>
         <span className = 'toggler' onClick = {toggle}>
         <Filter/>
         </span>
         </div>
         {toggled&&<span>sort by: <select onChange = {(e)=>{setSortCriteria(parseInt(e.currentTarget.value))}}>
             {opts}
-    </select></span>}</SortOptionsContainer>
+    </select></span>}</SortOptionsStyle>
 }
 interface SortOptionsProps{
     setSortCriteria:(sortCriteria:SortCriteria)=>void;

@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { useState } from "react";
-const TwitchRqContainer = styled.span`
+const TwitchRqStyle = styled.span`
     
     color:inherit;
     background:inherit;
@@ -24,7 +24,7 @@ const TwitchRq:React.FC<TwitchRqProps> = ({bsr})=>{
             setCopied(false);
           }, 1500);
     }
-    return <TwitchRqContainer>
+    return <TwitchRqStyle>
         <CopyToClipboard text={"!bsr "+bsr}
           onCopy={() => copy(true)}>
               {
@@ -32,7 +32,7 @@ const TwitchRq:React.FC<TwitchRqProps> = ({bsr})=>{
                   <Twitch/>
               }
         </CopyToClipboard>
-    </TwitchRqContainer>
+    </TwitchRqStyle>
 }
 interface TwitchRqProps{
     bsr:string;

@@ -2,7 +2,7 @@ import { PlayerInfo } from '../../../data/models/PlayerData'
 import styled from "styled-components";
 import { avatarPrefix} from '../../../config/static';
 
-const PlayerDetailsContainer = styled.div`
+const PlayerDetailsStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-self: top;
@@ -38,7 +38,7 @@ const PlayerDetailsContainer = styled.div`
     }
 `;
 const PlayerDetails = (props:PlayerDetailProps) => {
-  return <PlayerDetailsContainer>
+  return <PlayerDetailsStyle>
       <div className = 'restrain-text-length'>
       <h1>{props.playerInfo.playerName}</h1>
       </div>
@@ -48,7 +48,7 @@ const PlayerDetails = (props:PlayerDetailProps) => {
       </div>
       
             
-  </PlayerDetailsContainer>
+  </PlayerDetailsStyle>
 }
 interface PlayerDetailProps{
     playerInfo:PlayerInfo

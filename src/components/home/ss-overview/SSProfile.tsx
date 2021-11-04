@@ -4,12 +4,12 @@ import { PlayerData} from "../../../data/models/PlayerData";
 import AccuracyBar from "./ss-metrics/AccuracyBar";
 import { Box } from "react-feather";
 
-const SSOverviewContainer = styled.div`
+const SSOverviewStyle = styled.div`
 display:flex;
 flex-flow:row wrap;
 justify-content: space-around;
 `;
-const PlayerDataContainer = styled.div`
+const PlayerDataStyle = styled.div`
 display:flex;
 flex-flow: row wrap;
 justify-content:space-around;
@@ -41,9 +41,9 @@ const ScoreSaberOverview = (props:ScoreSaberOverviewProps) =>{
     <div style = {{'float':'right'}}>
     <a target = "_blank" rel="noreferrer" href = {ssWebProfilePrefix+props.playerData?.playerInfo.playerId}><Box/></a>
     </div>
-    <SSOverviewContainer>
+    <SSOverviewStyle>
             {props.playerData?
-                <PlayerDataContainer>
+                <PlayerDataStyle>
                     <div style = {{'alignItems':'flex-start'}}>
                     <div style = {{'display':'inline'}}>Global Rank: <a target = "_blank" rel="noreferrer" href = {"https://scoresaber.com/global/"+Math.ceil(props.playerData.playerInfo.rank/50)}>#{props.playerData.playerInfo.rank}</a></div>
                     <div>Performance Points: {props.playerData.playerInfo.pp}</div>
@@ -52,11 +52,11 @@ const ScoreSaberOverview = (props:ScoreSaberOverviewProps) =>{
                     </div>
                     <AccuracyBar accuracy={props.playerData.scoreStats.averageRankedAccuracy}/>
                     
-                </PlayerDataContainer>
+                </PlayerDataStyle>
                 :
                 <div>[No player data]</div>}
             
-    </SSOverviewContainer>
+    </SSOverviewStyle>
     </div>
 }
 export default ScoreSaberOverview;

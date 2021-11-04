@@ -4,7 +4,7 @@ import { scoresPerLeaderboardPage, ssLeaderboardURL } from "../../../../../confi
 import  Score  from "../../../../../data/models/ScoreData";
 import { mobileBreakpoint } from "../../../../../config";
 
-const ScoreInfoContainer = styled.div`
+const ScoreInfoStyle = styled.div`
 display:flex;
 flex-direction:column;
 align-items:flex-end;
@@ -31,20 +31,20 @@ width:100%;
 
 }
 `;
-const AccContainer = styled.span`
+const AccStyle = styled.span`
 display:inline-flex;
 
 `;
 const ScoreInfo = ({ score,togglePerf }:ScoreInfoProps) =>{
     if(score){
-        return <ScoreInfoContainer>
+        return <ScoreInfoStyle>
         <div>
             Rank: <a target = "_blank" rel="noreferrer" href = {ssLeaderboardURL+score.leaderboardId+"?page="+(Math.trunc(score.rank/scoresPerLeaderboardPage)+1)}>#{score.rank}</a>
         </div>
         <div>
-            Acc: <AccContainer className = {score.trackerStat?'canToggle':'cannotToggle'} onClick={togglePerf}>{round(score.score/score.maxScore*100)}%</AccContainer>
+            Acc: <AccStyle className = {score.trackerStat?'canToggle':'cannotToggle'} onClick={togglePerf}>{round(score.score/score.maxScore*100)}%</AccStyle>
         </div>
-    </ScoreInfoContainer>
+    </ScoreInfoStyle>
     }
     return <div/>
 

@@ -22,7 +22,7 @@ const LiIndicator = styled.div`
   height:100%;
     *{width:12px;};
 `;
-const PlaysLiContainer = styled.li`
+const PlaysLiStyle = styled.li`
 @media only screen and (max-width: ${tabletBreakpoint}) {
         display:flex;
         flex-flow:row wrap;
@@ -43,7 +43,7 @@ img#cover{
     height: 5vw
   }
 `;
-const TitleImageContainer = styled.div`
+const TitleImageStyle = styled.div`
   display:flex;
   flex-flow:row nowrap;
   
@@ -54,7 +54,7 @@ const TitleImageContainer = styled.div`
       margin-left:15px;
   }
 `;
-const GeneralPlayInfoContainer = styled.div`
+const GeneralPlayInfoStyle = styled.div`
 display: flex;
 align-items: center;
 justify-content: space-between;
@@ -95,7 +95,7 @@ const PlaysLi = (props:PlaysLiProps) =>{
     const playedDiff = getMapDifficulty(props.score.difficultyRaw);
   
     
-    return <PlaysLiContainer style={showDetails?{'backgroundColor':'var(--bckgrnd-lite)'}:{}}>
+    return <PlaysLiStyle style={showDetails?{'backgroundColor':'var(--bckgrnd-lite)'}:{}}>
         
         <Toggler onClick={toggleDetails}>
         <LiIndicator >
@@ -104,9 +104,9 @@ const PlaysLi = (props:PlaysLiProps) =>{
             }
             </LiIndicator>
             
-            <GeneralPlayInfoContainer>
+            <GeneralPlayInfoStyle>
             
-                <TitleImageContainer>
+                <TitleImageStyle>
                 
                 <img id = 'cover' alt = "" src = {mapCoverURL+props.score.songHash.toLowerCase()+'.jpg'}/>  
                     
@@ -117,11 +117,11 @@ const PlaysLi = (props:PlaysLiProps) =>{
                             <div className='dif'>{playedDiff} - {props.score.levelAuthorName}</div>
                             
                     </div>
-                </TitleImageContainer>
+                </TitleImageStyle>
             
                 <div className = 'score-set-time'>{timeSince(props.score.timeSet)} ago</div>         
                         
-            </GeneralPlayInfoContainer>
+            </GeneralPlayInfoStyle>
             </Toggler>
                 
            <div/>
@@ -133,7 +133,7 @@ const PlaysLi = (props:PlaysLiProps) =>{
                 :<div/>
             }
      
-    </PlaysLiContainer>
+    </PlaysLiStyle>
 }
 
 

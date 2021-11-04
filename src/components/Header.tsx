@@ -4,7 +4,7 @@ import {useLocation } from 'react-router-dom';
 import { routes } from '../routing/Routes';
 import styled from 'styled-components';
 
-const HeaderContainer = styled.div`
+const HeaderStyle = styled.div`
 
 box-sizing: border-box;
 display: flex;
@@ -45,7 +45,7 @@ justify-content: space-between;
 const Header = () =>{
 
 
-    return  <HeaderContainer>
+    return  <HeaderStyle>
             {/* <div className = {showSearch?'title-and-search':'hidden'}> */}
             <div className = 'header-wrapper'>
             <h1>
@@ -64,6 +64,6 @@ const Header = () =>{
             
             </div>
             
-        </HeaderContainer>
+        </HeaderStyle>
 }
 export default Header;

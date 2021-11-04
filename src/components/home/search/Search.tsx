@@ -9,7 +9,7 @@ enum SearchBy{
     NAME=0,
     ID=1
 }
-const SearchContainer=styled.div`
+const SearchStyle=styled.div`
 width:100%;
 display:flex;
 align-items:flex-end;
@@ -24,7 +24,7 @@ flex-flow:row wrap;
   }
 
 `;
-const SearchFormContainer = styled.div`
+const SearchFormStyle = styled.div`
 
 .search-container{
     display:flex;
@@ -123,9 +123,9 @@ export default class Search extends Component{
 
 
     render(){
-        return <SearchContainer>
+        return <SearchStyle>
             <AppSettings/>
-        <SearchFormContainer>
+        <SearchFormStyle>
             
             <div className = 'search-container'>
             
@@ -142,9 +142,9 @@ export default class Search extends Component{
         }
       
         </div>
-        </SearchFormContainer>
+        </SearchFormStyle>
         
-        </SearchContainer>
+        </SearchStyle>
     }
     renderSearch(){
         switch(+this.state.searchBy){

@@ -7,12 +7,12 @@ type Props = {
   children: ReactElement[]
 }
 
-const TabsContainer = styled.div`
+const TabsStyle = styled.div`
     display:flex;
     flex-flow:row wrap;
     border-bottom:1px solid var(--txt-color3);
 `;
-const ContentContainer = styled.div`
+const ContentStyle = styled.div`
     padding:5px;
 `;
 const Tabs: React.FC<Props> = ({ children }) => {
@@ -23,7 +23,7 @@ const Tabs: React.FC<Props> = ({ children }) => {
   return (
       <div>
           
-    <TabsContainer>
+    <TabsStyle>
         {children.map((item, index) => (
           <TabTitle 
             key={index}
@@ -33,10 +33,10 @@ const Tabs: React.FC<Props> = ({ children }) => {
             isSelected={isSelected}
           />
         ))}
-      </TabsContainer>
-      <ContentContainer>
+      </TabsStyle>
+      <ContentStyle>
         {children[selectedTab]}
-      </ContentContainer>
+      </ContentStyle>
     </div>
   )
 }

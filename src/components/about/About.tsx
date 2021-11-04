@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Contact from './contact/Contact'
-const AboutContainer = styled.div`
+const AboutStyle = styled.div`
 display: flex;
 flex-flow: column nowrap;
 align-items: center;
@@ -21,7 +21,7 @@ a{
 
 const About = () =>{
     
-    return <AboutContainer>
+    return <AboutStyle>
     <AboutItem>
         <div>ExpSaber is a simple plays tracker for the VR rhythm game
             <a id = 'bs' href = "https://beatsaber.com/">Beat Saber</a>.
@@ -29,6 +29,6 @@ const About = () =>{
         <div>It is built on top of the <a href = "https://new.scoresaber.com/">ScoreSaber</a> and <a href = "https://api.beatsaver.com/docs/index.html?url=./swagger.json">BeatSaver</a>, and <a href = "http://next.beatsavior.io/">BeatSavior</a> APIs.</div>
     </AboutItem>
     <Contact/>
-</AboutContainer>
+</AboutStyle>
 }
 export default About;

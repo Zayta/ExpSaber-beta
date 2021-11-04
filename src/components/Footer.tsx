@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const FooterContainer = styled.div`
+const FooterStyle = styled.div`
 display:flex;
 flex-direction: row;
 justify-content: center;
@@ -23,7 +23,7 @@ footer>*::selection{
 const Footer = () =>{
 
     return(
-        <FooterContainer>
+        <FooterStyle>
             <FooterWrapper>
                 <footer>
                     <div>Copyright © 2021, <a target = "_blank" rel="noreferrer" href = "https://github.com/Zayta" style = {{'color':'white'}}>Zayta</a></div>
@@ -31,7 +31,7 @@ const Footer = () =>{
                 </footer>
                 
             </FooterWrapper>
-        </FooterContainer>
+        </FooterStyle>
     )
 }
 export default Footer;

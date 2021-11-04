@@ -20,7 +20,7 @@ import AppSettings from './settings/Settings';
 import { tabletBreakpoint } from '../../config';
 import { useScoresData } from '../../data/ScoresDataHook';
 
-const HomeContainer = styled.div`
+const HomeStyle = styled.div`
   margin:5px;
   box-sizing: border-box;
   display:flex;
@@ -84,7 +84,7 @@ const HomeContent:React.FC<{ssid:string}> =  ({ssid}) => {
   
   return (
       <div>
-        <HomeContainer>
+        <HomeStyle>
         {
           ssPlayerData?
             <PlayerDetails playerInfo={ssPlayerData.playerInfo}/>:
@@ -95,7 +95,7 @@ const HomeContent:React.FC<{ssid:string}> =  ({ssid}) => {
           ssPlayerData &&scoresData &&
           renderTabs(scoresData,ssPlayerData)
         }
-        </HomeContainer>
+        </HomeStyle>
       </div>
   )
 }

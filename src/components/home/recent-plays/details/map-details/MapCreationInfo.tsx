@@ -2,16 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import SongData from "../../../../../data/models/SongData";
 
-const MapCreationInfoContainer = styled.div``;
+const MapCreationInfoStyle = styled.div``;
 const MapCreationInfo = ({ songData }:MapCreationInfoProps) =>{
     if(songData){
 
         const createdAtDate:Date = new Date(songData.createdAt);
-        return <MapCreationInfoContainer>
+        return <MapCreationInfoStyle>
             <React.Fragment>
                 <div>created: {createdAtDate.toLocaleDateString()}</div>
             </React.Fragment>    
-        </MapCreationInfoContainer>
+        </MapCreationInfoStyle>
     }
     return <div/>
 

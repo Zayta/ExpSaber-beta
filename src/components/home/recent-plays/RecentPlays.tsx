@@ -7,7 +7,7 @@ import PlaysLi from "./PlaysLi";
 import { sortBy, SortCriteria } from "./filter-and-sort/ScoreSortFunctions";
 import FilterSortOptions from "./filter-and-sort/FilterSortOptions";
 
-const RecentPlaysContainer = styled.div`
+const RecentPlaysStyle = styled.div`
     display:flex;
     flex-direction:column;
     h3{
@@ -36,7 +36,7 @@ const RecentPlays = (props:RecentPlaysProps) =>{
     if(!props.scoresData||!props.scoresData.length){
         return <div>No recent plays</div>
     }
-    return <RecentPlaysContainer>
+    return <RecentPlaysStyle>
         <div style = {{'display':'inline-flex', 'width':'100%', 'justifyContent':'space-between'}}>
         <h3>{scoreSortOrder} Plays</h3>
           <FilterSortOptions setSortCriteria = {setSortCriteria} setFilter={setFilter}/>
@@ -46,7 +46,7 @@ const RecentPlays = (props:RecentPlaysProps) =>{
             props.scoresData.filter(filterCondition).sort(sortBy(sortCriteria)).map((score,index) =><PlaysLi key = {score.scoreId} score = {score} initShowDetails={index<numInitialLoadedMapData}/>)
         }
         </ul>
-        </RecentPlaysContainer>
+        </RecentPlaysStyle>
 }
 interface RecentPlaysProps{
     scoresData:Score[] | undefined;

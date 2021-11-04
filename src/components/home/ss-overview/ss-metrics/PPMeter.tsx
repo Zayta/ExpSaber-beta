@@ -1,15 +1,15 @@
 
 import styled from 'styled-components';
 
-const PPMeterContainer = styled.div`
+const PPMeterStyle = styled.div`
     width:10vw;
 `;
 
 const PPMeter = (props:PPMeterProps) =>{
-    return <PPMeterContainer>
+    return <PPMeterStyle>
         
         <div>pp: {props.pp}</div>
-        </PPMeterContainer>
+        </PPMeterStyle>
 }
 export default PPMeter
 

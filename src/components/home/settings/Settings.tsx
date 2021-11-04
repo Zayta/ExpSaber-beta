@@ -5,7 +5,7 @@ import styled from "styled-components";
 import SelectScoreSortOrder from "./options/SelectScoreSort";
 import { tabletBreakpoint } from "../../../config";
 import { useSettings } from "../../../context/SettingsContext";
-const AppSettingsContainer = styled.div`
+const AppSettingsStyle = styled.div`
     display:flex;
     flex-direction:column;
     align-items:flex-end;
@@ -19,7 +19,7 @@ const AppSettingsContainer = styled.div`
     }
     
 `;
-const AvailableSettingsContainer = styled.div`
+const AvailableSettingsStyle = styled.div`
 display: flex;
     flex-flow: row wrap;
     justify-content:flex-end;
@@ -34,18 +34,18 @@ const AppSettings=()=>{
     function toggle(){
         setToggled(!toggled);
     }
-    return <AppSettingsContainer>
+    return <AppSettingsStyle>
         <div className = 'toggler'>
         <Settings  onClick={toggle}/>
         </div>
         {
         toggled&&<AvailableSettings/>
-    }</AppSettingsContainer>
+    }</AppSettingsStyle>
 }
 const AvailableSettings = () =>{
-    return <AvailableSettingsContainer>
+    return <AvailableSettingsStyle>
         <SelectScoreSortOrder/>
         <SelectPages/>
-    </AvailableSettingsContainer>
+    </AvailableSettingsStyle>
 }
 export default AppSettings;

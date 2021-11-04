@@ -5,7 +5,7 @@ import { iconURL } from "../../../../../config/static";
 import { LevelMapData } from "../../../../../data/models/SongData";
 import { mobileBreakpoint } from "../../../../../config";
 
-const LevelInfoContainer = styled.div`
+const LevelInfoStyle = styled.div`
     display:flex;
     flex-flow: row wrap;
     padding-right:5px;
@@ -32,7 +32,7 @@ img{
 `;
 const LevelInfo: React.FC<LevelInfoProps> = ({ map_data }) =>{
     if(map_data){
-        return <LevelInfoContainer>
+        return <LevelInfoStyle>
                 
                 <InfoPt><img alt="Notes" src={iconURL+"notes.png"}  title="Total Notes"  /> {map_data.notes}</InfoPt>
                 
@@ -43,7 +43,7 @@ const LevelInfo: React.FC<LevelInfoProps> = ({ map_data }) =>{
                 <InfoPt><img alt="Note jump speed" src={iconURL+"njs.png"}  title="Note jump speed" />{round(map_data.njs)}</InfoPt>
                 
                 <InfoPt><img alt="Notes per second" src={iconURL+"nps.png"}  title="Notes per second" />{round(map_data.nps)}</InfoPt>
-        </LevelInfoContainer>
+        </LevelInfoStyle>
     }
     return <div/>
 

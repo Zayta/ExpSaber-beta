@@ -4,7 +4,7 @@ import { leftColor, rightColor } from "../../../../../config";
 import { AccuracyTracker } from "../../../../../data/models/BeatSaviorData";
 import { round } from "../../../../../utils/Math";
 
-const AccPerfContainer = styled.div`
+const AccPerfStyle = styled.div`
 margin-top:10px;
 .perf-info-wrapper{
     display: flex;
@@ -78,7 +78,7 @@ const AccuracyPerf = ({accTracker}:AccProps) =>{
     if(!accTracker){
         return <div/>
     }
-        return <AccPerfContainer>
+        return <AccPerfStyle>
             
              <div className = 'total-acc'>
                  <div className = "acc-lbl">
@@ -138,7 +138,7 @@ const AccuracyPerf = ({accTracker}:AccProps) =>{
 
         </div>
         
-        </AccPerfContainer>
+        </AccPerfStyle>
 }
 const renderAvgCut = (avgCut:Array<number>, color:string) =>{
 
