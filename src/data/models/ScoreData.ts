@@ -20,6 +20,6 @@ interface SSScore{
     songName: string,
     songSubName: string,
     timeSet: string,
-    unmodififiedScore: number,
+    unmodifiedScore: number,
     weight: number
 }
