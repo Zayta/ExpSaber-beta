@@ -40,7 +40,7 @@ const ScoreSaberOverview = (props:ScoreSaberOverviewProps) =>{
             {props.playerData?
                 <PlayerDataStyle>
                     <div style = {{'alignItems':'flex-start'}}>
-                    <div style = {{'display':'inline'}}>Global Rank: <a target = "_blank" rel="noreferrer" href = {"https://scoresaber.com/global/"+Math.ceil(props.playerData.playerInfo.rank/50)}>#{props.playerData.playerInfo.rank}</a></div>
+                    <div style = {{'display':'inline'}}>Global Rank: <a target = "_blank" rel="noreferrer" href = {"https://scoresaber.com/rankings?page="+Math.ceil(props.playerData.playerInfo.rank/50)}>#{props.playerData.playerInfo.rank}</a></div>
                     <div>Performance Points: {props.playerData.playerInfo.pp}</div>
                     <div>Ranked Maps Played: {props.playerData.scoreStats.rankedPlayCount}</div>
                     <div>Total Ranked Score: {props.playerData.scoreStats.totalRankedScore}</div>
