@@ -44,6 +44,9 @@ const ScoreInfo = ({ score,togglePerf }:ScoreInfoProps) =>{
         <div>
             Acc: <AccStyle className = {score.trackerStat?'canToggle':'cannotToggle'} onClick={togglePerf}>{round(score.score/score.maxScore*100)}%</AccStyle>
         </div>
+        {
+            score.pp>0&&<div>{score.pp}pp</div>
+        }
     </ScoreInfoStyle>
     }
     return <div/>
