@@ -12,6 +12,7 @@ import { Loader } from "react-feather";
 import { mobileBreakpoint } from "../../../../config";
 import AccuracyPerf from "./perf-details/AccuracyPerf";
 import HitPerf from "./perf-details/HitPerf";
+import GridPerf from "./perf-details/GridPerf";
 
 const DetailsStyle = styled.div`
 padding:10px;
@@ -25,6 +26,7 @@ const MapInfoStyle = styled.div`
 @media only screen and (max-width: ${mobileBreakpoint}){
   width:100%;
   margin-bottom:10px;
+  
 }
 `;
 function Details({score,playedDiff}:DetailsProps) {
@@ -72,6 +74,7 @@ function Details({score,playedDiff}:DetailsProps) {
             <AccuracyPerf accTracker={score.trackerStat.trackers.accuracyTracker}
             />
             <HitPerf hitTracker = {score.trackerStat.trackers.hitTracker}/>
+            <GridPerf accTracker={score.trackerStat.trackers.accuracyTracker}/>
             </div>
         }
         </DetailsStyle>    
