@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { leftColor, rightColor } from "../../../../../config";
+import { leftColor, mobileBreakpoint, rightColor } from "../../../../../config";
 import { AccuracyTracker } from "../../../../../data/models/BeatSaviorData"
 import { round } from "../../../../../utils/Math";
 
@@ -9,8 +9,8 @@ display:flex;
 flex-flow:column nowrap;
 width:100%;
 
-overflow:auto;
 overflow-wrap:anywhere;
+max-width:100%;
 align-items:center;
 `;
 const GridPerf = ({accTracker}:AccProps) =>{
@@ -41,19 +41,13 @@ padding:5px;
 const GridSquareStyle = styled.div`
   color: #000000;
   border-radius: 5px;
-  padding: 20px;
+  padding:  20% 5px;
   text-align:center;
   font-weight:bold;
   font-size:0.8em;
-`;
-const GridSquareInvStyle = styled.div`
-  border-style:solid;
-  border-width:5px;
-  border-radius: 5px;
-  padding: 20px;
-  text-align:center;
-  font-weight:bold;
-  font-size:0.8em;
+  @media only screen and (max-width:${mobileBreakpoint}){
+    padding: 20% 0;
+  }
 `;
 //input array(12) for a 4*3 accuracy grid
 const Grid = ({arr}:{arr:number[]}) =>{

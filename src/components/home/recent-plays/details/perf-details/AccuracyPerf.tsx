@@ -1,6 +1,6 @@
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import styled from "styled-components";
-import { leftColor, rightColor } from "../../../../../config";
+import { leftColor, mobileBreakpoint, rightColor } from "../../../../../config";
 import { AccuracyTracker } from "../../../../../data/models/BeatSaviorData";
 import { round } from "../../../../../utils/Math";
 
@@ -12,6 +12,8 @@ margin-top:10px;
 
 }
 .total-acc{
+    max-width:100%;
+    overflow-wrap:anywhere;
     display: flex;
     justify-content: center;
     border-top: 1px solid var(--txt-color1);
@@ -43,9 +45,11 @@ margin-top:10px;
 }
 .acc-lbl{
     display: flex;
+    flex-flow:row wrap;
     align-items: center;
     justify-items: space-around;
     padding:0 3px;
+    max-width:100%;
 }
 .acc-lbls{
     display: flex;
@@ -56,6 +60,17 @@ margin-top:10px;
     display: flex;
     justify-content: space-around;
     flex-flow: row wrap;
+    @media only screen and (max-width:${mobileBreakpoint}){
+        flex-flow:column wrap;
+      }
+}
+.acc-chart-rt{
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row-reverse wrap;
+    @media only screen and (max-width:${mobileBreakpoint}){
+        flex-flow:column wrap;
+      }
 }
 .accPerf-container{
     display: flex;
@@ -119,7 +134,7 @@ const AccuracyPerf = ({accTracker}:AccProps) =>{
         </div>
         <div className = 'per-hand-acc'>
 
-            <div  style = {{flexFlow:'row-reverse wrap'}}className = 'acc-chart'>
+            <div  className = 'acc-chart-rt'>
             <div className='chart'>
             <CircularProgressbar styles = {buildStyles({pathColor:rightColor,textColor:rightColor})} value={accTracker.accRight} text = {""+round(accTracker.accRight,2)} maxValue={115} minValue={70}/>
             </div>

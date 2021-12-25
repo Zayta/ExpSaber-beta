@@ -29,6 +29,11 @@ const MapInfoStyle = styled.div`
   
 }
 `;
+const PerfInfoStyle = styled.div`
+  display:flex;
+  flex-flow:column nowrap;
+
+`;
 function Details({score,playedDiff}:DetailsProps) {
   const [showPerf,setShowPerf] = useState<boolean>(false);
   function togglePerf(){setShowPerf(!showPerf)}
@@ -70,12 +75,12 @@ function Details({score,playedDiff}:DetailsProps) {
             
         {
             showPerf&&score.trackerStat && 
-            <div>
+            <PerfInfoStyle>
             <AccuracyPerf accTracker={score.trackerStat.trackers.accuracyTracker}
             />
             <HitPerf hitTracker = {score.trackerStat.trackers.hitTracker}/>
             <GridPerf accTracker={score.trackerStat.trackers.accuracyTracker}/>
-            </div>
+            </PerfInfoStyle>
         }
         </DetailsStyle>    
 }

@@ -14,6 +14,7 @@ const RecentPlaysStyle = styled.div`
         padding:0;
         margin:0;
     }
+    overflow:auto;
 `;
 const RecentPlays = (props:RecentPlaysProps) =>{
     const {scoreSortOrder} = useSettings()!;
