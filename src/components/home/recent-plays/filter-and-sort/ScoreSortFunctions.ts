@@ -1,35 +1,38 @@
 import Score from "../../../../data/models/ScoreData";
 export enum SortCriteria{
-    TIME_SET,SONG_NAME,SONG_AUTHOR,RANK,DIFFICULTY,LEVEL_AUTHOR,SCORE
+    TIME_SET,SONG_NAME,SONG_AUTHOR,RANK,DIFFICULTY,LEVEL_AUTHOR,SCORE,PP
 }
 export enum SortOrder{
-    ASC=1,DESC=-1
+    DESC=1,ASC=-1
 }
-export function sortBy(sortCriteria:SortCriteria){
+export function sortBy(sortCriteria:SortCriteria,sortOrder=SortOrder.DESC){
     
     switch(sortCriteria){
         case SortCriteria.SONG_NAME:
-            return sortBySongName;
+            return sortBySongName(sortOrder);
         case SortCriteria.SONG_AUTHOR:
-            return sortBySongAuthor;
+            return sortBySongAuthor(sortOrder);
         case SortCriteria.RANK:
-            return sortByRank;
+            return sortByRank(sortOrder);
         case SortCriteria.DIFFICULTY:
-            return sortByDifficulty;
+            return sortByDifficulty(sortOrder);
         case SortCriteria.LEVEL_AUTHOR:
-            return sortByLevelAuthor;
+            return sortByLevelAuthor(sortOrder);
         case SortCriteria.SCORE:
-            return sortByScore;
+            return sortByScore(sortOrder);
         case SortCriteria.TIME_SET:
-            return sortByTime;
-        
+            return sortByTime(sortOrder);
+        case SortCriteria.PP:
+            return sortByPP(sortOrder);
 
     }
 }
-const sortBySongName = (s1:Score, s2:Score) => (s1.songName > s2.songName) ? 1 : -1;
-const sortBySongAuthor = (s1:Score, s2:Score) => (s1.songAuthorName > s2.songAuthorName) ? 1 : -1;
-const sortByRank = (s1:Score, s2:Score) => (s1.rank > s2.rank) ? 1 : -1;
-const sortByDifficulty = (s1:Score, s2:Score) => (s1.difficulty > s2.difficulty) ? 1 : -1;
-const sortByLevelAuthor = (s1:Score, s2:Score) => (s1.levelAuthorName > s2.levelAuthorName) ? 1 : -1;
-const sortByScore = (s1:Score, s2:Score) => (s1.score > s2.score) ? 1 : -1;
-const sortByTime = (s1:Score, s2:Score) => (s1.timeSet > s2.timeSet) ? -1 : 1;
+const sortBySongName = (order:SortOrder) =>{return ((s1:Score, s2:Score) => ((s1.songName > s2.songName) ? 1 : -1)*order)};
+const sortBySongAuthor = (order:SortOrder) =>{return ((s1:Score, s2:Score) => ((s1.songAuthorName > s2.songAuthorName) ? 1 : -1)*order)};
+const sortByRank = (order:SortOrder) =>{return ((s1:Score, s2:Score) => ((s1.rank > s2.rank) ? 1 : -1)*order)};
+const sortByDifficulty = (order:SortOrder) =>{return ((s1:Score, s2:Score) => ((s1.difficulty > s2.difficulty) ? 1 : -1)*order)};
+const sortByLevelAuthor = (order:SortOrder) =>{return ((s1:Score, s2:Score) => ((s1.levelAuthorName > s2.levelAuthorName) ? 1 : -1)*order)};
+const sortByScore = (order:SortOrder) =>{return ((s1:Score, s2:Score) => ((s1.score > s2.score) ? 1 : -1)*order)};
+const sortByTime = (order:SortOrder) =>{return ((s1:Score, s2:Score) => ((s1.timeSet > s2.timeSet) ? -1 : 1)*order)};
+const sortByPP = (order:SortOrder) =>{return ((s1:Score, s2:Score) => ((s1.pp > s2.pp) ? -1 : 1)*order)};
+

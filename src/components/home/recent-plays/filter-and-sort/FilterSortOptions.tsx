@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Filter } from "react-feather";
 import styled from "styled-components";
-import Score from "../../../../data/models/ScoreData";
-import { SortCriteria } from "./ScoreSortFunctions";
+import { SortCriteria, SortOrder } from "./ScoreSortFunctions";
+import { SortOrderUI } from "./SortOrderUI";
+//display component for filter and sorting
 const FilterStyle = styled.div`
     display:flex;
     flex-direction:row;
@@ -22,8 +23,8 @@ const SortOptionsStyle = styled.span`
     justify-content:center;
 
 `;
-const SortOptions = ({setSortCriteria,setFilter}:SortOptionsProps) =>{
-    const [toggled,setToggled] = useState<boolean>(false)
+const SortOptions = ({setSortCriteria,setFilter,sortOrder,setSortOrder}:SortOptionsProps) =>{
+    const [toggled,setToggled] = useState<boolean>(false);
     function toggle(){
         setToggled(!toggled)
     }
@@ -47,13 +48,16 @@ const SortOptions = ({setSortCriteria,setFilter}:SortOptionsProps) =>{
         <Filter/>
         </span>
         </div>
-        {toggled&&<span>sort by: <select onChange = {(e)=>{setSortCriteria(parseInt(e.currentTarget.value))}}>
+        {toggled&&<span style={{'display':'flex'}}>sort by: <select onChange = {(e)=>{setSortCriteria(parseInt(e.currentTarget.value))}}>
             {opts}
-    </select></span>}</SortOptionsStyle>
+    </select>  <SortOrderUI sortOrder={sortOrder} setSortOrder={setSortOrder}/></span>}</SortOptionsStyle>
 }
 interface SortOptionsProps{
     setSortCriteria:(sortCriteria:SortCriteria)=>void;
     setFilter:(filter:string)=>void;
+    
+    setSortOrder:(sortOrder:SortOrder)=>void;
+    sortOrder:SortOrder
 }
 
 export default SortOptions;
