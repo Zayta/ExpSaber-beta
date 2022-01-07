@@ -26,7 +26,7 @@ const About = () =>{
         <div>ExpSaber is a simple plays tracker for the VR rhythm game
             <a id = 'bs' href = "https://beatsaber.com/">Beat Saber</a>.
         </div>
-        <div>It is built on top of the <a href = "https://new.scoresaber.com/">ScoreSaber</a> and <a href = "https://api.beatsaver.com/docs/index.html?url=./swagger.json">BeatSaver</a>, and <a href = "http://next.beatsavior.io/">BeatSavior</a> APIs.</div>
+        <div>It is built on top of the <a href = "https://new.scoresaber.com/">ScoreSaber</a>, <a href = "https://api.beatsaver.com/docs/index.html?url=./swagger.json">BeatSaver</a>, and <a href = "http://next.beatsavior.io/">BeatSavior</a> APIs.</div>
     </AboutItem>
     <Contact/>
 </AboutStyle>
