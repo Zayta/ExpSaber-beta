@@ -27,12 +27,12 @@ export function sortBy(sortCriteria:SortCriteria,sortOrder=SortOrder.DESC){
 
     }
 }
-const sortBySongName = (order:SortOrder) =>{return ((s1:SSScore, s2:SSScore) => ((s1.songName > s2.songName) ? 1 : -1)*order)};
-const sortBySongAuthor = (order:SortOrder) =>{return ((s1:SSScore, s2:SSScore) => ((s1.songAuthorName > s2.songAuthorName) ? 1 : -1)*order)};
-const sortByRank = (order:SortOrder) =>{return ((s1:SSScore, s2:SSScore) => ((s1.rank > s2.rank) ? 1 : -1)*order)};
-const sortByDifficulty = (order:SortOrder) =>{return ((s1:SSScore, s2:SSScore) => ((s1.difficulty > s2.difficulty) ? 1 : -1)*order)};
-const sortByLevelAuthor = (order:SortOrder) =>{return ((s1:SSScore, s2:SSScore) => ((s1.levelAuthorName > s2.levelAuthorName) ? 1 : -1)*order)};
-const sortByScore = (order:SortOrder) =>{return ((s1:SSScore, s2:SSScore) => ((s1.score > s2.score) ? 1 : -1)*order)};
-const sortByTime = (order:SortOrder) =>{return ((s1:SSScore, s2:SSScore) => ((s1.timeSet > s2.timeSet) ? -1 : 1)*order)};
-const sortByPP = (order:SortOrder) =>{return ((s1:SSScore, s2:SSScore) => ((s1.pp > s2.pp) ? -1 : 1)*order)};
+const sortBySongName = (order:SortOrder) =>{return ((s1:SSScore, s2:SSScore) => ((s1.leaderboard.songName > s2.leaderboard.songName) ? 1 : -1)*order)};
+const sortBySongAuthor = (order:SortOrder) =>{return ((s1:SSScore, s2:SSScore) => ((s1.leaderboard.songAuthorName > s2.leaderboard.songAuthorName) ? 1 : -1)*order)};
+const sortByRank = (order:SortOrder) =>{return ((s1:SSScore, s2:SSScore) => ((s1.score.rank > s2.score.rank) ? 1 : -1)*order)};
+const sortByDifficulty = (order:SortOrder) =>{return ((s1:SSScore, s2:SSScore) => ((s1.leaderboard.difficulty > s2.leaderboard.difficulty) ? 1 : -1)*order)};
+const sortByLevelAuthor = (order:SortOrder) =>{return ((s1:SSScore, s2:SSScore) => ((s1.leaderboard.levelAuthorName > s2.leaderboard.levelAuthorName) ? 1 : -1)*order)};
+const sortByScore = (order:SortOrder) =>{return ((s1:SSScore, s2:SSScore) => ((s1.score.baseScore > s2.score.baseScore) ? 1 : -1)*order)};
+const sortByTime = (order:SortOrder) =>{return ((s1:SSScore, s2:SSScore) => ((s1.score.timeSet > s2.score.timeSet) ? -1 : 1)*order)};
+const sortByPP = (order:SortOrder) =>{return ((s1:SSScore, s2:SSScore) => ((s1.score.pp > s2.score.pp) ? -1 : 1)*order)};
 

@@ -4,7 +4,6 @@ import { timeSince } from "../../../utils/Time";
 import { mapCoverURL } from "../../../config/static";
 import Difficulty from "../../../data/models/Difficulty";
 import  SSScore  from "../../../data/models/ScoreData";
-import Details from "./details/DetailsHoc";
 import { tabletBreakpoint } from "../../../config";
 import { Minus, Plus } from "react-feather";
 import { TrackerStat } from "../../../data/models/BeatSaviorData";
@@ -128,7 +127,7 @@ const PlaysLi = (props:PlaysLiProps) =>{
     
             {
                 showDetails?
-                <Details score = {props.score} playedDiff = {playedDiff}/>
+                <div>TODO details</div>
                 
                 :<div/>
             }

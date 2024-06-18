@@ -1,13 +1,13 @@
 import { useParams, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
-import Tab from '../common/tabs/Tab';
-import Tabs from '../common/tabs/Tabs';
+import Tab from '../../components/common/tabs/Tab';
+import Tabs from '../../components/common/tabs/Tabs';
 import {useSSPlayerInfo } from '../../data/api/hooks/ScoreSaberApi';
 import ScoreSortOrder from '../../data/models/ScoreSortOrder';
-import Search from './search/Search';
-import PlayerDetails from './player-info/PlayerInfo';
-import RecentPlays from './recent-plays/RecentPlays';
-import Overview from './overview/Overview';
+import Search from '../../components/home/search/Search';
+import PlayerDetails from '../../components/home/player-info/PlayerInfo';
+import RecentPlays from '../../components/home/recent-plays/RecentPlays';
+import Overview from '../../components/home/overview/Overview';
 import { PlayerInfo } from '../../data/models/PlayerData';
 import { QueryClientProvider } from 'react-query';
 

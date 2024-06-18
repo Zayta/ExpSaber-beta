@@ -39,13 +39,12 @@ const ScoreInfo = ({ score,togglePerf }:ScoreInfoProps) =>{
     if(score){
         return <ScoreInfoStyle>
         <div>
-            Rank: <a target = "_blank" rel="noreferrer" href = {ssLeaderboardURL+score.leaderboardId+"?page="+(Math.trunc(score.rank/scoresPerLeaderboardPage)+1)}>#{score.rank}</a>
+            Rank: <a target = "_blank" rel="noreferrer" href = {ssLeaderboardURL+score.leaderboard.id+"?page="+(Math.trunc(score.score.rank/scoresPerLeaderboardPage)+1)}>#{score.score.rank}</a>
         </div>
         <div>
-            Acc: <AccStyle className = {score.trackerStat?'canToggle':'cannotToggle'} onClick={togglePerf}>{round(score.score/score.maxScore*100)}%</AccStyle>
         </div>
         {
-            score.pp>0&&<div>{score.pp}pp</div>
+            score.score.pp>0&&<div>{score.score.pp}pp</div>
         }
     </ScoreInfoStyle>
     }
