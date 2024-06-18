@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { timeSince } from "../../../utils/Time";
 import { mapCoverURL } from "../../../config/static";
 import Difficulty from "../../../data/models/Difficulty";
-import  Score  from "../../../data/models/ScoreData";
+import  SSScore  from "../../../data/models/ScoreData";
 import Details from "./details/DetailsHoc";
 import { tabletBreakpoint } from "../../../config";
 import { Minus, Plus } from "react-feather";
@@ -92,7 +92,7 @@ const PlaysLi = (props:PlaysLiProps) =>{
         setShowDetails(!showDetails)
             
     }
-    const playedDiff = getMapDifficulty(props.score.difficultyRaw);
+    const playedDiff = getMapDifficulty(props.score.leaderboard.difficulty.difficultyRaw);
   
     
     return <PlaysLiStyle style={showDetails?{'backgroundColor':'var(--bckgrnd-lite)'}:{}}>
@@ -108,18 +108,18 @@ const PlaysLi = (props:PlaysLiProps) =>{
             
                 <TitleImageStyle>
                 
-                <img id = 'cover' alt = "" src = {mapCoverURL+props.score.songHash.toLowerCase()+'.jpg'}/>  
+                <img id = 'cover' alt = "" src = {mapCoverURL+props.score.leaderboard.songHash.toLowerCase()+'.jpg'}/>  
                     
                     <div style = {{'display':'flex','flexDirection':'column'}}>
                         
-                            <div>{props.score.songName} {props.score.songSubName} - {props.score.songAuthorName}</div>
+                            <div>{props.score.leaderboard.songName} {props.score.leaderboard.songSubName} - {props.score.leaderboard.songAuthorName}</div>
                             
-                            <div className='dif'>{playedDiff} - {props.score.levelAuthorName}</div>
+                            <div className='dif'>{playedDiff} - {props.score.leaderboard.levelAuthorName}</div>
                             
                     </div>
                 </TitleImageStyle>
             
-                <div className = 'score-set-time'>{timeSince(props.score.timeSet)} ago</div>         
+                <div className = 'score-set-time'>{timeSince(props.score.score.timeSet)} ago</div>         
                         
             </GeneralPlayInfoStyle>
             </Toggler>
@@ -140,7 +140,7 @@ const PlaysLi = (props:PlaysLiProps) =>{
 
 
 interface PlaysLiProps{
-    score:Score
+    score:SSScore
     initShowDetails?:boolean;
 }
 

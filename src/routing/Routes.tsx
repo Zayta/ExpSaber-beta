@@ -9,7 +9,7 @@ const RouteContent = () =>{
     return <div className = 'content'>  
         <Switch>
         
-        <Route path="/ExpSaber/ssid/:ssid" >
+        <Route path="/ExpSaber/player/id/:id" >
           <HomePage  />
         </Route>
         

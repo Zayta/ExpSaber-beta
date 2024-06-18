@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { PlayerData } from "../../../data/models/PlayerData";
-import  Score  from "../../../data/models/ScoreData";
+import { PlayerInfo } from "../../../data/models/PlayerData";
+import  SSScore  from "../../../data/models/ScoreData";
 import General from "./recent/General";
 import ScoreSaberOverview from "./ss-overview/SSProfile";
 
@@ -26,8 +26,8 @@ const Overview = ({playerData,scoresData}:OverviewProps) =>{
 }
 interface OverviewProps{
     
-    playerData:PlayerData | undefined
-    scoresData:Score[] | undefined;
+    playerData:PlayerInfo | undefined;
+    scoresData:SSScore[] | undefined;
 }
   
 export default Overview;

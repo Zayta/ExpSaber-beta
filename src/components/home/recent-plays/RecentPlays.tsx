@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { numInitialLoadedMapData } from "../../../config";
 import { useSettings } from "../../../context/SettingsContext";
-import  Score  from "../../../data/models/ScoreData";
+import  SSScore  from "../../../data/models/ScoreData";
 import PlaysLi from "./PlaysLi";
 import { sortBy, SortCriteria, SortOrder } from "./filter-and-sort/ScoreSortFunctions";
 import FilterSortOptions from "./filter-and-sort/FilterSortOptions";
@@ -27,12 +27,12 @@ const RecentPlays = (props:RecentPlaysProps) =>{
 
 
     //condition for filter (by songName, song author etc. modify this to include dif criteria)
-    function filterCondition(s:Score){
+    function filterCondition(s:SSScore){
         const filterLC = filter.toLowerCase();
-        return s.songName.toLowerCase().includes(filterLC)
-        || s.songSubName.toLowerCase().includes(filterLC)
-        || s.songAuthorName.toLowerCase().includes(filterLC)
-        || s.levelAuthorName.toLowerCase().includes(filterLC)
+        return s.leaderboard.songName.toLowerCase().includes(filterLC)
+        || s.leaderboard.songSubName.toLowerCase().includes(filterLC)
+        || s.leaderboard.songAuthorName.toLowerCase().includes(filterLC)
+        || s.leaderboard.levelAuthorName.toLowerCase().includes(filterLC)
         ||filter==='';
     }
     
@@ -47,13 +47,13 @@ const RecentPlays = (props:RecentPlaysProps) =>{
             </div>
         <ul>
         {
-            props.scoresData.filter(filterCondition).sort(sortBy(sortCriteria,sortOrder)).map((score,index) =><PlaysLi key = {score.scoreId} score = {score} initShowDetails={index<numInitialLoadedMapData}/>)
+            props.scoresData.filter(filterCondition).sort(sortBy(sortCriteria,sortOrder)).map((score,index) =><PlaysLi key = {score.score.id} score = {score} initShowDetails={index<numInitialLoadedMapData}/>)
         }
         </ul>
         </RecentPlaysStyle>
 }
 interface RecentPlaysProps{
-    scoresData:Score[] | undefined;
+    scoresData:SSScore[] | undefined;
 }
   
 export default RecentPlays;

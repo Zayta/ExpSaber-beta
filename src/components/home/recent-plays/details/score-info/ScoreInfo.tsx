@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { round } from "../../../../../utils/Math";
 import { scoresPerLeaderboardPage, ssLeaderboardURL } from "../../../../../config/static";
-import  Score  from "../../../../../data/models/ScoreData";
+import  SSScore  from "../../../../../data/models/ScoreData";
 import { mobileBreakpoint } from "../../../../../config";
 
 const ScoreInfoStyle = styled.div`
@@ -54,6 +54,6 @@ const ScoreInfo = ({ score,togglePerf }:ScoreInfoProps) =>{
 }
 export default ScoreInfo;
 interface ScoreInfoProps{
-    score:Score|undefined;
+    score:SSScore|undefined;
     togglePerf?:()=>void
 }

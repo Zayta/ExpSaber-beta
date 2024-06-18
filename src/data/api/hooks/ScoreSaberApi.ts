@@ -1,24 +1,23 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { PlayerData, PlayerInfo } from "../../models/PlayerData";
-import  Score from "../../models/ScoreData";
+import { PlayerInfo } from "../../models/PlayerData";
+import  SSScore from "../../models/ScoreData";
 import { trackPromise } from 'react-promise-tracker';
 import ScoreSortOrder from "../../models/ScoreSortOrder";
 
-const ssPlayerApiEndptPrefix = 'https://new.scoresaber.com/api/player/';
-const ssApiSearchPlayerEndpt = 'https://new.scoresaber.com/api/players/by-name/';
+const scoreSaberApi='https://scoresaber.com/api'
 
 
 //scoresaber data react hook fetches relevant srer info from scoresaber API
 //=================== Fetching Player General Info (name, country, rank, avatar, etc) ====================//
-export function useSSPlayerData(scoresaber_id:string):PlayerData|undefined{
-    const [ssPlayerData,setSSPlayerData] = useState<PlayerData>();
+export function useSSPlayerInfo(scoresaber_id:string):PlayerInfo|undefined{
+    const [ssPlayerInfo,setSSPlayerInfo] = useState<PlayerInfo>();
     
     useEffect(() => {
       const fetchScores = async () => {
         try {
-          const userResponse = await trackPromise(axios.get(ssPlayerApiEndptPrefix+scoresaber_id+'/full'));
-          setSSPlayerData(userResponse.data);
+          const userResponse = await trackPromise(axios.get(scoreSaberApi+'/player/'+scoresaber_id+'/full'));
+          setSSPlayerInfo(userResponse.data);
           
         }catch (err) {
           console.log('Error:', err);
@@ -27,14 +26,14 @@ export function useSSPlayerData(scoresaber_id:string):PlayerData|undefined{
        fetchScores();
     }, [scoresaber_id]);
     
-    return ssPlayerData
+    return ssPlayerInfo
 
 }
 
-//======================== Fetching srer scores ========================//
+//======================== Fetching urer scores ========================//
 
-export function useSSScoresData(scoresaber_id:string, sortBy: ScoreSortOrder,pages:number):Score[]|undefined{
-  const [scoresData,setScoresData] = useState<Score[]>([]);
+export function useSSScoresData(scoresaber_id:string, sortBy: ScoreSortOrder,numScores:number):SSScore[]|undefined{
+  const [scoresData,setScoresData] = useState<SSScore[]>([]);
 
   useEffect(() => {
     if(!scoresaber_id){
@@ -42,32 +41,22 @@ export function useSSScoresData(scoresaber_id:string, sortBy: ScoreSortOrder,pag
     }
     const fetchScores = async () => {
       try {
-        //create urls for scores of different pages
-        let urls = []
-        const base_sr_url = ssPlayerApiEndptPrefix+scoresaber_id+"/scores/"+sortBy+"/";
-        for(let i = 1; i<=pages;i++){
-            urls.push(base_sr_url+i);
-        }
-        let scoresResponse  = await Promise.all(urls.map(
-            async url=>await trackPromise(axios.get(url).catch(err=>{console.log(err);}))));
-            
-        let scores:Score[] = [];
-        scoresResponse.forEach(sr=>{
-          if(sr&&sr.data&&sr.data.scores){
-              scores = scores.concat(sr.data.scores);
-              
-          }
-        });
-        setScoresData(scores)
+        const url = scoreSaberApi+'/player/'+scoresaber_id+"/scores?sort="+sortBy+"&limit="+numScores;
+console.log('url for scores is ',url)
+        const scoresResponse  = await trackPromise(axios.get(url));
+        console.log('scoresResponse is ',scoresResponse)
 
-        // const scoresResponse = await axios.get(ssPlayerApiEndptPrefix+scoresaber_id+'/scores/'+sortBy+'/1');
-            
+        setScoresData(scoresResponse.data.playerScores)
+
+          
       }catch (err) {
         console.log('Error:', err);
       }
      };
      fetchScores();
-  }, [scoresaber_id,pages,sortBy]);
+  }, [scoresaber_id,numScores,sortBy]);
+
+  console.log('in ss scores data, scoresdata is ',scoresData)
   
   return scoresData
 
@@ -92,7 +81,7 @@ export function usePlayerNameSearch(name:string):PlayersList{
     const fetchScores = async () => {
       try {
         setLoading(true);
-        const playersListResponse = await trackPromise(axios.get(ssApiSearchPlayerEndpt+name));
+        const playersListResponse = await trackPromise(axios.get(scoreSaberApi+'/players?search='+name));
         
         setListData({playersList:playersListResponse.data});
         setLoading(false);

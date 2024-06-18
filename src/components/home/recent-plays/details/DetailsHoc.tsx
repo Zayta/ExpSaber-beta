@@ -2,7 +2,7 @@ import { memo, useState } from "react";
 import useBeatSaverData from "../../../../data/api/hooks/BeatSaverApi"
 import { comboMultiplier, maxScorePerNote } from "../../../../config/static";
 import Difficulty from "../../../../data/models/Difficulty";
-import Score from "../../../../data/models/ScoreData";
+import SSScore from "../../../../data/models/ScoreData";
 import { LevelMapData} from "../../../../data/models/SongData";
 import styled from "styled-components";
 import MapDetails from "./map-details/MapDetails";
@@ -91,7 +91,7 @@ function findLvlMapData(diffs:LevelMapData[], playedDiff:Difficulty):LevelMapDat
 }
 
 interface DetailsProps{
-    score:Score,
+    score:SSScore,
     playedDiff:Difficulty
 }
 export default memo(Details);

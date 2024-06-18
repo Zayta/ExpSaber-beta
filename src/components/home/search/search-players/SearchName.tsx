@@ -74,8 +74,8 @@ const MatchingNamesList = (inpt:MatchingNamesListProp):JSX.Element =>{
     return <div style = {namesListStyle}>
         {
             playersResponse.playersList.players.map(p=>{
-                return(<Link key = {p.playerId} onClick={handleClick} className = 'search-ico' to={"/ExpSaber/ssid/"+p.playerId}>
-                    <SearchLink>#{p.rank} - {p.playerName}</SearchLink>
+                return(<Link key = {p.id} onClick={handleClick} className = 'search-ico' to={"/ExpSaber/player/id/"+p.id}>
+                    <SearchLink>#{p.rank} - {p.name}</SearchLink>
                     </Link>)
             })
         }

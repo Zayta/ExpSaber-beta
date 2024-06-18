@@ -9,6 +9,7 @@ export const mobileBreakpoint = '500px';
 export const maxPages = 30;
 export const defaultPages = 10;
 export const numInitialLoadedMapData=8;
+export const numScoresPerPage=8;
 
 export const defaultSortBy = ScoreSortOrder.RECENT;
 

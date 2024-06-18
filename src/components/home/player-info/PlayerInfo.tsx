@@ -1,6 +1,5 @@
 import { PlayerInfo } from '../../../data/models/PlayerData'
 import styled from "styled-components";
-import { avatarPrefix} from '../../../config/static';
 
 const PlayerDetailsStyle = styled.div`
   display: flex;
@@ -37,20 +36,20 @@ const PlayerDetailsStyle = styled.div`
       text-align:center;
     }
 `;
-const PlayerDetails = (props:PlayerDetailProps) => {
+const PlayerDetails = ({playerInfo}:PlayerDetailplayerInfo) => {
   return <PlayerDetailsStyle>
       <div className = 'restrain-text-length'>
-      <h1>{props.playerInfo.playerName}</h1>
+      <h1>{playerInfo.name}</h1>
       </div>
-            <img src = {avatarPrefix+props.playerInfo.avatar} alt = 'Avatar'/>
+            <img src = {playerInfo.profilePicture} alt = 'Avatar'/>
       <div className = 'gen-item'>
-        {props.playerInfo.country}
+        {playerInfo.country}
       </div>
       
             
   </PlayerDetailsStyle>
 }
-interface PlayerDetailProps{
+interface PlayerDetailplayerInfo{
     playerInfo:PlayerInfo
 }
   

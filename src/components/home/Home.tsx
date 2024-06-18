@@ -2,21 +2,21 @@ import { useParams, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import Tab from '../common/tabs/Tab';
 import Tabs from '../common/tabs/Tabs';
-import {useSSPlayerData } from '../../data/api/hooks/ScoreSaberApi';
+import {useSSPlayerInfo } from '../../data/api/hooks/ScoreSaberApi';
 import ScoreSortOrder from '../../data/models/ScoreSortOrder';
 import Search from './search/Search';
 import PlayerDetails from './player-info/PlayerInfo';
 import RecentPlays from './recent-plays/RecentPlays';
 import Overview from './overview/Overview';
-import { PlayerData } from '../../data/models/PlayerData';
+import { PlayerInfo } from '../../data/models/PlayerData';
 import { QueryClientProvider } from 'react-query';
 
 import queryClient from '../../data/api/ClientProvider';
-import  Score  from '../../data/models/ScoreData';
+import  SSScore  from '../../data/models/ScoreData';
 
 import { SettingsProvider, useSettings } from '../../context/SettingsContext';
 
-import { tabletBreakpoint } from '../../config';
+import { numScoresPerPage, tabletBreakpoint } from '../../config';
 import { useScoresData } from '../../data/ScoresDataHook';
 
 const HomeStyle = styled.div`
@@ -63,8 +63,8 @@ const Home = () =>{
     <SettingsProvider>
       <Search/>
             {
-              params.ssid?
-              <HomeContent ssid = {params.ssid}/>:
+              params.id?
+              <HomeContent id = {params.id}/>:
               <div style={{'minHeight':'80vh'}}/>
             }
             
@@ -73,37 +73,38 @@ const Home = () =>{
 }
 
 
-const HomeContent:React.FC<{ssid:string}> =  ({ssid}) => {
+const HomeContent:React.FC<{id:string}> =  ({id}) => {
   const {pages,scoreSortOrder} = useSettings()!;
 
-  let ssPlayerData:PlayerData|undefined = useSSPlayerData(ssid);
+  let ssPlayerInfo:PlayerInfo|undefined = useSSPlayerInfo(id);
+
+
+  let scoresData:SSScore[]|undefined = useScoresData(id,scoreSortOrder,pages*numScoresPerPage);
   
-  let scoresData:Score[]|undefined = useScoresData(ssid,scoreSortOrder,pages);
-  
-  
+  console.log('ss scores data is ',scoresData)
   return (
       <div>
         <HomeStyle>
         {
-          ssPlayerData?
-            <PlayerDetails playerInfo={ssPlayerData.playerInfo}/>:
+          ssPlayerInfo?
+            <PlayerDetails playerInfo={ssPlayerInfo}/>:
           <div>
           </div>
         }
         {
-          ssPlayerData &&scoresData &&
-          renderTabs(scoresData,ssPlayerData)
+          ssPlayerInfo &&scoresData &&
+          renderTabs(scoresData,ssPlayerInfo)
         }
         </HomeStyle>
       </div>
   )
 }
 
-const renderTabs = (ssScoresData:Score[], ssPlayerData:PlayerData) =>{
+const renderTabs = (ssScoresData:SSScore[], ssPlayerInfo:PlayerInfo) =>{
   return <Content>
           <Tabs>
           <Tab title="Overview">
-              <Overview playerData = {ssPlayerData} scoresData={ssScoresData}/>
+              <Overview playerData = {ssPlayerInfo} scoresData={ssScoresData}/>
               </Tab>
             <Tab title="Scores"><RecentPlays scoresData = {ssScoresData}/></Tab>
             
@@ -112,7 +113,7 @@ const renderTabs = (ssScoresData:Score[], ssPlayerData:PlayerData) =>{
 }
 
 type HomeParams = {
-  ssid: string; //scoresaber id
+  id: string; //scoresaber id
 };
 
 

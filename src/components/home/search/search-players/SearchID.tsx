@@ -16,14 +16,14 @@ export default class SearchID extends Component{
     handleFormSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault();
         console.log(e);
-        window.location.href="/ExpSaber/ssid/"+this.state.ss_id
+        window.location.href="/ExpSaber/player/id/"+this.state.ss_id
       }
     render(){
         return <div className = 'search-wrapper'>
             <form onSubmit={this.handleFormSubmit}>
                 <label>ScoreSaber ID:</label> 
                 <input type="text" name="scoreSaberID" placeholder='e.g. 76561198810679866'value={this.state.ss_id} onChange={this.onChange} />
-                <Link className = 'search-ico' to={"/ExpSaber/ssid/"+this.state.ss_id}><SearchLink><Search/></SearchLink></Link>
+                <Link className = 'search-ico' to={"/ExpSaber/player/id/"+this.state.ss_id}><SearchLink><Search/></SearchLink></Link>
             </form>
  
         </div>
