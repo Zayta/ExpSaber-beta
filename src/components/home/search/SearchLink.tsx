@@ -6,6 +6,7 @@ const SearchIconStyle = styled.span`
 width:fit-content;
 `;
 const SearchLink:React.FC = ({children}) =>{
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const {toggled, setToggled} = useSettings()!;
     return <SearchIconStyle onClick={()=>setToggled(false)}>{children}</SearchIconStyle>
 }

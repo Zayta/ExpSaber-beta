@@ -1,10 +1,9 @@
-import { useState } from "react";
-import SelectPages from "./options/SelectPages";
-import {Settings} from "react-feather"
+import { Settings } from "react-feather";
 import styled from "styled-components";
-import SelectScoreSortOrder from "./options/SelectScoreSort";
 import { tabletBreakpoint } from "../../../config";
 import { useSettings } from "../../../context/SettingsContext";
+import SelectPages from "./options/SelectPages";
+import SelectScoreSortOrder from "./options/SelectScoreSort";
 const AppSettingsStyle = styled.div`
     display:flex;
     flex-direction:column;

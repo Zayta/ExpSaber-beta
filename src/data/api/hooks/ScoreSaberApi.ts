@@ -1,8 +1,8 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
-import { PlayerInfo } from "../../models/PlayerData";
-import  SSScore from "../../models/ScoreData";
+import { useEffect, useState } from "react";
 import { trackPromise } from 'react-promise-tracker';
+import { PlayerInfo } from "../../models/PlayerData";
+import SSScore from "../../models/ScoreData";
 import ScoreSortOrder from "../../models/ScoreSortOrder";
 
 const scoreSaberApi='https://scoresaber.com/api'

@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { tabletBreakpoint } from "../../../../config";
 import { BLPlayerFollower } from "../../../../data/models/FollowersInfo";

@@ -1,8 +1,7 @@
 
-import Navbar from '../routing/navbar/Navbar';
-import {useLocation } from 'react-router-dom';
-import { routes } from '../routing/Routes';
 import styled from 'styled-components';
+import { routes } from '../routing/Routes';
+import Navbar from '../routing/navbar/Navbar';
 
 const HeaderStyle = styled.div`
 

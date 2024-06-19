@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useSSScoresData } from "./api/hooks/ScoreSaberApi";
 import { TrackerStat } from "./models/BeatSaviorData";
 import SSScore from "./models/ScoreData";

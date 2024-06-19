@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import { Search } from 'react-feather';
 
 
@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import { usePlayerNameSearch } from '../../../../data/api/hooks/ScoreSaberApi';
 import LoadingIndicator from '../../../common/Loading';
 import SearchLink from '../SearchLink';
-import SearchIcon from '../SearchLink';
 
 export default class SearchName extends Component{
     state:SearchNameState = {

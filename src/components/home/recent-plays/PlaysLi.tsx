@@ -1,13 +1,11 @@
-import { memo, useState } from "react";
-import styled from "styled-components";
-import { timeSince } from "../../../utils/Time";
-import { mapCoverURL } from "../../../config/static";
-import Difficulty from "../../../data/models/Difficulty";
-import  SSScore  from "../../../data/models/ScoreData";
-import { tabletBreakpoint } from "../../../config";
+import { useState } from "react";
 import { Minus, Plus } from "react-feather";
-import { TrackerStat } from "../../../data/models/BeatSaviorData";
+import styled from "styled-components";
+import { tabletBreakpoint } from "../../../config";
+import { mapCoverURL } from "../../../config/static";
+import SSScore from "../../../data/models/ScoreData";
 import getMapDifficulty from "../../../data/parsers/DifficultyParser";
+import { timeSince } from "../../../utils/Time";
 const LiIndicator = styled.div`
 @media only screen and (max-width: ${tabletBreakpoint}) {
     * {

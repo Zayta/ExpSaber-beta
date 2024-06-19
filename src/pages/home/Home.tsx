@@ -1,26 +1,25 @@
+import { QueryClientProvider } from 'react-query';
 import { useParams, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import Tab from '../../components/common/tabs/Tab';
 import Tabs from '../../components/common/tabs/Tabs';
-import {useSSPlayerInfo } from '../../data/api/hooks/ScoreSaberApi';
-import ScoreSortOrder from '../../data/models/ScoreSortOrder';
-import Search from '../../components/home/search/Search';
+import Overview from '../../components/home/overview/Overview';
 import PlayerDetails from '../../components/home/player-info/PlayerInfo';
 import RecentPlays from '../../components/home/recent-plays/RecentPlays';
-import Overview from '../../components/home/overview/Overview';
+import Search from '../../components/home/search/Search';
+import { useSSPlayerInfo } from '../../data/api/hooks/ScoreSaberApi';
 import { PlayerInfo } from '../../data/models/PlayerData';
-import { QueryClientProvider } from 'react-query';
 
 import queryClient from '../../data/api/ClientProvider';
-import  SSScore  from '../../data/models/ScoreData';
+import SSScore from '../../data/models/ScoreData';
 
 import { SettingsProvider, useSettings } from '../../context/SettingsContext';
 
+import BLFollowersInfo from '../../components/home/bl-followers/BLFollowers';
 import { numScoresPerPage, tabletBreakpoint } from '../../config';
 import { useScoresData } from '../../data/ScoresDataHook';
-import FollowersInfo, { BLPlayerFollower } from '../../data/models/FollowersInfo';
 import { useBLFollowersInfo, useBLFollowersListInfo } from '../../data/api/hooks/BeatLeaderApi';
-import BLFollowersInfo from '../../components/home/bl-followers/BLFollowers';
+import FollowersInfo, { BLPlayerFollower } from '../../data/models/FollowersInfo';
 
 const HomeStyle = styled.div`
   margin:5px;
@@ -49,14 +48,7 @@ width: 50vw;
   width:90vw;
 }
 `;
-const BottomLeft = styled.div`
-position:fixed;
-bottom:10px;
-left:10px;
-@media only screen and (max-width: ${tabletBreakpoint}){
-  display:none;
-}
-`;
+
 
 const Home = () =>{
   

@@ -1,10 +1,10 @@
-import {Component} from 'react';
+import { Component } from 'react';
 
+import styled from 'styled-components';
+import { mobileBreakpoint } from '../../../config';
+import AppSettings from '../settings/Settings';
 import SearchID from './search-players/SearchID';
 import SearchName from './search-players/SearchName';
-import styled from 'styled-components';
-import AppSettings from '../settings/Settings';
-import { mobileBreakpoint, tabletBreakpoint } from '../../../config';
 enum SearchBy{
     NAME=0,
     ID=1
