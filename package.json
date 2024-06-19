@@ -31,9 +31,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build  && echo /*    /index.html  200>build/_redirects",
     "test": "react-scripts test",
-    "predeploy": "npm run build && echo /*    /index.html  200>build/_redirects",
+    "predeploy": "npm run build",
     "deploy": "netlify deploy --prod --dir=build",
     "eject": "react-scripts eject"
   },
