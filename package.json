@@ -30,8 +30,8 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
+    "build": "SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts build",
     "test": "react-scripts test",
     "predeploy": "npm run build && echo /*    /index.html  200>build/_redirects",
     "deploy": "netlify deploy --prod --dir=build",
@@ -60,6 +60,7 @@
     "@types/react-copy-to-clipboard": "^5.0.1",
     "@types/react-router-dom": "^5.1.8",
     "@types/styled-components": "^5.1.12",
-    "gh-pages": "^3.2.3"
+    "gh-pages": "^3.2.3",
+    "netlify": "^13.1.19"
   }
 }
