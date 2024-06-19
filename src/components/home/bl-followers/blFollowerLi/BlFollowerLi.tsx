@@ -3,19 +3,7 @@ import styled from "styled-components";
 import { tabletBreakpoint } from "../../../../config";
 import { BLPlayerFollower } from "../../../../data/models/FollowersInfo";
 
-const LiIndicator = styled.div`
-@media only screen and (max-width: ${tabletBreakpoint}) {
-    * {
-        display:none;
-        width:0;
-    }
-  }
-  
-  display:flex;
-  align-items:center;
-  height:100%;
-    *{width:12px;};
-`;
+
 const BlFollowerLiStyle = styled.li`
 @media only screen and (max-width: ${tabletBreakpoint}) {
         display:flex;
@@ -66,7 +54,8 @@ padding:5px;
 }
 `;
 
-const Toggler = styled.div`
+const Toggler = styled.a`
+color:var(--txt-color2);
 display:flex;
     align-items:center;
     width:100%;
@@ -81,15 +70,15 @@ border-radius:5px 5px 2px 2px;
 const BlFollowerLi = ({follower,initShowDetails=false}:BlFollowerLiProps) =>{
     const [showDetails,setShowDetails] = useState<boolean>(initShowDetails);
 
-    const toggleDetails = ()=>{
-        setShowDetails(!showDetails)
-            
+    const goToProfile = (followerId:string)=>{
+        
+        window.location.href="/ExpSaber/player/id/"+followerId
     }
  
     
     return <BlFollowerLiStyle style={showDetails?{'backgroundColor':'var(--bckgrnd-lite)'}:{}}>
         
-        <Toggler onClick={toggleDetails}>
+        
   
             <GeneralPlayInfoStyle>
             
@@ -98,18 +87,18 @@ const BlFollowerLi = ({follower,initShowDetails=false}:BlFollowerLiProps) =>{
                 <img id = 'cover' alt = "" src = {follower.avatar}/>  
                     
                     <div style = {{'display':'flex','flexDirection':'column'}}>
-                        
-                            <div>{follower.name}</div>
+                    <Toggler onClick={()=>goToProfile(follower.id)}>
+                            {follower.name}  </Toggler>
                             
                             <div className='dif'>{follower.id}</div>
                             
                     </div>
                 </AvatarImageStyle>
             
-                <div className = 'follower-set-time'>ago</div>         
+                <div className = 'follower-set-time'></div>         
                         
             </GeneralPlayInfoStyle>
-            </Toggler>
+          
                 
            <div/>
     
