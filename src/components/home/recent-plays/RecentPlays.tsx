@@ -6,7 +6,6 @@ import  SSScore  from "../../../data/models/ScoreData";
 import PlaysLi from "./PlaysLi";
 import { sortBy, SortCriteria, SortOrder } from "./filter-and-sort/ScoreSortFunctions";
 import FilterSortOptions from "./filter-and-sort/FilterSortOptions";
-import { SortOrderUI } from "./filter-and-sort/SortOrderUI";
 
 const RecentPlaysStyle = styled.div`
     display:flex;

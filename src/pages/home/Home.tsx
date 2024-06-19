@@ -18,6 +18,9 @@ import { SettingsProvider, useSettings } from '../../context/SettingsContext';
 
 import { numScoresPerPage, tabletBreakpoint } from '../../config';
 import { useScoresData } from '../../data/ScoresDataHook';
+import FollowersInfo, { BLPlayerFollower } from '../../data/models/FollowersInfo';
+import { useBLFollowersInfo, useBLFollowersListInfo } from '../../data/api/hooks/BeatLeaderApi';
+import BLFollowersInfo from '../../components/home/bl-followers/BLFollowers';
 
 const HomeStyle = styled.div`
   margin:5px;
@@ -76,12 +79,15 @@ const Home = () =>{
 const HomeContent:React.FC<{id:string}> =  ({id}) => {
   const {pages,scoreSortOrder} = useSettings()!;
 
+  //scoresaber scores
   let ssPlayerInfo:PlayerInfo|undefined = useSSPlayerInfo(id);
+  let ssScoresData:SSScore[]|undefined = useScoresData(id,scoreSortOrder,pages*numScoresPerPage);
 
 
-  let scoresData:SSScore[]|undefined = useScoresData(id,scoreSortOrder,pages*numScoresPerPage);
+  //beat leader followers
+  let blFollowersInfo:FollowersInfo|undefined = useBLFollowersInfo(id);
+  let blFollowers:BLPlayerFollower[]|undefined = useBLFollowersListInfo(id);
   
-  console.log('ss scores data is ',scoresData)
   return (
       <div>
         <HomeStyle>
@@ -91,26 +97,22 @@ const HomeContent:React.FC<{id:string}> =  ({id}) => {
           <div>
           </div>
         }
-        {
-          ssPlayerInfo &&scoresData &&
-          renderTabs(scoresData,ssPlayerInfo)
-        }
-        </HomeStyle>
-      </div>
-  )
-}
-
-const renderTabs = (ssScoresData:SSScore[], ssPlayerInfo:PlayerInfo) =>{
-  return <Content>
+        <Content>
           <Tabs>
           <Tab title="Overview">
               <Overview playerData = {ssPlayerInfo} scoresData={ssScoresData}/>
               </Tab>
             <Tab title="Scores"><RecentPlays scoresData = {ssScoresData}/></Tab>
             
+            <Tab title="Followers"><BLFollowersInfo followersInfo={blFollowersInfo} blPlayerFollowers={blFollowers}/></Tab>
+            
           </Tabs>
         </Content>
+        </HomeStyle>
+      </div>
+  )
 }
+
 
 type HomeParams = {
   id: string; //scoresaber id

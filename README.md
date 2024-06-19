@@ -67,4 +67,4 @@ Sample Screenshot:
 
 * [Beat Savior Api](https://github.com/Mystogan98/BeatSaviorData)
 * [Beat Saver Api](https://api.beatsaver.com/docs/index.html?url=./swagger.json)
-* [Scoresaber Api](https://new.scoresaber.com/)
+* [Scoresaber Api](https://scoresaber.com/)

@@ -42,7 +42,7 @@ export function useSSScoresData(scoresaber_id:string, sortBy: ScoreSortOrder,num
     const fetchScores = async () => {
       try {
         const url = scoreSaberApi+'/player/'+scoresaber_id+"/scores?sort="+sortBy+"&limit="+numScores;
-console.log('url for scores is ',url)
+
         const scoresResponse  = await trackPromise(axios.get(url));
         console.log('scoresResponse is ',scoresResponse)
 
@@ -56,7 +56,6 @@ console.log('url for scores is ',url)
      fetchScores();
   }, [scoresaber_id,numScores,sortBy]);
 
-  console.log('in ss scores data, scoresdata is ',scoresData)
   
   return scoresData
 

@@ -9,7 +9,6 @@ export function useScoresData(scoresaber_id:string, sortBy: ScoreSortOrder,numSc
     
   let ssScoresData:SSScore[]|undefined = useSSScoresData(scoresaber_id,sortBy,numScores);
   
-  console.log('in useScores data, scores data is ')
   return ssScoresData;
 }
 //finds the first trackerstat that corresponds to the score
