@@ -15,3 +15,4 @@ export const mapCoverURL = "https://na.cdn.beatsaver.com/"//<append hash>
 // score saber urls
 export const ssLeaderboardURL = 'https://scoresaber.com/leaderboard/';
 export const ssWebProfilePrefix = 'https://scoresaber.com/u/';
+export const blWebProfilePrefix = 'https://beatleader.xyz/u/';

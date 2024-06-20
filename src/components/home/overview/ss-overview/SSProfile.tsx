@@ -33,9 +33,7 @@ const ScoreSaberOverview = (props:ScoreSaberOverviewProps) =>{
     }
 
     return <div>
-    <div style = {{'float':'right'}}>
-    <a target = "_blank" rel="noreferrer" href = {ssWebProfilePrefix+props.playerData?.id}><Box/></a>
-    </div>
+ 
     <SSOverviewStyle>
             {props.playerData?
                 <PlayerDataStyle>

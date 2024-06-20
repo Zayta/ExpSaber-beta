@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { tabletBreakpoint } from "../../../../config";
 import { BLPlayerFollower } from "../../../../data/models/FollowersInfo";
+import { ExternalLink } from "react-feather";
 
 
 const BlFollowerLiStyle = styled.li`
@@ -95,7 +96,7 @@ const BlFollowerLi = ({follower,initShowDetails=false}:BlFollowerLiProps) =>{
                     </div>
                 </AvatarImageStyle>
             
-                <div className = 'follower-set-time'></div>         
+                <a href={`https://beatleader.xyz/u/${follower.id}`} target="_blank" rel="noopener noreferrer" className = 'follower-set-time'><ExternalLink/></a>         
                         
             </GeneralPlayInfoStyle>
           

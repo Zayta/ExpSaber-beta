@@ -3,6 +3,8 @@ import { PlayerInfo } from "../../../data/models/PlayerData";
 import  SSScore  from "../../../data/models/ScoreData";
 import General from "./recent/General";
 import ScoreSaberOverview from "./ss-overview/SSProfile";
+import { blWebProfilePrefix, ssWebProfilePrefix } from "../../../config/static";
+import { ExternalLink } from "react-feather";
 
 const OverviewStyle = styled.div`
     display:flex;
@@ -20,8 +22,11 @@ const Overview = ({playerData,scoresData}:OverviewProps) =>{
     return <OverviewStyle>
         <h3>General</h3>
         <General playerData={playerData} scoresData={scoresData}/>
-        <h3>ScoreSaber</h3>
+        
+        <h3>ScoreSaber <a target = "_blank" rel="noreferrer" href = {ssWebProfilePrefix+playerData?.id}><ExternalLink/></a></h3>
         <ScoreSaberOverview playerData={playerData}/>
+        <h3>BeatLeader <a target = "_blank" rel="noreferrer" href = {blWebProfilePrefix+playerData?.id}><ExternalLink/></a></h3>
+        
         </OverviewStyle>
 }
 interface OverviewProps{
