@@ -14,3 +14,8 @@ export interface BLPlayerFollower {
     name: string,
     avatar: string
 }
+
+export enum FollowDirection {
+    FOLLOWING='following',
+    FOLLOWERS='followers'
+}

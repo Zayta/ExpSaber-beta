@@ -42,42 +42,57 @@ const LiIndicator = styled.div`
 `;
 
 
-const BLFollowersInfo = ({followersInfo,blPlayerFollowers}:BLFollowersInfoProps) =>{
+const BLFollowersInfo = ({followersInfo,blPlayerFollowers,blPlayerFollowing}:BLFollowersInfoProps) =>{
    
-   const [showDetails,setShowDetails] = useState<boolean>(false);
+   const [showFollowersDetails,setshowFollowersDetails] = useState<boolean>(false);
+   
+   const [showFollowingDetails,setshowFollowingDetails] = useState<boolean>(false);
 
-   const toggleDetails = ()=>{
-       setShowDetails(!showDetails)
-           
+   const toggleFollowerDetails = ()=>{
+       setshowFollowersDetails(!showFollowersDetails)
    }
+   const toggleFollowingDetails = ()=>{
+    setshowFollowingDetails(!showFollowingDetails)
+}
    if(!followersInfo)return<div/>;
-   if(!blPlayerFollowers) return<div/>;
 
     return <BlFollowersInfoStyle>
     <div>
     <h3>Followers Info</h3>
-    <Toggler onClick={toggleDetails}>
+    <Toggler onClick={toggleFollowerDetails}>
         <span>
     
     Followed by {followersInfo.followersCount} players</span><LiIndicator >
             {
-                showDetails?<Minus/>:<Plus/>
+                showFollowersDetails?<Minus/>:<Plus/>
             }
             </LiIndicator>
     </Toggler>
     
-    {showDetails? <ul>
-    {blPlayerFollowers.map((blp)=><BlFollowerLi key={blp.id}  follower={blp}/>)
+    {showFollowersDetails? <ul>
+    {blPlayerFollowers&&blPlayerFollowers.map((blp,i)=><BlFollowerLi key={i}  follower={blp}/>)
     }
     </ul>:
     <ul>
-    {followersInfo.followers.map((blp)=><BlFollowerLi key={blp.id}  follower={blp}/>)}
+    {followersInfo.followers.map((blp,i)=><BlFollowerLi key={i}  follower={blp}/>)}
     </ul>
     }
-    <div>Following {followersInfo.followingCount} players</div>
+      <Toggler onClick={toggleFollowingDetails}>
+        <span>
+    
+        Following {followersInfo.followingCount} players</span><LiIndicator >
+            {
+                showFollowersDetails?<Minus/>:<Plus/>
+            }
+            </LiIndicator>
+    </Toggler>
+    {showFollowingDetails? <ul>
+    {blPlayerFollowing&&blPlayerFollowing.map((blp,i)=><BlFollowerLi key={i}  follower={blp}/>)
+    }
+    </ul>:
    <ul>
-    {followersInfo.following.map((blp)=><BlFollowerLi key={blp.id}  follower={blp}/>)}
-    </ul>
+    {followersInfo.following.map((blp,i)=><BlFollowerLi key={i} follower={blp}/>)}
+    </ul>}
     
     </div>
     </BlFollowersInfoStyle>
@@ -85,7 +100,8 @@ const BLFollowersInfo = ({followersInfo,blPlayerFollowers}:BLFollowersInfoProps)
 
 interface BLFollowersInfoProps{
     followersInfo?:FollowersInfo,
-    blPlayerFollowers?:BLPlayerFollower[]
+    blPlayerFollowers?:BLPlayerFollower[],
+    blPlayerFollowing?:BLPlayerFollower[]
 }
   
 export default BLFollowersInfo;

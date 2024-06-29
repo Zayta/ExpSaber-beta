@@ -19,7 +19,7 @@ import BLFollowersInfo from '../../components/home/bl-followers/BLFollowers';
 import { numScoresPerPage, tabletBreakpoint } from '../../config';
 import { useScoresData } from '../../data/ScoresDataHook';
 import { useBLFollowersInfo, useBLFollowersListInfo } from '../../data/api/hooks/BeatLeaderApi';
-import FollowersInfo, { BLPlayerFollower } from '../../data/models/FollowersInfo';
+import FollowersInfo, { BLPlayerFollower, FollowDirection } from '../../data/models/FollowersInfo';
 
 const HomeStyle = styled.div`
   margin:5px;
@@ -78,7 +78,9 @@ const HomeContent:React.FC<{id:string}> =  ({id}) => {
 
   //beat leader followers
   let blFollowersInfo:FollowersInfo|undefined = useBLFollowersInfo(id);
-  let blFollowers:BLPlayerFollower[]|undefined = useBLFollowersListInfo(id);
+  let blFollowers:BLPlayerFollower[]|undefined = useBLFollowersListInfo(id,200,FollowDirection.FOLLOWERS);
+  
+  let blFollowing:BLPlayerFollower[]|undefined = useBLFollowersListInfo(id,200,FollowDirection.FOLLOWING);
   
   return (
       <div>
@@ -96,7 +98,7 @@ const HomeContent:React.FC<{id:string}> =  ({id}) => {
               </Tab>
             <Tab title="Scores"><RecentPlays scoresData = {ssScoresData}/></Tab>
             
-            <Tab title="Followers"><BLFollowersInfo followersInfo={blFollowersInfo} blPlayerFollowers={blFollowers}/></Tab>
+            <Tab title="Followers"><BLFollowersInfo followersInfo={blFollowersInfo} blPlayerFollowers={blFollowers} blPlayerFollowing={blFollowing}/></Tab>
             
           </Tabs>
         </Content>

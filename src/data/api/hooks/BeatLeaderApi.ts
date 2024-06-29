@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { trackPromise } from "react-promise-tracker";
-import FollowersInfo, { BLPlayerFollower } from "../../models/FollowersInfo";
+import FollowersInfo, { BLPlayerFollower, FollowDirection } from "../../models/FollowersInfo";
 
 const beatLeaderApi='https://api.beatleader.xyz'
 
@@ -26,13 +26,13 @@ export function useBLFollowersInfo(beatleader_id:string):FollowersInfo|undefined
 
 }
 
-export function useBLFollowersListInfo(beatleader_id:string):BLPlayerFollower[]|undefined{
+export function useBLFollowersListInfo(beatleader_id:string,count=200,followDirection=FollowDirection.FOLLOWERS):BLPlayerFollower[]|undefined{
     const [blFollowers,setBLFollowers] = useState<BLPlayerFollower[]>();
     
     useEffect(() => {
       const fetchFollowersInfo = async () => {
         try {
-          const userResponse = await trackPromise(axios.get(beatLeaderApi+'/player/'+beatleader_id+'/followers'));
+          const userResponse = await trackPromise(axios.get(beatLeaderApi+'/player/'+beatleader_id+'/followers?count='+count+'&type='+followDirection));
           console.log('blfollowers list is ',userResponse)
           setBLFollowers(userResponse.data);
           
